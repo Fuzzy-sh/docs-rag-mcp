@@ -116,7 +116,6 @@ python tests/test_offline.py       # offline: splitting, chunking, BM25, RRF
 python eval/make_questions.py      # regenerate the test set (optional)
 python eval/run_eval.py            # retrieval + answers (~20 min, ~200 Claude calls)
 python eval/run_eval.py --rejudge  # re-grade saved answers only
-python notebooks/make_notebook.py notebooks/findings.md   # rebuild + run the walkthrough
 ```
 
 ## Layout
@@ -131,7 +130,7 @@ mcp_server.py          MCP server
 ask.py                 command line
 build_index.py         download + index
 eval/                  question generation, evaluation, results
-notebooks/             walkthrough notebook (+ the script that builds it)
+notebooks/             walkthrough notebook
 docs/HOW_IT_WORKS.md   ingestion, indexing and retrieval explained
 tests/                 offline tests
 ```
