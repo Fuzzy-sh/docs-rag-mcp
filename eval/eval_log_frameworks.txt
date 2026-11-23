@@ -1,0 +1,15 @@
+48 questions (42 in scope). Answer model: claude-haiku-5-5, judge: claude-sonnet-5-5
+
+RETRIEVAL
+  llamaindex     hit@1 0.24  hit@5 0.50  page@5 0.74  MRR 0.38    218 ms  0.0 LLM calls
+  langchain      hit@1 0.50  hit@5 0.91  page@5 1.00  MRR 0.67     43 ms  0.0 LLM calls
+
+ANSWERS
+  llamaindex     correct 0.52  grounded 0.81  cites gold 0.50  refused out-of-scope 6/6  false refusals 16/42
+  langchain      correct 0.91  grounded 0.76  cites gold 0.88  refused out-of-scope 6/6  false refusals 4/42
+
+Claude usage: 180 calls, 304,694 in / 24,439 out tokens, 0 replies hit max_tokens
+2026/11/22 20:35:58 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/11/22 20:35:58 INFO mlflow.store.db.utils: Updating database tables
+2026/11/22 20:35:59 INFO mlflow.tracking.fluent: Experiment with name 'docs-rag-eval' does not exist. Creating a new experiment.
+Logged to MLflow (experiment 'docs-rag-eval'). View: mlflow ui --backend-store-uri sqlite:///mlflow.db

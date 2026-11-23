@@ -15,6 +15,30 @@
    "cites_gold_page": 1.0,
    "refusals_out_of_scope": "6/6",
    "false_refusals": "1/42"
+  },
+  "llamaindex": {
+   "correct": 0.524,
+   "grounded": 0.81,
+   "cites_gold": 0.5,
+   "cites_gold_page": 0.738,
+   "refusals_out_of_scope": "6/6",
+   "false_refusals": "16/42"
+  },
+  "langchain": {
+   "correct": 0.905,
+   "grounded": 0.762,
+   "cites_gold": 0.881,
+   "cites_gold_page": 0.952,
+   "refusals_out_of_scope": "6/6",
+   "false_refusals": "4/42"
+  },
+  "llamaindex_256": {
+   "correct": 0.881,
+   "grounded": 0.762,
+   "cites_gold": 0.881,
+   "cites_gold_page": 1.0,
+   "refusals_out_of_scope": "6/6",
+   "false_refusals": "1/42"
   }
  },
  "rows": [
@@ -2231,6 +2255,3296 @@
     "sql/Data_Query_Language#select-query-first-query",
     "git/Rebasing#principle",
     "sql/Handle_Data#modify-data-with-update-command"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-01",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections explain how to call functions, use return values by assigning them to a variable, and pass named arguments [5], but they do not describe returning multiple values from a function or how to capture them. The sections only show single return values (e.g., `x = foo()`).",
+   "not_in_docs": true,
+   "cited": [
+    "python/Functions#function-calls-calling-functions"
+   ],
+   "sources": [
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction",
+    "python/Functions#nested-functions",
+    "python/Functions#lambda-expressions",
+    "python/Functions#function-calls-calling-functions"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and omits returning comma-separated values and unpacking; its claims about the sections are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-02",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover password checking for consecutive QWERTY keyboard letters, the `re.match` idiom [2], tuples [3], string membership and string building [4], and dictionary iteration and lookup [5]. None of them show how to read a username and password from user input, nor how to validate a username/password pair against stored credentials. The sections only hint at general techniques (e.g., checking `'k' in d` for dictionary keys [5]), but do not provide a procedure for the login script itself.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Idioms#modules-re",
+    "python/Idioms#data-types-tuples",
+    "python/Idioms#data-types-strings",
+    "python/Idioms#data-types-dictionaries"
+   ],
+   "sources": [
+    "python/Password_checker#introduction",
+    "python/Idioms#modules-re",
+    "python/Idioms#data-types-tuples",
+    "python/Idioms#data-types-strings",
+    "python/Idioms#data-types-dictionaries"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot said 'Not in docs' and gave no login script approach; the reference describes raw_input with an if/elif/else chain. Its descriptions of the sections are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-03",
+   "in_scope": true,
+   "answer": "The provided sections do not cover extended slicing (e.g., `l[start:stop:step]`) or step-based selection from lists. They only mention slicing in the context of truncation with `del l[j:]` and `del l[:i]` [3], and `range()` with a step argument in a for loop [5], which is not the same as selecting elements from an existing list.\n\nNot in docs: the sections lack an explanation of slice steps (such as `l[::2]` for every second element) or of selecting every nth element within an index range. Adding the slicing documentation for lists would be needed to answer this.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-for-loops"
+   ],
+   "sources": [
+    "python/Idioms#operations",
+    "python/Idioms#data-types-tuples",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-while-loops",
+    "python/Control_Flow#overview-loops-for-loops"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot says the docs lack slice-step info and never gives the list[a:b:n] answer; its claims about the sections are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-04",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections explain how `with open()` ensures the file handle is released as soon as the block ends [4], but they do not explain what happens when a generator that reads from the file is consumed after the block has exited, so they do not answer why the ValueError occurs. The sections also do not mention generators or the \"I/O operation on closed file\" error.\n\nWhat the docs do establish: the `with` statement closes the file handle when its block finishes [4], so any read attempted on that handle afterward is an operation on a closed file. A generator that reads lines lazily would only perform its reads when iterated, which is why the iteration happens after the file is already closed.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Files#file-i-o"
+   ],
+   "sources": [
+    "python/Strings#unicode",
+    "python/Files#testing-files",
+    "python/Files#finding-files",
+    "python/Files#file-i-o",
+    "python/Files#common-file-operations"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": false,
+    "why": "Leads with 'Not in docs' and omits the fixes (list comprehension, open inside generator). The lazy-evaluation explanation is not supported by the retrieved sections, which never mention generators."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-05",
+   "in_scope": true,
+   "answer": "**Why scopes exist:** Scopes exist so that one piece of code does not affect another in hard-to-predict ways. Preventing one programmer's choice of a name from blocking another's use of that name is one of the simplest ways to achieve this [1].\n\n**Ways to create a region where a name is usable:**\n\n1. **Functions** \u2013 A function's body is a scope. Names defined inside it are local to that function [1][4].\n2. **Modules** \u2013 A module delimits its own region, and its names live in its own namespace [1][2].\n3. **Classes** \u2013 Class blocks also delineate scope [4].\n\nFunctions and classes can be nested, and a name is only visible within the scope where it is defined or in lower (nested) scopes [4]:\n\n```python\ndef foo():\n    def bar():\n        x = 5\n        return x + y   # y comes from the enclosing scope\n    y = 10\n    return bar()\n\nprint(foo())   # 15\nbar()          # NameError: name 'bar' is not defined\n```\n\nNote that loops do not create their own scope [4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Basic_Syntax#semicolons-namespaces",
+    "python/Scoping#variables"
+   ],
+   "sources": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Basic_Syntax#semicolons-namespaces",
+    "python/Scoping#variables-keyword-global",
+    "python/Scoping#variables",
+    "python/Classes#overview-special-methods-operator-overloading"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer covers the purpose of scope and functions/modules as delimiters, plus the namespace link; classes, nesting, and loop details are supported by section [4]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-06",
+   "in_scope": true,
+   "answer": "Yes. A Python list can hold values of different types, including numbers, strings, and other containers. [1] gives this example:\n\n```python\nl = ['a string', 456, ('a', 'tuple', 'inside', 'a', 'list')]\n```\n\nThis list contains a string, an integer, and a tuple. [1]\n\nYou write a list directly by enclosing comma-separated elements in square brackets. [1][3] The docs show lists containing mixed types, such as `[2, 4, \"usurp\", 9.0, \"n\"]`, which holds integers, a string, a float, and another string. [3]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices"
+   ],
+   "sources": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices",
+    "python/Lists#comparing-lists",
+    "python/Sequences#tuples"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer confirms mixed-type lists and square-bracket comma-separated syntax, matching the reference; examples come directly from retrieved sections [1] and [3]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-07",
+   "in_scope": true,
+   "answer": "The sections don't describe a symmetric difference operation. They cover union [1], intersection [2], general set operations [3], removing items [4], and membership testing [5]. Not in docs: the provided sections do not include the symmetric difference function (such as `symmetric_difference` or the `^` operator) that returns elements in either set but not both.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-set-operations-intersection",
+    "python/Sets#overview-set-operations",
+    "python/Sets#overview-removing-items",
+    "python/Sets#overview-membership-testing"
+   ],
+   "sources": [
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-set-operations-intersection",
+    "python/Sets#overview-set-operations",
+    "python/Sets#overview-removing-items",
+    "python/Sets#overview-membership-testing"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot declined with 'not in docs' and never gave symmetric_difference or ^; its claims about what the sections cover are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-08",
+   "in_scope": true,
+   "answer": "Most open source projects use Git, Mercurial (hg), or Bazaar (bzr) [1].\n\nBranching lets you start from a known working state and, if you go down the wrong path, revert back to where you started [1]. Branches are also useful for keeping a stable release receiving bug fixes while new features are developed separately, for making private branches for personal experiments, and for switching between branches to add updates at different times [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Branching_&_merging#why-branch"
+   ],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#table-of-contents",
+    "git/Home#introduction",
+    "git/Branching_&_merging#why-branch"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer lists Git, Mercurial, Bazaar and explains branching from a known working state with revert; extra branching uses are supported by section [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-09",
+   "in_scope": true,
+   "answer": "It returns a new string and leaves the original unchanged, so you need to save the result to a new variable (or reassign the same name) [2].\n\n```python\nstring = 'Hello, world'\nnewString = string.replace('o', 'X')\nprint(string)     # Hello, world\nprint(newString)  # HellX, wXrld\n```\n\n[2]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Strings#string-methods-replace"
+   ],
+   "sources": [
+    "python/Strings#string-methods-split-splitlines",
+    "python/Strings#string-methods-replace",
+    "python/Strings#string-methods-expandtabs",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: replace returns a new string, original unchanged, must save result. The 'or reassign the same name' addition is a reasonable inference, and the code example comes directly from section [2]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-10",
+   "in_scope": true,
+   "answer": "In Python 3, you generally don't have to choose. Modules automatically use the optimized implementation if one is available [5]. For example, cElementTree is not needed in Python 3.3+, since ElementTree automatically uses a fast implementation when possible [4]. Likewise, cStringIO has been replaced by io.StringIO in Python 3 [4].\n\nOne exception is the cProfile/profile pair, which still exists as of Python 3.4 [5]. The docs recommend cProfile for most use, since the pure Python profile adds significant overhead [4].\n\nThe docs do not describe how to explicitly force a particular implementation in Python 3, so no code example is given here.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules"
+   ],
+   "sources": [
+    "python/Tips_and_Tricks#strings",
+    "python/Tips_and_Tricks#other",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: automatic optimized implementations in Python 3, with cProfile/profile exception as of 3.4; all claims (cElementTree, cStringIO, cProfile recommendation) are supported by sections [4] and [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-11",
+   "in_scope": true,
+   "answer": "The type function disregards class inheritance, so type(3) is object yields False while isinstance(3, object) yields True [1]. The type check compares the exact class of the object, whereas isinstance also accounts for inheritance: isinstance is the weaker condition and is satisfied by subclasses as well as the exact type [4].\n\n```python\ntype(3) is object        # False: exact type is int, not object\nisinstance(3, object)    # True: int is a subclass of object\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance"
+   ],
+   "sources": [
+    "python/Reflection#type",
+    "python/Reflection#keywords",
+    "python/Reflection#issubclass",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches the reference, but the claim that the exact type is int and int is a subclass of object is not stated in the retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-12",
+   "in_scope": true,
+   "answer": "Special methods that let a class mimic numeric or container behavior use names that begin and end with two underscores (e.g. `__add__`, `__getitem__`) [5]. The single-underscore convention is different: methods beginning with one underscore are conventionally treated as \"private\" to the scope they are introduced within [5]. So the double-underscore-on-both-sides form marks reserved, special-purpose methods, while a single leading underscore signals private use.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-special-methods"
+   ],
+   "sources": [
+    "python/Classes#overview-special-methods-operator-overloading",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Classes#overview-special-methods-initialization-and-deletion-enter-and-exit",
+    "python/Classes#overview-special-methods-initialization-and-deletion-del",
+    "python/Classes#overview-special-methods"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference, but examples `__add__` and `__getitem__` are not in the retrieved sections; the rest is supported by section [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-13",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover metaclasses, the `type` metaclass, class creation via `metaclass=`, and PEP 3115's `__prepare__`/`__new__` hooks. They do not describe attaching a method to an existing instance (e.g. via `types.MethodType` or assigning to an instance attribute), so I can't answer this from the documentation provided.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3-more-resources",
+    "python/Metaclasses#python3-metaclasses",
+    "python/Metaclasses#python3",
+    "python/Metaclasses#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot declined with 'Not in docs' and gave no types.MethodType answer; its statements about the retrieved sections' contents are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-14",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections do not describe a password-prompting loop or how to check a password against a fixed value. Section [5] shows a `while True:` loop that repeatedly calls `input()` and breaks when the guess matches (`guess == answer`), and section [3] describes `input()` as asking the user for a response. Combining these would give a loop that keeps prompting until the correct value is entered, but the docs themselves do not address passwords specifically. Section [5] also notes that its example does not handle invalid input, and that error handling is covered in the Errors chapter, which is not included in the sections provided.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Variables_and_Strings#list-of-learned-functions",
+    "python/Conditional_Statements#if-statements-if-example"
+   ],
+   "sources": [
+    "python/Password_checker#introduction",
+    "python/Variables_and_Strings~Solutions#introduction",
+    "python/Variables_and_Strings#list-of-learned-functions",
+    "python/Variables_and_Strings#exercises",
+    "python/Conditional_Statements#if-statements-if-example"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Replies 'Not in docs' and never gives the reference's `while password != ...` loop with `input()`. Its claims about sections [3] and [5] are supported."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-15",
+   "in_scope": true,
+   "answer": "Use the `pip install` command pointing at the wheel file [2]:\n\n```\npip install mypackage.whl\n```\n\nThis installs the package from the wheel file `mypackage.whl`, and is useful when installation from PyPI fails and you need to download the wheel file (.whl) of the package manually [2].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Package_management#introduction"
+   ],
+   "sources": [
+    "python/Package_management#requirements-txt",
+    "python/Package_management#introduction",
+    "python/numpy#introduction",
+    "python/numpy#installation",
+    "python/numpy#arrays"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (pip install mypackage.whl when PyPI install fails) and all claims are directly supported by section [2]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-16",
+   "in_scope": true,
+   "answer": "Nested for-loops are supported: \"A loop can loop over a loop\" [1], and the exercises ask for a nested for-loop to print the 3x3 table [2]. The docs show the target output, which includes a header row and a divider line [2]. However, the sections do not provide code for building the header row or the divider line, nor do they show a complete nested-loop solution for the table. Specifically, they do not explain how to print the header row (\"  1 2 3\") or the dashed divider (\"------\") or how to format the row labels (\"1|\").\n\nNot in docs: The provided sections confirm that nested for-loops can be used [1][2], and that for-loops iterate over a range such as range(1, 4) [5], but they do not include code for the header row, the divider line, or the row-label formatting needed to reproduce the table exactly.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Control_Flow#overview-conclusion",
+    "python/Control_Flow#exercises",
+    "python/Control_Flow#overview-loops-for-loops"
+   ],
+   "sources": [
+    "python/Control_Flow#overview-conclusion",
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Control_Flow#overview-loops-while-loops",
+    "python/Control_Flow#overview-loops-for-loops"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: exercises ask for nested for-loop 3x3 table and a header/divider/label version; honestly notes no solution code. Claims are supported by sections [1], [2], [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-17",
+   "in_scope": true,
+   "answer": "The docs provided do not state the precedence of division versus multiplication. Section [1] only says the `**` operator \"occupies its proper place in the order of operations,\" and section [4] covers the result type and floor division (`//`), not how `/` and `*` are ordered relative to each other. Not in docs: the sections do not specify whether `/` or `*` is evaluated first when they appear together without parentheses.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Operators#powers",
+    "python/Operators#floor-division-and-true-division"
+   ],
+   "sources": [
+    "python/Operators#powers",
+    "python/Operators#negation",
+    "python/Operators#modulus",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#comparison"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot declined to answer ('Not in docs') and never states left-to-right evaluation; its claims about what the sections say are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-18",
+   "in_scope": true,
+   "answer": "You can use the cursor returned by `cursor.execute`, which is itself an iterator over the result records. Iterating over it fetches rows one at a time rather than loading everything at once [2]:\n\n```python\nimport apsw\n\ndb = apsw.Connection(\"mydata.db\")\ncursor = db.cursor()\n\nfor row in cursor.execute(\"SELECT name, company FROM employees\"):\n    name, company = row\n    print(name, company)\n```\n\nTo wrap this in a reusable function that returns an iterator, you can follow the pattern in [2]. For parameter values, use the automatic substitution provided by `execute` rather than string formatting [3]:\n\n```python\nfor row in cursor.execute(\"SELECT name FROM employees WHERE company = ?\", (company,)):\n    print(row[0])\n```\n\nAlso list the specific fields you need instead of using `SELECT *` [4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting",
+    "python/Databases#general-principles-never-use-select-in-a-script"
+   ],
+   "sources": [
+    "python/Databases#introduction",
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting",
+    "python/Databases#general-principles-never-use-select-in-a-script",
+    "python/Databases#dbms-specifics-sqlite"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Conveys that APSW's cursor.execute returns an iterator for row-by-row looping, matching the reference; parameter substitution and avoiding SELECT * are supported by sections [3] and [4]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-01",
+   "in_scope": true,
+   "answer": "Indexes speed up lookups because a binary search over ordered data needs only about 20 row reads for a million rows, versus about 500,000 on average for a linear scan [1]. The index is a balanced tree whose key lets the DBMS locate matching rows without reading the whole table [4].\n\nThe sections do not cover when an index hurts performance. Not in docs: the sections explain the benefit of ordered access but say nothing about write overhead or other costs. They do note one trade-off: sorting adds work during data entry, and whether that extra work is worthwhile depends on how the data is typically used [1]. They also note that an index only helps queries it matches; a multi-column index can serve queries on the leading column but not on the second column alone [4], and a case-sensitive index does not help a query that applies UPPER() to the column unless a functional index is defined [5].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/Managing_Indexes#functional-index"
+   ],
+   "sources": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#introduction",
+    "sql/Managing_Indexes#unique-index",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/Managing_Indexes#functional-index"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Explains binary search vs linear scan and notes the data-entry sorting trade-off; it is silent on small tables and many indexes, but claims are supported by sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-02",
+   "in_scope": true,
+   "answer": "Foreign Keys and Joins differ in two main ways:\n\n- **Direction:** A Foreign Key has a direction: one table is the child and the other is the parent. A Join links rows by identical values and has no direction. [4]\n- **Where they're defined:** A Foreign Key is part of the table definition, and all DML statements respect it automatically. A Join must be written out in every DML statement that needs it (except in views). [4]\n\nForeign Keys also guarantee that no orphans arise: employees can only be assigned to existing departments, and a department can't be deleted while employees are assigned to it. [3]\n\nSo no, you don't have to specify the relationship with a foreign key each time. Once it's defined on the child table, it applies to all statements. You still write a Join when you want to *retrieve* related data in a query, since a Foreign Key enforces integrity but doesn't by itself combine the tables in a result. [4]\n\nExample of defining the relationship (the child table holds the reference):\n\n```sql\nCREATE TABLE department (\n  id   INT PRIMARY KEY,\n  name VARCHAR(50)\n);\n\nCREATE TABLE employee (\n  id      INT PRIMARY KEY,\n  name    VARCHAR(50),\n  dept_id INT NOT NULL,\n  FOREIGN KEY (dept_id) REFERENCES department(id)\n);\n```\n\nNote that the Foreign Key definition is attached to `employee`, the child table. [1][5]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Foreign_Key#syntax",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#example"
+   ],
+   "sources": [
+    "sql/Foreign_Key#syntax",
+    "sql/Foreign_Key#n-m-relationship",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#example"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Covers direction and definition-level difference matching the reference, but claims that joins are still needed to retrieve data and FK doesn't combine tables, and the SQL example, aren't in retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-03",
+   "in_scope": true,
+   "answer": "Not in docs: The sections explain that ORDER BY sorts by one or more columns, that the second column breaks ties within equal values of the first, and that ASC/DESC control direction (default is descending) [1]. They do not state that rows with identical sort values come back in an unpredictable order, nor do they say whether you can sort by a column you don't select. So the docs don't cover a guaranteed-stable order or non-selected sort columns.\n\nWhat the docs do support: to break ties reliably, add a second column to ORDER BY, which is used to sort rows that share the same value in the first column [1]. For example:\n\n```sql\nSELECT id_reunion, name, priority, date\nFROM reunion\nORDER BY priority ASC, date DESC;\n```\n\nNote that the table name `reunion` is inferred from the example's column names and is not stated in the sections.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Chatbot opens with 'Not in docs' and says docs don't cover sorting by a non-selected column, missing the reference's key point; it does explain tie-breaking correctly."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-04",
+   "in_scope": true,
+   "answer": "When several users change data at the same time, the DBMS guarantees ACID compliance for each transaction [1]. The letters stand for:\n\n- **Atomic:** all changes within a transaction take place, or none do [1].\n- **Consistent:** changes transform the database from one valid state to another valid state [1].\n- **Isolated:** transactions of different users working at the same time do not affect each other [1]. Before a transaction is committed, its writes are stored in an intermediate area not visible to other sessions [4].\n- **Durable:** committed changes are retained even if the system crashes afterward [1].\n\nTransactions combine all intermediate states into one change-event, which holds true in critical situations such as parallel processing, disc crash, or power failure [5].\n\nTransactions are ended with COMMIT (making changes visible to all sessions) or ROLLBACK (discarding them). If a COMMIT fails, the outcome is the same as a ROLLBACK [4].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#transaction-boundaries",
+    "sql/Transactions#introduction"
+   ],
+   "sources": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#transaction-boundaries-savepoints",
+    "sql/Transactions#transaction-boundaries",
+    "sql/Transactions#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference on ACID and its four properties; all extra details (intermediate area, COMMIT/ROLLBACK, failed COMMIT) are supported by sections [1], [4], [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-05",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections describe aggregate and scalar functions, the NULL handling in aggregates, and the ALL/DISTINCT modifiers, but they do not explain why selecting a plain column such as lastname alongside MAX(weight) produces an error, nor do they state the rules for when mixing a plain column with an aggregate is allowed. The sections only note that aggregate functions work on a set of rows and return one value for the whole set (or once per group when used with GROUP BY) [2], which hints at the issue but does not spell out the rule or the fix.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/SELECT:_Predefined_Functions#introduction"
+   ],
+   "sources": [
+    "sql/SELECT:_Predefined_Functions#scalar-functions",
+    "sql/SELECT:_Predefined_Functions#introduction",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-the-null-special-marker",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-hint",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-all-vs-distinct"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot declined with 'Not in docs' and never states the reference's key point (aggregates can't mix with plain columns unless GROUP BY is used). Its claims match section [2]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-06",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover EXISTS, BETWEEN/IN, FULL OUTER JOIN, the FROM clause, and comparison predicates, but none describe a \"latest version per booking\" pattern (such as GROUP BY with MAX, window functions, or a correlated subquery for the newest row). The sections only show that EXISTS can filter rows using a subselect that is not joined to the outer rows [1], which is a related technique but not a documented solution for picking the latest version per group.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Data_Query_Language#select-query-where-clause-exists"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-where-clause-exists",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "sql/Data_Query_Language#select-query-from-clause-full-outer-join",
+    "sql/Data_Query_Language#select-query-from-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot says 'Not in docs' and gives no max-version subquery solution; its claims about the retrieved sections, such as EXISTS using an unjoined subselect, are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-07",
+   "in_scope": true,
+   "answer": "Not in docs: The sections explain that the frame is defined by the WINDOW FRAME clause, which optionally follows the PARTITION and ORDER clauses [3], and that the PRECEDING/FOLLOWING terminology only works when there is a WINDOW ORDER clause creating an unambiguous sequence [1]. However, they do not state what frame applies when no frame clause is given, nor what happens when no ORDER clause is present. The only related statement is that the lead() and lag() functions have the partition as their scope, while other window functions act on the frame [3], but the default frame behavior is not described.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-rows",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#basic-window-functions"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Chatbot says 'Not in docs' and gives no default frame behavior, so it misses the reference answer; its claims accurately reflect the retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-08",
+   "in_scope": true,
+   "answer": "Not in docs: The sections do not describe an auto-increment data type. They do mention the standard identity specification, \"GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY\" [5], which generates a series of unique values acting as a Primary Key. However, the sections state that most DBMS vendors do not support this syntax and instead use different syntaxes or concepts, such as generators/sequences with triggers, special data types, or different keywords [5]. The sections refer to the SQL Dialects Reference wikibook for an overview of vendor implementations [5], but that material is not included here, so the exact syntax for your specific DBMS cannot be given from these sections.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Create_Table#column-definition-identity-specification"
+   ],
+   "sources": [
+    "sql/Create_Table#table-constraint-primary-key-unique-and-foreign-key",
+    "sql/Create_Table#table-constraint-not-null-and-simple-column-checks",
+    "sql/Create_Table#table-constraint-general-column-checks",
+    "sql/Create_Table#table-constraint",
+    "sql/Create_Table#column-definition-identity-specification"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Opens with 'Not in docs' and never states there is no auto-increment type and to use GENERATED ALWAYS AS IDENTITY; it only caveats vendor support. All claims match section 5."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-09",
+   "in_scope": true,
+   "answer": "By default the sort is descending [1]. The first column is the primary sort key, and ties in that column are broken by the second column, and so on [1]. Each column can have its own ASC or DESC keyword added [1].\n\nExample:\n```sql\nSELECT * FROM reunion\nORDER BY priority, date DESC;\n```\nHere `priority` is sorted in the default descending order, and rows sharing the same priority are then ordered by `date` descending [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on default descending and tie-breaking, but the example's claim that priority sorts descending and the SQL query itself are not in the retrieved sections; the example is invented."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-10",
+   "in_scope": true,
+   "answer": "Relational databases store things like country names in a separate shared table so that each value is recorded only once and every other list refers to that single entry. This increases accuracy and efficiency. Without it, the same country could be written many different ways (for example \"England\", \"Great Britain\", \"UK\"), which later makes it hard to know how many people came from one country [2].\n\nUsing a shared Country table also creates relationships between otherwise separate lists. A list of telephone country codes and a list of European castles can both point to the same Country table, so they are linked through the one item they have in common: country [2]. Relationships like this are made by linking tables with keys, such as a foreign key pointing to a primary key in another table [3][4].\n\nNot in docs: the sections do not describe the storage space savings or other implementation-level benefits beyond accuracy and relationship-building.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#relationships",
+    "sql/Relational_Databases#introduction"
+   ],
+   "sources": [
+    "sql/Introduction_to_SQL#structured-query-language-sql",
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#relationships",
+    "sql/Relational_Databases#introduction",
+    "sql/Temporary_Table#local-temporary-tables-ltt"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer covers unique entry per country, avoiding inconsistent spellings, and linking lists via shared Country table; all claims supported by sections [2], [3], [4]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-11",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections list INTERVAL only as a single predefined temporal type, \"a certain range on the time bar\" [1]. They do not describe two kinds of INTERVAL or their fields, so I cannot answer this question from the documentation.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Data_Types#overview"
+   ],
+   "sources": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#introduction",
+    "sql/Data_Types#character",
+    "sql/Data_Types#binary",
+    "sql/Language_Elements#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot declined to answer ('Not in docs') so it misses the year-month and day-time intervals; its claims about the sections are accurate and supported."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-12",
+   "in_scope": true,
+   "answer": "Yes. The MERGE command performs an INSERT or an UPDATE depending on whether each row already exists in the target table, all within a single statement [2]. This avoids the two round-trips between application and DBMS (SELECT plus INSERT or UPDATE), allows bulk handling of rows, and keeps the logic in one statement [2].\n\nThe comparison that decides between INSERT and UPDATE is specified after the ON keyword, and is typically a comparison of Primary Key or Foreign Key columns [5]. The target table follows MERGE INTO and the source table follows USING [5]. The UPDATE part within MERGE has no table name and no WHERE clause, and the INSERT part has no target table name [5].\n\nThe docs give no complete code listing for a generic case, but the structure described in [5] looks like this:\n\n```sql\nMERGE INTO hobby_shadow h\nUSING hobby s\nON (h.hobby_id = s.hobby_id)\nWHEN MATCHED THEN\n  UPDATE SET h.remark = s.remark\nWHEN NOT MATCHED THEN\n  INSERT (hobby_id, remark) VALUES (s.hobby_id, s.remark);\n```\n\nThe example table names here are illustrative; the docs do not state this exact statement. The docs also advise deactivating AUTOCOMMIT when using this construct [2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/MERGE#introduction",
+    "sql/MERGE#description"
+   ],
+   "sources": [
+    "sql/MERGE#use-case",
+    "sql/MERGE#introduction",
+    "sql/MERGE#extentions",
+    "sql/MERGE#example",
+    "sql/MERGE#description"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference (MERGE, single statement, avoids roundtrips/bulk). All claims trace to sections [2] and [5]; the code sample is explicitly flagged as illustrative, not from docs."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-13",
+   "in_scope": true,
+   "answer": "The provided sections do not state the default frame when no WINDOW FRAME clause is given. They describe the frame only when a WINDOW FRAME clause is specified: the frame is defined by its lower and upper boundaries, and the series of frames grows row by row from the first row of the partition with a ROWS-type frame [3][1]. The sections also say that the sum in a window function is reset for each new partition [2].\n\nNot in docs: the sections do not specify which rows form the frame when only PARTITION BY (and possibly ORDER BY) is used without a frame clause. The documentation needed is the description of the default frame behavior for window functions.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-rows",
+    "sql/Window_functions#determine-the-frame"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-rows",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#basic-window-functions"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Answer says default frame isn't documented ('Not in docs') and never states the frame runs from partition start to current row; its claims about the retrieved sections are supported."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-14",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections describe views (what they are, how they can use ORDER BY, joins, functions, and WHERE clauses) but do not mention CTEs (common table expressions) or whether a CTE can be referenced in a subselect of a main SELECT. The sections only state that a view \"is a different sight to the stored data or somewhat like a predefined SELECT\" [2], and that a view has no data of its own [2]. A comparison with CTEs, and an answer about referencing them in subselects, would require documentation that is not included here.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Views#introduction"
+   ],
+   "sources": [
+    "sql/Views#some-more-hints",
+    "sql/Views#introduction",
+    "sql/Views#examples-and-explanations-example-5-join",
+    "sql/Views#examples-and-explanations-example-4-use-functions",
+    "sql/Views#examples-and-explanations-example-3-apply-where-condition"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Chatbot said 'Not in docs' and gave no CTE vs view difference or subselect answer; its claims about views are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-01",
+   "in_scope": true,
+   "answer": "The documentation describes this. The Bash customization script shows the current branch name in red when there are outstanding changes and in green when there are none, followed by the current path. The hostname is shown at the beginning in a low-lighted colour [2].\n\nHowever, the sections provided do not include the script itself or any code example for setting this up, so I can't give you the exact implementation from the docs. The script is based on Mike Stewart's work, which is referenced in [2] but not included here.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Interoperation#customizing-your-command-line-prompt"
+   ],
+   "sources": [
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files-throwing-away-local-uncommitted-changes",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Introduction#removing-files-resetting-a-commit"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: red for changes, green for none, path, low-lighted hostname, based on Mike Stewart's work. All claims supported by section [2]; the missing-script caveat is accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-02",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover rebasing, resetting, reverting, and removing files, but do not mention git tags or how to move or replace an existing tag.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Rebasing#principle",
+    "git/Introduction#removing-files-throwing-away-local-uncommitted-changes",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Introduction#removing-files-resetting-a-commit",
+    "git/Introduction#removing-files"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and omits the reference command `git tag -f mytag HEAD`; its claim that sections lack tag info is accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-03",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover initializing Gitosis (creating the `git` user, copying your public key, cloning and installing Gitosis, and running `gitosis-init` [1][3][4][5]), but they do not describe how to create a new repository locally or push it to the server. The gitosis-admin repository is mentioned only as the place where the hook is set up [1], and the docs don't explain how repositories are added to Gitosis's configuration or how to push to them.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and gives none of the reference steps (git init, remote add, push). Its claims about what the sections cover are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-04",
+   "in_scope": true,
+   "answer": "When you run `git merge <branch>`, Git merges the given branch into your current branch [1]. The behaviour depends on the relationship between the two branches:\n\n- **Fast-forward merge:** If the current branch is a direct ancestor of the given branch, Git does not record a new commit. Instead, it redirects the current branch head to point at the new branch's tip [1].\n- **Merge commit:** In all other cases, Git records a merge commit with two parents: the previous commit on the current branch and the tip of the given branch [1].\n\nIf the merge produces conflicts, you must resolve them by hand before the merge commit is recorded [1]. Conflicted regions are marked with `<<<<<<< HEAD`, `=======`, and `>>>>>>> <branch>` markers, where the HEAD section is from the branch you are merging onto and the other section is from the branch you are merging from [5].\n\n```\n$ git merge side-branch\n# resolve conflicts in the affected files, then:\n$ git add test.py\n$ git commit\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9"
+   ],
+   "sources": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository",
+    "git/Branching_&_merging#branching-deleting-a-branch-from-the-remote-repository",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#merging-9"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Core answer matches the reference, but the code snippet's 'git add test.py' and 'git commit' resolution steps are not in the retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-05",
+   "in_scope": true,
+   "answer": "Make the change in the submodule, then commit it there first. Next, commit the change in the superproject, which records the submodule's new commit. Finally, run `git submodule update` to push the change to the individual repositories that predate the superproject [1].\n\nExample:\n\n```\ncd submodule\n# make your change\ngit commit -am \"Describe change\"\ncd ..\ngit commit -am \"Update submodule reference\"\ngit submodule update\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Submodules_and_Superprojects#work-flow"
+   ],
+   "sources": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#footnotes"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Order matches reference. But claim that the superproject commit 'records the submodule's new commit' and the code example (cd, commit -am commands) aren't in retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-06",
+   "in_scope": true,
+   "answer": "Per [3], the following sites offer free hosting regardless of a project's license: GitHub, GitLab, and Bitbucket.\n\nNote that [5] states Bitbucket's free accounts support up to five users and an unlimited number of private repositories.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer names GitHub, GitLab, Bitbucket as license-independent free hosts, matching the reference; the Bitbucket free-account detail is supported by section [5]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-07",
+   "in_scope": true,
+   "answer": "To bootstrap Gitosis with your public key, run the init command as the `git` user, feeding it the key file:\n\n```\nsudo -H -u git gitosis-init < /tmp/id_rsa.pub\n```\n\nOn success you will see \"Initialized empty Git repository\" [1]. The key must first be copied to the server (e.g. `scp .ssh/id_rsa.pub user@example.com:/tmp`) [4].\n\nThen fix the permissions on the post-update hook of the admin repo:\n\n```\nsudo chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Both commands match the reference exactly; scp detail and success message are supported by sections [4] and [1]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-08",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover introducing Gitosis, creating the git user, copying public keys, cloning and installing Gitosis, and initializing the gitosis-admin repository [1][2][3][4][5]. They do not explain how to define groups in the gitosis.conf file or how to grant write access to specific repositories for several users. That information would be in the configuration section of the documentation, which was not included.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and gives none of the reference's group configuration details, but its claims about what the retrieved sections cover are accurate."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-09",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections explain how to initialize Gitosis with an admin public key, copy a public key to the server, and install Gitosis, but they do not describe how to add a new developer's key or grant repository access. That would normally involve editing the `gitosis-admin` repository's `keydir/` and `gitosis.conf`, which is not covered in sections [1]\u2013[5].",
+   "not_in_docs": true,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": false,
+    "why": "Answer says 'Not in docs' rather than giving the keydir/ .pub, commit, push steps; it also mentions keydir/ and gitosis.conf, which the sections don't support."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-10",
+   "in_scope": true,
+   "answer": "Yes. Free Bitbucket accounts support an unlimited number of private repositories and up to five users [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#birds-of-a-feather-bof"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (unlimited private repos, up to five users) and both claims are directly supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-01",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover the SQL CREATE TABLE statement (column definitions, identity specification, default values, and data types). They contain no information about configuring VLANs on a Cisco switch.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Create_Table#introduction",
+    "sql/Create_Table#general-description",
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Create_Table#column-definition-data-type"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-02",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover SQL NULL handling, COALESCE/NULLIF, ORDER BY, WHERE comparison predicates, and FETCH FIRST. They contain nothing about baking or sourdough bread recipes.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/SELECT:_IS_NULL_Predicate#some-examples",
+    "sql/SELECT:_IS_NULL_Predicate#coalesce-and-similar-functions",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-fetch-first-clause"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-03",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover GitHub basics (free vs. paying repos [1]), webhooks for pull request validation with CI tools like Jenkins [2], online review diffs [3], repo wikis and issue tracking [4], and Git interoperation with other systems [5]. None of them describe Kubernetes, deployments, or autoscaling, so I can't answer how to set up autoscaling for a Kubernetes deployment from these sections.",
+   "not_in_docs": true,
+   "cited": [
+    "git/GitHub#introduction",
+    "git/GitHub#functionalities-webhooks",
+    "git/GitHub#functionalities-review",
+    "git/GitHub#functionalities",
+    "git/Interoperation#introduction"
+   ],
+   "sources": [
+    "git/GitHub#introduction",
+    "git/GitHub#functionalities-webhooks",
+    "git/GitHub#functionalities-review",
+    "git/GitHub#functionalities",
+    "git/Interoperation#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-04",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python naming conventions, Python 2 vs. Python 3 differences, and SQL window functions. None of them discuss React, useEffect, or useLayoutEffect, so the question cannot be answered from these documents.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Naming_conventions#introduction",
+    "python/Python_2_vs._Python_3#introduction",
+    "sql/Window_functions#syntax",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-05",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python's urllib module, fetching webpages, sending email, and downloading files. They contain nothing about filing personal tax returns in Canada.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Internet#other-functions",
+    "python/Internet#introduction",
+    "python/Internet#getting-page-text-as-a-string",
+    "python/Internet#email",
+    "python/Internet#downloading-files"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "out-06",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover SQL's ROLLUP and CUBE grouping keywords and importing a project into Gerrit (Git). They contain no information about changing the oil in a 2015 Toyota Corolla.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Rollup_Cube#rollup",
+    "sql/Rollup_Cube#introduction",
+    "sql/Rollup_Cube#example-table",
+    "sql/Rollup_Cube#cube",
+    "git/Gerrit_Code_Review#setup-importing-project-into-gerrit"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-01",
+   "in_scope": true,
+   "answer": "You can return multiple values by separating them with commas in the `return` statement, and capture them by unpacking into multiple variables at the call site [1].\n\n```python\ndef first2items(list1):\n    return list1[0], list1[1]\n\na, b = first2items([\"Hello\", \"world\", \"hi\", \"universe\"])\nprint(a + \" \" + b)\n```\n\nThe function returns the values as a tuple, which the caller unpacks into `a` and `b` [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Functions#function-calls-defining-functions"
+   ],
+   "sources": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#using-list-comprehension-to-process-tuple-elements",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Variables_and_Strings#introduction",
+    "python/Conditional_Statements#another-way-using-function-through-user-input-another-way-8"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference answer. However, the claim that values are returned as a tuple isn't stated in the retrieved sections (section 1 only shows comma-separated returns and unpacking)."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-02",
+   "in_scope": true,
+   "answer": "You can check both values in one `if` using `and`, as the password example does with a known name/password pair [2]:\n\n```python\nname = input(\"What is your name? \")\npassword = input(\"What is the password? \")\nif name == \"Josh\" and password == \"Friday\":\n    print(\"Welcome Josh\")\nelif name == \"Fred\" and password == \"Rock\":\n    print(\"Welcome Fred\")\nelse:\n    print(\"I don't know you.\")\n```\n\nSample run: entering \"Josh\" and \"Friday\" prints \"Welcome Josh\"; any other combination prints \"I don't know you.\" [2]\n\nThe docs note this is a simple, insecure example and that real password code should not be implemented this way [2]. The docs do not cover secure password storage or hashing.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Decision_Control#examples"
+   ],
+   "sources": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-conditional-statements",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: if/elif/else with `and` checks, welcome or \"I don't know you.\" Uses input instead of raw_input, a harmless variant. All claims are supported by section [2]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-03",
+   "in_scope": true,
+   "answer": "Use the extended slice syntax `a:b:n`, where `a` and `b` are the start and end of the range and `n` is the step [2].\n\n```python\n>>> lst = list(range(10))\n>>> lst[::2]        # every second element\n[0, 2, 4, 6, 8]\n>>> lst[1:7:2]      # every second element between indices 1 and 7\n[1, 3, 5]\n```\n\nThe slice `[::2]` covers the whole list, while `[1:7:2]` limits the range to indices 1 through 6 and then takes every second item [2]. Replace `2` with any step `n` to get every nth element.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices"
+   ],
+   "sources": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#comparing-lists",
+    "python/Control_Flow#overview",
+    "python/Lists#iteration"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference (a:b:n syntax, [::2], [1:7:2] giving [1,3,5]); the end-exclusive clarification (indices 1 through 6) is consistent with documented output."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-04",
+   "in_scope": true,
+   "answer": "The error occurs because generators have deferred evaluation: when a generator is created inside a `with` block, its body does not run until it is iterated. If you iterate it after the block has ended, the file has already been closed, so reading fails with `ValueError: I/O operation on closed file` [1].\n\nThe docs recommend two fixes:\n\n1. Avoid the generator and read everything into a list while the file is still open [1]:\n\n```python\nwith open(filename) as f:\n    lines = [line.rstrip(\"\\n\") for line in f]\n```\n\n2. If you do need a generator, keep the resource open inside the generator itself, and close it explicitly, or wrap it with `@contextlib.closing` so it is released automatically [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Context_Managers#caveats-generators"
+   ],
+   "sources": [
+    "python/Context_Managers#caveats-generators",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: deferred evaluation closes file first; fixes are list comprehension or generator holding the file with close/contextlib.closing. All claims supported by section [1]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-05",
+   "in_scope": true,
+   "answer": "**Why scopes exist:** Scopes keep one piece of code from affecting another in hard-to-predict ways. Preventing one programmer's choice of a name from blocking another's use of that name is one of the simplest ways to do this. [1]\n\n**Ways to create a separate region where a name is usable:**\n\n- **Functions:** A function is one of the two ways Python delimits regions. Functions return data as the result of execution. [1][3] Scope is delineated by function and class blocks, and functions can be nested. [3]\n- **Modules:** A module is the other way to delimit a region. Modules provide their content outside their scope through a namespace. [1]\n- **Classes:** Class blocks also delineate scope. [3]\n\n**Notes:**\n- Variables exist only in the current scope or the global scope. [3]\n- Loops do not create their own scope. [3]\n- Names in higher scopes cannot access names in lower scopes. [3]\n\n```python\ndef foo():\n    def bar():\n        x = 5\n        return x + y   # y comes from the enclosing scope\n    y = 10\n    return bar()\n\nprint(foo())  # 15\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables"
+   ],
+   "sources": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Scoping#variables",
+    "python/Scoping#variables-keyword-global",
+    "python/Classes#overview-special-methods"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference (name collisions, functions/modules, returns, namespace); extra details on classes, loops, and nesting come from section 3. Namespace phrasing is a minor paraphrase."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-06",
+   "in_scope": true,
+   "answer": "Yes. A Python list can hold items of different types, such as numbers, strings, nested lists, and class instances, all in the same list [1].\n\nYou write a static list by placing the items between square brackets, separated by commas [5]:\n\n```python\n[ 1, 2, 3, \"This is a list\", 'c', Donkey(\"kong\") ]\n```\n\nHere the list contains an integer, a string, another string, and an instance of the Donkey class, which is created on the fly as part of the list [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Lists#introduction",
+    "python/Lists#list-creation-plain-creation"
+   ],
+   "sources": [
+    "python/Lists#introduction",
+    "python/Data_Types#built-in-data-types",
+    "python/Variables_and_Strings#introduction",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Lists#list-creation-plain-creation"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: mixed types allowed, comma-separated items in square brackets, Donkey instance created on the fly; all claims supported by sections [1] and [5]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-07",
+   "in_scope": true,
+   "answer": "The sections describe the symmetric difference operator, which returns elements in either set but not in both. Section [1] shows it with the `^` operator:\n\n```python\nset6 = set1 ^ set2   # Symmetric difference [1]\n```\n\nSection [1] does not show the equivalent method name (`symmetric_difference`), and the sections do not give a full example of its output, so I can't cite one beyond the operator itself.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sets#overview"
+   ],
+   "sources": [
+    "python/Sets#overview",
+    "python/Sets#overview-membership-testing",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview-frozenset",
+    "python/Sets#overview-set-operations-set-difference"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives the ^ operator for symmetric difference, matching the reference's core answer; omits method names but acknowledges this. The claims are supported by section [1]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-08",
+   "in_scope": true,
+   "answer": "Most open source projects use Git, Mercurial (hg), or Bazaar (bzr) [1].\n\nBranching lets you start from a known working state and, if you go down the wrong path, revert back to where you started [1]. Branching is supported by most VCSes and is fast, but Git's strength is in merging between branches, which reduces the pain of merge conflicts and makes collaborative development easier [4].\n\nGit is a distributed version control system, so every working directory is a full repository with complete history and revision tracking, and it does not depend on network access or a central server [3].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Home#introduction",
+    "git/Branching_&_merging#introduction"
+   ],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#introduction",
+    "git/Branching_&_merging#introduction",
+    "git/Interoperation#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (Git, Mercurial, Bazaar; branching to revert to known working state). All extra claims about merging and Git's distributed design are supported by sections [1], [3], [4]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-09",
+   "in_scope": true,
+   "answer": "The original variable is not changed. `replace` returns a new copy of the string with the replacements made, so you need to save the result to a new variable (or reassign it) to keep it [1].\n\n```python\nstring = 'Hello, world'\nnewString = string.replace('o', 'X')\nprint(string)     # Hello, world\nprint(newString)  # HellX, wXrld\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Strings#string-methods-replace"
+   ],
+   "sources": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction",
+    "sql/SQL:_A_Language_for_Working_with_rDBMS#characteristics",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: original unchanged, replace returns new copy, must assign result. All claims, including the code example, are supported by section [1]; reassigning is a reasonable inference."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-10",
+   "in_scope": true,
+   "answer": "Not in docs: The sections say that in Python 3.3+, ElementTree automatically uses a fast implementation if possible [4], but they do not say whether this applies to other modules, nor do they describe how to choose between the C and pure Python versions in Python 3 beyond the import fallback pattern shown for compatibility [3], which is written for code that must run on both versions. The docs don't cover this in general.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples"
+   ],
+   "sources": [
+    "python/Performance#introduction",
+    "python/PyPy#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Python_2_vs._Python_3#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and fails to convey that Python 3 generally auto-uses C implementations; claims made are supported by sections [3] and [4]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-11",
+   "in_scope": true,
+   "answer": "The type function disregards class inheritance, so `type(3) is object` is False, while `isinstance(3, object)` is True [1]. The `isinstance` check considers inheritance, and every int is an instance of object, but the type of 3 is `int`, not `object`, so the identity comparison fails [1][2].\n\n```python\ntype(3) is object      # False\nisinstance(3, object)  # True\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance"
+   ],
+   "sources": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction",
+    "python/Data_Types#introduction",
+    "python/Metaclasses#python3-the-type-metaclass"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference, but claims 'type of 3 is int' and 'every int is an instance of object' aren't stated in the retrieved sections; they're outside knowledge."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-12",
+   "in_scope": true,
+   "answer": "Special methods that let a class mimic numerical or container operations have reserved names that both begin and end with two underscores (dunder names) [1]. Single-underscore names are a different convention: methods beginning with a single underscore are considered 'private' to the scope they are introduced within [1].\n\nExample:\n\n```python\nclass Vec:\n    def __init__(self, x):   # reserved special method [1][2]\n        self.x = x\n    def __add__(self, other):  # mimics the + operator [1]\n        return Vec(self.x + other.x)\n    def _helper(self):         # single underscore: 'private' by convention [1]\n        return self.x\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-special-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init"
+   ],
+   "sources": [
+    "python/Classes#overview-special-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Naming_conventions#introduction",
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on double-underscore vs single-underscore conventions. However, the example's claim that __add__ mimics the + operator isn't stated in the retrieved sections, and the code isn't in the docs."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-13",
+   "in_scope": true,
+   "answer": "Use `types.MethodType` to bind a function to the existing instance, then assign it to the instance's attribute [2]:\n\n```python\nimport types\n\nclass Spam:\n    def __init__(self):\n        self.myeggs = 5\n\neggs = Spam()\n\ndef cook(self):\n    print(\"cooking %s eggs\" % self.myeggs)\n\nf = types.MethodType(cook, eggs, Spam)\neggs.cook = f\n\neggs.cook()   # cooking 5 eggs\n```\n\n[2] A helper function can make this easier [3]:\n\n```python\ndef attach_method(fxn, instance, myclass):\n    f = types.MethodType(fxn, instance, myclass)\n    setattr(instance, fxn.__name__, f)\n\nattach_method(cook, eggs, Spam)\n```\n\nNote that `instance.fxn = f` would add an attribute literally named `fxn`, so `setattr` with `fxn.__name__` is needed [3].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function"
+   ],
+   "sources": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-class-members"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: types.MethodType binding then assigning to instance attribute; helper function and setattr note are directly supported by sections [2] and [3]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-14",
+   "in_scope": true,
+   "answer": "Use a `while` loop that keeps running until the entered password matches. Section [4] shows this pattern directly:\n\n```python\npassword = \"foobar\"  # not the real password, so the loop runs at least once\n\nwhile password != \"unicorn\":\n    password = input(\"Password: \")\nprint(\"Welcome in\")\n```\n\nThe loop repeats the prompt until the user types the correct password, then prints the welcome message [4]. Section [4] also notes that you can press Control-C to break out without entering the password [4].\n\nIf you want to limit the number of attempts, section [3] shows a version that counts guesses and stops after three wrong tries, printing \"You have been denied access.\" [3]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples"
+   ],
+   "sources": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Conditional_Statements#if-statements-conditional-statements"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: initializes password to wrong value, uses while password != \"unicorn\", prints Welcome in. Control-C note and 3-attempt limit are supported by sections [4] and [3]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-15",
+   "in_scope": true,
+   "answer": "You can install the package directly from its wheel file with:\n\n```\npip install mypackage.whl\n```\n\nThis is useful when installation from PyPI fails and you need to download the wheel file (.whl) of the package manually [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Package_management#introduction"
+   ],
+   "sources": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-source-code-installations",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: use `pip install mypackage.whl` when PyPI install fails; all claims directly supported by section [1]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-16",
+   "in_scope": true,
+   "answer": "Section [2] asks for this exercise but does not provide a solution, so the docs do not show the complete code. They do show the target output: a plain 3x3 table, and a version with a header row and a divider line [2]. Section [4] shows that a nested loop works in a one-liner, though it notes that two loops in a single line are invalid syntax [4], and section [3] shows how `range(start, finish)` produces numbers and that `finish` is excluded [3].\n\nNot in docs: the sections do not include a worked solution for printing the table with the header row and divider line. The following sketch is my own and is not taken from the documentation:\n\n```python\n# Header row\nprint(\"  1 2 3 \")\nprint(\" ------\")\n# Nested loops for each row\nfor i in range(1, 4):\n    row = f\"{i}|\"\n    for j in range(1, 4):\n        row += f\"{i * j} \"\n    print(row)\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction"
+   ],
+   "sources": [
+    "python/Control_Flow#overview-conclusion",
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Operators#logical-operators-or"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: exercises show the target output, no solution provided. Claims cite sections accurately; the self-authored code is explicitly flagged as not from the docs."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-17",
+   "in_scope": true,
+   "answer": "The division is evaluated first, because operations in the same precedence row are performed from left to right [1]. So `8 / 2 * 4` is computed as `(8 / 2) * 4`, which gives `16.0` in Python 3 since `/` always returns a float [2].\n\n```python\n>>> 8 / 2 * 4\n16.0\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division"
+   ],
+   "sources": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#powers",
+    "python/Operators#basics",
+    "python/Numbers#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: division first via left-to-right at same precedence [1]. 16.0 float result follows from true division returning float [2] (4/2 yields 2.0); 8/2=4.0 times 4 = 16.0."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "python-18",
+   "in_scope": true,
+   "answer": "Use the iterator that `cursor.execute` returns in APSW. Wrap it in a generator function so each record is yielded as it is read, rather than collected into a list [1].\n\n```python\nimport apsw\n\ndef db_iter(connection, query, *params):\n    cursor = connection.cursor()\n    # cursor.execute returns an iterator over the result records\n    for row in cursor.execute(query, params):\n        yield row\n\nconn = apsw.Connection(\"example.db\")\nfor name, amount in db_iter(conn, \"SELECT name, amount FROM sales\"):\n    print(name, amount)\n```\n\nEach row is a tuple, so it can be unpacked directly into variables [1]. If you only need one column, a custom mapping function can extract that element instead [1].\n\nThe same principle applies to MySQL: `fetchall()` loads everything at once, while `row = cursor.fetchone()` in a loop processes rows individually [2]. The docs here do not show an APSW-specific example beyond the iterator pattern above.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-mysql"
+   ],
+   "sources": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#introduction",
+    "sql/Example_Database_Data#grow-up",
+    "python/Databases#general-principles-looping-on-field-breaks"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: use APSW cursor.execute's iterator via a wrapper and optional mapfn. Code is illustrative; all factual claims are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-01",
+   "in_scope": true,
+   "answer": "Adding an index speeds up lookups because the DBMS can use an intelligent algorithm, such as binary search, instead of reading every row. For example, finding a name in a 1-million-row table with a linear scan takes about 500,000 row reads on average, while binary search on ordered data needs about 20 or fewer [1]. An index is built on a column of a table and lets the DBMS answer queries that filter on that column more quickly [2].\n\nThe docs also indicate when an index may not help or may cost more. Sorting the data has to happen during data entry, so there is additional work on inserts and less work on reads, and whether that trade-off is worthwhile depends on how the data is typically used [1]. The DBMS also chooses among strategies based on its estimates; for instance, if about 30% of rows match a value, it may read the whole table instead of using the index [2]. A table may have several indexes, and the DBMS decides whether to use one, several, or none for a given query [2].\n\nThe provided sections do not describe the storage overhead of indexes or the exact write-performance cost beyond the general statement above, so I cannot give specifics on those.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index"
+   ],
+   "sources": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index",
+    "sql/INSERT_2#evaluate-values-at-runtime",
+    "sql/Managing_Indexes#introduction",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Covers binary search vs linear scan and extra insert-time work as the trade-off; omits small-table/storage cost details but admits this. Claims trace to sections [1] and [2]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-02",
+   "in_scope": true,
+   "answer": "Foreign Keys and Joins both link rows with identical values, but they differ in two ways:\n\n- **Direction:** A Foreign Key has a direction: one table is the child and the other is the parent [1][3]. A Join has no direction; it is just a value-based link [1].\n- **Where it is expressed:** A Join must be written into every DML statement that needs it (except views). A Foreign Key is part of the table definition, and all DML commands respect it without the relationship being restated in each statement [1].\n\nSo no, you do not have to specify the relationship with a Foreign Key each time. You declare it once in the table definition, and it applies automatically. Beyond that, a Foreign Key guarantees that employees can only be assigned to existing departments and that a department cannot be deleted while employees are assigned to it. In other words, no orphans arise [3].\n\nDeclaring the relationship in the table definition looks like this (the column constraint syntax is described in [2]; the example tables are from [3]):\n\n```sql\nCREATE TABLE employee (\n    id      INTEGER PRIMARY KEY,\n    dept_id INTEGER REFERENCES department (id)\n);\n```\n\nA Join, by contrast, is written in each query that needs it, for example `SELECT ... FROM employee JOIN department ON employee.dept_id = department.id`. The sections provided do not include a query example of a Join, so that syntax is not drawn from the documentation.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#introduction"
+   ],
+   "sources": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#n-m-relationship"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on direction, table-definition placement, and no need to restate. But the CREATE TABLE REFERENCES syntax is not in the sections; attributed partly to [2], which lacks it."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-03",
+   "in_scope": true,
+   "answer": "To get a reliable order, specify the sort explicitly with ORDER BY. Without it, the DBMS may return rows in any order and may change that order between runs. [2]\n\nWhen several rows share the same value in the first sort column, add more columns to ORDER BY. Each following column is only used to break ties among rows that are identical in all previous columns. [2][4]\n\nYou can also sort by any column of the processed table, not only the columns returned by the projection. [2]\n\nDirection is set per column with ASC (ascending) or DESC (descending). The default is a descending sort. [4]\n\nExample (using the columns from the meeting table in [4]):\n\n```sql\nSELECT name, date, hour\nFROM reunion\nORDER BY priority ASC, date DESC, id_reunion ASC;\n```\n\nHere `priority` is the first sort key, `date` breaks ties within each priority, and `id_reunion` (unique) breaks any remaining ties so the order is fully deterministic. `priority` is not selected in the output but can still be used for sorting. [2][4]\n\nNote: the documentation provided does not specify how ORDER BY interacts with NULL values or collation, so those details are not covered here. Not in docs: sorting behavior for NULLs.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-order-by-clause"
+   ],
+   "sources": [
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Retrieve_Top_N_Rows_per_Group#complex-solutions-example-5",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Covers ORDER BY, tie-breaking, and sorting by non-projected columns, but claims default is descending (as in [4]), which is likely wrong; also 'may change between runs' is slightly extrapolated."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-04",
+   "in_scope": true,
+   "answer": "A DBMS guarantees ACID compliance, meaning all changes within a transaction are:\n\n- **Atomic**: all changes take place or none do [1].\n- **Consistent**: changes transform the database from one valid state to another valid state [1]. After a transaction terminates, data and derived index entries are synchronized, and constraints and keys are not violated [5].\n- **Isolated**: transactions of different users working at the same time will not affect each other [1]. Conflicts between concurrent sessions are avoidable by running transactions sequentially, but the SQL standard provides `SET TRANSACTION ...` to resolve them while allowing as much parallelism as possible [2].\n- **Durable**: committed changes are retained even if the system crashes afterward [1].\n\nThe docs also note that ACID does not guarantee logical integrity: if an application forgets to update a related row, problems can still arise [5].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#isolation",
+    "sql/Transactions#consistency"
+   ],
+   "sources": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#isolation",
+    "sql/Data_Definition_Language#introduction",
+    "sql/Data_Control_Language#introduction",
+    "sql/Transactions#consistency"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference on all four ACID properties; extra details on consistency, isolation, and logical integrity are supported by sections [2] and [5]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-05",
+   "in_scope": true,
+   "answer": "You get an error because MAX(weight) collapses the whole result set into a single value, while a plain column like lastname yields one value per row. The query asks the DBMS for one value and many values at once, which is a contradiction. The SQL standard says this should throw an error at runtime, though some DBMSs instead return suspicious results. [1][5]\n\nIt is okay to mix them in two situations:\n\n1. **Aggregate functions only, with no plain columns.** Multiple aggregates can be combined in one projection. [5]\n2. **With GROUP BY.** Aggregates are then computed once per group, and the GROUP BY column(s) may be displayed because they cannot change within a group. [3][5]\n\nExample using GROUP BY (each family's lastname with its maximum weight):\n\n```sql\nSELECT lastname, MAX(weight)\nFROM person\nGROUP BY lastname;\n```\n\nNote that aggregate functions ignore rows where the value is NULL. [4]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-the-null-special-marker",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions"
+   ],
+   "sources": [
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Subquery#row-subquery",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-the-null-special-marker",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: aggregate returns one value vs many rows, contradiction/error, OK with GROUP BY. All claims, including vendor variance and NULL handling, are supported by retrieved sections."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-06",
+   "in_scope": true,
+   "answer": "Use a correlated scalar subquery that compares each row's version against the maximum version for the same booking_number [1]:\n\n```sql\nSELECT b.*\nFROM booking b\nWHERE b.version = (\n    SELECT MAX(b2.version)\n    FROM booking b2\n    WHERE b2.booking_number = b.booking_number\n);\n```\n\nThe outer query checks every row; the subquery returns the highest version for that row's booking_number, and only rows whose version matches it are kept. The link `b2.booking_number = b.booking_number` is essential, otherwise the subquery would compare against the maximum across all bookings [1].\n\nAlternatively, a non-correlated table subquery builds a list of booking numbers with their highest version and joins it to the table [1]:\n\n```sql\nSELECT b.*\nFROM booking b\nJOIN (\n    SELECT booking_number, MAX(version) AS max_version\n    FROM booking\n    GROUP BY booking_number\n) m ON m.booking_number = b.booking_number\n   AND m.max_version = b.version;\n```",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Subquery#another-example"
+   ],
+   "sources": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-where-clause-like",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-where-clause"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches the reference (both subquery approaches, '=' comparison), but the 'otherwise compares against max across all bookings' claim and the SQL code aren't in the retrieved text."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-07",
+   "in_scope": true,
+   "answer": "Not in docs: The sections do not state what frame applies when a window function is used without a frame clause or without an ORDER BY inside the OVER clause. They say the PRECEDING/FOLLOWING terminology only works when a WINDOW ORDER clause exists [1], and that the frame is defined by the WINDOW FRAME clause [4], but they give no default frame for the case where it is omitted.",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#introduction",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot said the docs give no default frame, so it never states the reference's default (first row to current; whole partition without ORDER BY). Its claims match the sections."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-08",
+   "in_scope": true,
+   "answer": "No, standard SQL does not define a separate \"auto-increment\" data type. Instead, it defines an identity specification in the CREATE TABLE statement: \"GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY\" [1][2].\n\nMost DBMS vendors do not support this exact syntax. They use different syntaxes and concepts, such as generators/sequences combined with triggers, a special data type, or other keywords [1]. An overview of these vendor variants is available in the wikibook SQL Dialects Reference: Auto-increment_column [1].\n\nStandard form (per the SQL standard, not supported by most vendors):\n\n```sql\nCREATE TABLE person (\n  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,\n  firstname VARCHAR(50),\n  lastname VARCHAR(50)\n);\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview"
+   ],
+   "sources": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Data_Types#introduction",
+    "sql/Example_Database_Data#grow-up"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference key info, but the SQL code example (person table, INTEGER, PRIMARY KEY, VARCHAR(50)) isn't in the retrieved sections and is cited to [1] unsupported; 'not supported by most vendors' is supported."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-09",
+   "in_scope": true,
+   "answer": "The default direction is descending. [1]\n\nTies in the first column are broken by the second column, and so on, with each later column processed only for rows that match in all previous columns. [1][4]\n\nNote that the documentation does not say what order the DBMS uses when rows tie on every ORDER BY column; it states that the DBMS may return rows in arbitrary order unless an ORDER BY is given. [4]\n\nExample:\n\n```sql\nSELECT name, priority, date\nFROM reunion\nORDER BY priority, date;  -- priority sorted descending by default, ties broken by date descending\n```",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-fetch-first-clause"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference (default descending, ties broken by next column), but the example's claim that date is also descending isn't stated in docs, and the arbitrary-order claim is stretched."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-10",
+   "in_scope": true,
+   "answer": "Relational databases store shared values like country names in a separate table so that each country is recorded exactly once. Multiple spellings of the same country (e.g., \"England,\" \"UK,\" \"U.K.\") would otherwise cause confusion, such as making it hard to count how many people came from the United Kingdom. A single entry gives one unique representation, and other lists can refer to it, which also creates relationships between lists that share that common information [1].\n\nMore generally, data is organized to avoid redundant information, a technique called database normalization. Separate tables with links between them keep the data consistent and make it easier to assemble exactly what is needed through the JOIN operation [3].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/SELECT:_Join_Operation#introduction"
+   ],
+   "sources": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (single unique entry, avoids inconsistent spellings, creates relationships) and extra normalization/JOIN details are supported by sections [1] and [3]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-11",
+   "in_scope": true,
+   "answer": "The SQL standard defines two kinds of INTERVAL:\n\n1. An interval with year and month [2].\n2. An interval with day, hour, minute, and second [2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Types#temporal"
+   ],
+   "sources": [
+    "sql/Data_Types#approximate-numeric",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#xml",
+    "sql/Data_Types#boolean",
+    "sql/Data_Types#exact-numeric"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (year-month and day-time-second intervals) and is directly supported by section [2], with correct citations."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-12",
+   "in_scope": true,
+   "answer": "Yes. The SQL standard defines a MERGE command that performs an INSERT or an UPDATE depending on whether individual rows already exist in the target table, all in one statement [1]. This avoids the two roundtrips between application and DBMS (SELECT + INSERT or SELECT + UPDATE), allows bulk storing of rows, and keeps the syntax in a single statement rather than spread across three [1].\n\nThe documentation sections provided do not include the MERGE syntax itself, so I cannot give a code example from them. Not in docs: the exact MERGE statement syntax (its clauses such as WHEN MATCHED / WHEN NOT MATCHED) is not shown in the provided sections.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/MERGE#introduction"
+   ],
+   "sources": [
+    "sql/MERGE#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/INSERT_2#evaluate-values-at-runtime",
+    "sql/INSERT_1#static-insert",
+    "sql/INSERT_1#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: MERGE combines INSERT/UPDATE in one statement, avoiding roundtrips and multi-statement syntax; all claims supported by section [1], and the 'not in docs' caveat is accurate."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-13",
+   "in_scope": true,
+   "answer": "Without a WINDOW FRAME clause, each row's frame starts at the first row of its partition and runs up to the current row [4]. So the frames grow by one row at a time within each partition, and when the partition changes, the count starts again at 1 [4].\n\nNote that this applies to the frame only; functions like lead() have the partition as their scope rather than the frame [5].\n\nExample from the docs' first query, which uses `PARTITION BY dep_name` with no frame clause: the rows of 'Management' form one partition, and its frames grow from 1 row up to the full partition size before 'Production' starts over [4].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: frame runs from partition's first row to current row, grows by one, restarts at 1. Lead() scope and Management example are supported by [4] and [5]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "sql-14",
+   "in_scope": true,
+   "answer": "**CTE vs. view:** The main difference is lifetime. A view's definition persists after it is created and can be used by any later statement, whereas a CTE's scope is limited to the single statement where it is defined [2]. Because of this, CTEs are sometimes called inline views [2]. Like views, a CTE is only a definition and not stored data of its own [4] (though the docs note it is not necessary that data is actually materialized in the CTE [3]).\n\n**Referencing a CTE in a subselect:** Yes. A CTE can be used within a SUBSELECT of the main SELECT, and it can be further modified by criteria such as BETWEEN [2]. It can also be used at multiple places within the same statement [2].\n\nSyntax: the WITH keyword introduces the CTE with an arbitrary name, followed by a SELECT defining it. The name is then used in the following statement wherever a view or table name is allowed, such as in FROM [3].\n\n```sql\nWITH cte_1 AS (\n    SELECT birthday, COUNT(*) AS cnt\n    FROM persons\n    GROUP BY birthday\n)\nSELECT p.*\nFROM persons p\nWHERE p.birthday IN (SELECT birthday FROM cte_1 WHERE cnt > 1);\n```",
+   "not_in_docs": false,
+   "cited": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction"
+   ],
+   "sources": [
+    "sql/with_clause#extension",
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction",
+    "sql/SELECT:_Set_Operations#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on lifetime difference and subselect use. But the CTE 'is only a definition not stored data [4]' misattributes view text to CTEs, and the SQL example is invented, not from the docs."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-01",
+   "in_scope": true,
+   "answer": "The documentation says the Bash customization script shows the current branch name in red when there are outstanding changes and green when there are none, followed by the current path, with the hostname shown in a low-lighted colour at the beginning [4].\n\nHowever, the sections do not include the script itself or any code for setting prompt colours, so I cannot provide a working example from them. Not in docs: the actual Bash customization script and the prompt/colour code needed to implement this are missing. The sections only describe what the script does, not how it is written.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Interoperation#customizing-your-command-line-prompt"
+   ],
+   "sources": [
+    "git/Branching_&_merging#branching-view-your-branches",
+    "git/Branching_&_merging#branching-create-new-branches",
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer conveys the script's red/green branch colouring, path, and low-lit hostname, matching the reference; the caveat about missing script code is accurate per section 4."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-02",
+   "in_scope": true,
+   "answer": "To force an existing tag to point at the current commit, use the `-f` flag:\n\n```\n$ git tag -f mytag HEAD\n```\n\nThis overwrites the existing tag `mytag` so it points at `HEAD` [2]. If you have already pushed the tag and want the remote updated, you would need to push it again with `git push --tags` [2], though the docs do not specify how to handle the force-update on the remote side.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Advanced#checking-out-remote-repositories-tags"
+   ],
+   "sources": [
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives `git tag -f mytag HEAD` as in reference and doc [2]. The push --tags claim is in [2], and the answer honestly notes the docs don't cover remote force-update."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-03",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover initializing Gitosis, copying your public key, cloning the `gitosis-admin` repository, and creating the `git` user, but they do not describe how to create a new project repository locally or push it to the server for the first time. The configuration steps for adding a repository (such as editing `gitosis.conf` in the cloned admin repo) are also not included.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot said the docs don't cover it, giving none of the reference steps (git init, remote add, push). Its claims about the sections' contents are accurate."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-04",
+   "in_scope": true,
+   "answer": "When you run `git merge myBranch`, it merges the given branch into the current branch [1]:\n\n```\ngit merge myBranch\n```\n\n- **Fast-forward merge:** If the current branch is a direct ancestor of the given branch, no new commit is created. The current branch head is simply redirected to point at the new branch tip [1].\n- **Merge commit:** In all other cases, a merge commit is recorded with both the previous commit and the given branch tip as parents [1]. If there are conflicts, they must be resolved by hand before the merge commit is recorded [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Branching_&_merging#merging"
+   ],
+   "sources": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-the-stupid-content-tracker",
+    "git/Branching_&_merging#merging-9",
+    "git/Internal_structure#naked-git-structure-specific-files-head"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference on fast-forward, merge commit with two parents, and manual conflict resolution; all claims are directly supported by section [1]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-05",
+   "in_scope": true,
+   "answer": "Based on the documentation, the workflow is [3]:\n\n1. Make the change in the submodule.\n2. Commit the change in the submodule.\n3. Commit the change in the superproject.\n4. Run `git submodule update` to push the change to the individual repositories that predate the superproject.\n\nNote that the documentation lists the steps this way, and it does not include code examples or further detail on the push step beyond the sentence above.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Submodules_and_Superprojects#work-flow"
+   ],
+   "sources": [
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#footnotes",
+    "git/Submodules_and_Superprojects#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference's four-step order and every claim, including the note about missing code examples, is supported by section [3]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-06",
+   "in_scope": true,
+   "answer": "The sections list three services that host projects for free regardless of license: GitHub, GitLab, and Bitbucket [2].\n\nCodeberg, NotABug, disroot, and the other hosts listed in [2] are restricted to appropriately licensed open-source projects. Assembla [3] offers a free tier (500 MB, public or private repositories), but the sections do not say whether it has license conditions, so I can't confirm its policy from the docs.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other"
+   ],
+   "sources": [
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Home#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Key answer matches, but the claim that disroot and NotABug are restricted to open-source is unsupported; disroot's license terms aren't stated and NotABug sits ambiguously in the list. Other claims (Assembla) are supported."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-07",
+   "in_scope": true,
+   "answer": "To bootstrap Gitosis with your public SSH key, first copy the key to the server [2]:\n\n```\nscp .ssh/id_rsa.pub user@example.com:/tmp\n```\n\nThen initialize Gitosis using that key [1]:\n\n```\nsudo -H -u git gitosis-init < /tmp/id_rsa.pub\n```\n\nOn success you will see \"Initialized empty Git repository\" messages [1].\n\nThe permission fix is to make the post-update hook of the admin repository executable by setting it to 755 [1]:\n\n```\nsudo chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer includes both the gitosis-init command and chmod 755 on post-update; the scp step and success message are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-08",
+   "in_scope": true,
+   "answer": "You define a group in `gitosis.conf` with a `members` list and a `writable` list of repositories [1]:\n\n```\n[group blue_team]\nmembers = john martin stephen\nwritable = tea_timer coffee_maker\n```\n\nMembers of the group (here john, martin, and stephen) can write to the listed repositories (tea_timer and coffee_maker) [1]. Save, commit, and push the change [1]:\n\n```\ngit commit -am \"Give john, martin, and stephen access to the repositories tea_timer and coffee_maker.\"\ngit push\n```\n\nEach user must also have a public key added to `keydir` in the gitosis-admin repository, named after the username with a `.pub` extension (e.g. `keydir/john.pub`) [3].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference (group section with members and writable lists, then commit and push); keydir/.pub key detail is supported by section [3]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-09",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections explain how to initialize Gitosis, copy your public key to the server, clone the `gitosis-admin` repository, and create the git user, but they do not describe how to add a new developer's public key or grant them access to a repository. The configuration steps for user keys and repository permissions are not included in these sections.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot said 'Not in docs' and omitted the keydir/ .pub copy, add, commit, push steps; its claims about what the sections cover are accurate."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "git-10",
+   "in_scope": true,
+   "answer": "Yes. Free Bitbucket accounts support an unlimited number of private repositories and up to five users [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference (unlimited private repositories, up to five users) and both claims are directly supported by section [1]."
+   }
+  },
+  {
+   "method": "langchain",
+   "id": "out-01",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover SWIG (Python C extensions), SQL CREATE TABLE statements, and Python switch-style dispatch. None describe configuring VLANs on a Cisco switch, so I can't answer this from the documentation provided.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Extending_with_C#using-swig",
+    "sql/Create_Table#introduction",
+    "sql/Data_Definition_Language#create-statement",
+    "python/Conditional_Statements#switch",
+    "sql/Create_Table#general-description"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "out-02",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover SQL query syntax (BETWEEN/IN, comparison predicates, NULL handling, and the SELECT command) and a list of Git-based Linux distributions. None of them contain a recipe for sourdough bread.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/SELECT:_IS_NULL_Predicate#some-examples",
+    "git/Systems#git-based-systems-case-studies",
+    "sql/Handle_Data#retrieve-data-with-select-command"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "out-03",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover Git, git-svn, GitHub, webhooks, and code review. They do not contain any information about Kubernetes, deployments, or autoscaling, so I can't answer this question from them.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/git-svn#sending-changes-upstream",
+    "git/git-svn#dealing-with-local-changes",
+    "git/GitHub#introduction",
+    "git/GitHub#functionalities-webhooks",
+    "git/GitHub#functionalities-review"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "out-04",
+   "in_scope": false,
+   "answer": "Not in docs: None of the provided documentation sections cover React, useEffect, or useLayoutEffect. The sections address Python naming conventions, context managers, Structured Query Language global temporary tables, Git's diff and patch utilities, and wxPython, so they do not contain the answer.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Naming_conventions#introduction",
+    "python/Context_Managers#technical-details",
+    "sql/Temporary_Table#global-temporary-tables-gtt",
+    "git/Introduction#diff-and-patch-the-currency-of-open-source-collaboration",
+    "python/GUI_Programming#wxpython"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "out-05",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover Python libraries for working with Excel files (xlutils, xlOil, XlsxWriter, xlwt, and openpyxl). They contain no information about filing personal tax returns in Canada, so I can't answer this question from them.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Excel#xlutils",
+    "python/Excel#xloil",
+    "python/Excel#xlsxwriter",
+    "python/Excel#xlwt",
+    "python/Excel#openpyxl"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "out-06",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Gerrit changeset re-submission, SQL WHERE/BETWEEN/IN clauses, and running a Python hello-world script on Linux. They contain no information about changing the oil in a 2015 Toyota Corolla.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "sql/Data_Query_Language#select-query-where-clause",
+    "sql/UPDATE_1#further-information",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "python/Creating_Python_Programs#hello-world-linux"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-01",
+   "in_scope": true,
+   "answer": "You can return multiple values by separating them with commas in the `return` statement; Python packages them as a tuple. Capture them by unpacking into multiple variables when you call the function.\n\nExample from the docs [1]:\n\n```python\ndef first2items(list1):\n    return list1[0], list1[1]\n\na, b = first2items([\"Hello\", \"world\", \"hi\", \"universe\"])\nprint(a + \" \" + b)\n```\n\nThe returned tuple can be unpacked with tuple assignment [3]. For instance:\n\n```python\ndef func(x, y):\n    return x, y\n\nx, y = func(1, 2)\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#uses-of-tuples"
+   ],
+   "sources": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Tuples#uses-of-tuples",
+    "python/Tuples#operations-on-tuples-conversions",
+    "python/Loops#the-break-statement"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: comma-separated return and tuple unpacking. The 'packages them as a tuple' claim is supported by [3]; examples come from [1] and [3]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-02",
+   "in_scope": true,
+   "answer": "The documentation sections provide a direct example of this. Section [2] shows a program that asks for a name and password and checks both together:\n\n```python\nname = input(\"What is your name? \")\npassword = input(\"What is the password? \")\nif name == \"Josh\" and password == \"Friday\":\n    print(\"Welcome Josh\")\nelif name == \"Fred\" and password == \"Rock\":\n    print(\"Welcome Fred\")\nelse:\n    print(\"I don't know you.\")\n```\n\nThe key idea is that the `and` operator requires both the name and the password to match the same known pair before welcoming the user [2]. The docs also note this is a simple, insecure example, and real password handling should not be done this way [2].\n\nNote that the example in [2] uses `raw_input`, which is Python 2; in Python 3 use `input` as shown above.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Decision_Control#examples"
+   ],
+   "sources": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Password_checker#introduction",
+    "python/Loops#while-loops-examples"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference's and-based if/elif/else logic. But the Python 2 vs 3 claim (raw_input vs input) isn't stated in the docs; it's outside knowledge."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-03",
+   "in_scope": true,
+   "answer": "Use the extended slice syntax `a:b:n`, where `a` and `b` are the start and end of the range and `n` is the step [1].\n\n```python\nlst = [i for i in range(10)]\nlst[::2]     # every 2nd element from the whole list: [0, 2, 4, 6, 8]\nlst[1:7:2]   # every 2nd element within indices 1 to 6: [1, 3, 5]\n```\n\nFor every nth element within an index range, set `a` and `b` to the bounds and `n` to the step, as in `lst[1:7:2]` above [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices"
+   ],
+   "sources": [
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#iteration",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Idioms#operations"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (a:b:n slice syntax, same examples) and every claim, including 'indices 1 to 6', follows from section [1]'s examples and syntax description."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-04",
+   "in_scope": true,
+   "answer": "The error happens because generators evaluate lazily: the generator expression is created inside the `with` block, but its body (the actual file reads) doesn't run until you iterate over it. By then the `with` block has ended and the file is closed [1].\n\nTwo fixes are given in the docs:\n\n1. Avoid the generator and read everything eagerly, e.g. with a list comprehension, so the file is read while it is still open [1]:\n\n```python\nwith open(filename) as f:\n    lines = [line.rstrip(\"\\n\") for line in f]\n# lines can be used safely here\n```\n\n2. If you must stream lines, keep the resource open inside the generator itself and close it explicitly or via a context manager such as `@contextlib.closing` [1].\n\nNot in docs: the documentation sections do not show the exact code of the failing generator expression, so the example above is reconstructed from the description in [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Context_Managers#caveats-generators"
+   ],
+   "sources": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Strings#unicode"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: lazy evaluation closes file first; fixes are list comprehension or generator holding file open with closing. Claims supported by [1]; reconstructed code is flagged."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-05",
+   "in_scope": true,
+   "answer": "Python has scopes so that one piece of code does not affect another in hard-to-predict ways. The main goal is to prevent one programmer's choice of a name from blocking another's use of that name [5].\n\nRegions are delimited in two ways:\n\n1. **Functions**: a function body is a scope. Names defined inside it are not accessible outside, and functions provide their content outside their scope by returning data as the result of execution [5][1].\n2. **Modules**: a module is a scope, which leads to the concept of a namespace. Modules provide their content outside their scope differently from functions [5].\n\nNote that a loop does not create its own scope [1], so it does not provide a separate region for a variable name. Also, the documentation sections do not describe the module-level namespace mechanics in detail, so I can't say more about how modules export names.\n\nExample of function scope [1]:\n\n```python\ndef foo():\n    x = 5          # x exists only inside foo's scope\n    return x + 1   # return data to the outside world\n\nprint(foo())  # 6\n# print(x)    # NameError: name 'x' is not defined\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Scoping#variables",
+    "python/Basic_Syntax#semicolons-scope"
+   ],
+   "sources": [
+    "python/Scoping#variables",
+    "python/Scoping#variables-keyword-nonlocal",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Scoping#variables-keyword-global",
+    "python/Basic_Syntax#semicolons-scope"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: purpose of scope, delimited by functions/modules, functions return data, modules lead to namespaces. Extra claims (loops no scope, foo example) are supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-06",
+   "in_scope": true,
+   "answer": "Yes. A list can hold values of different types. Section [5] shows a list mixing an integer, a string, a float and another string:\n\n```python\n>>> list = [2, 4, \"usurp\", 9.0, \"n\"]\n```\n\nSection [1] also shows a list containing a string, an integer and a tuple:\n\n```python\nl = ['a string', 456, ('a', 'tuple', 'inside', 'a', 'list')]\n```\n\nThe sections do not explicitly describe writing out an object (a class instance) directly as a list element, so I cannot confirm that from the documentation provided. Not in docs: the sections do not say how to write a custom object literal inside a list.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices"
+   ],
+   "sources": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Data_Types#built-in-data-types",
+    "python/Sequences#sets-frozenset",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Confirms mixed-type lists with grounded examples in square brackets with commas; honestly flags the object-literal part as undocumented. Core answer matches the reference, though it omits the object example."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-07",
+   "in_scope": true,
+   "answer": "Use the symmetric difference, either as a method or with the `^` operator. It returns the elements that are in one set or the other but not in both [1].\n\n```python\ns1 = set([4, 6, 9])\ns2 = set([1, 6, 8])\ns1.symmetric_difference(s2)   # set([8, 1, 4, 9])\ns1 ^ s2                       # set([8, 1, 4, 9])\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sets#overview-set-operations-symmetric-difference"
+   ],
+   "sources": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview",
+    "python/Sets#overview-membership-testing"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer gives symmetric_difference and ^ operator, matching the reference's key info (omits the update variant, a minor detail); all claims and examples are supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-08",
+   "in_scope": true,
+   "answer": "Most open source projects use Git, Mercurial (hg), or Bazaar (bzr) [1]. Version control systems let you branch your code, so you can start from a known working state and, if you go down the wrong path, revert back to where you started [1]. Branching also becomes vital as programs grow larger and more complex, and when multiple developers work together [1].\n\nGit specifically is an open source distributed version control system created by Linus Torvalds for Linux kernel development, and every Git working directory is a full repository with complete history [3]. Git's branching is fast, and it is especially strong at merging between branches, which reduces the pain of dealing with merge conflicts [5].\n\nA basic example of creating a branch in Git (not shown in the provided sections, so only the general idea is given here) would be outside the documentation provided. Not in docs: the sections do not include Git command syntax for creating or switching branches.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Home#introduction",
+    "git/Branching_&_merging#introduction"
+   ],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#introduction",
+    "git/git-svn#overview",
+    "git/Branching_&_merging#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches the reference on systems and branching; but 'branching becomes vital as programs grow' misattributes version control's importance to branching specifically, a minor overreach."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-09",
+   "in_scope": true,
+   "answer": "The original variable is not changed. `replace` returns a new copy of the string with the substitutions made, so you need to save the result to a variable (new or the same name) to keep it [1].\n\n```python\nstring = 'Hello, world'\nnewString = string.replace('o', 'X')\nprint(string)     # Hello, world\nprint(newString)  # HellX, wXrld\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Strings#string-methods-replace"
+   ],
+   "sources": [
+    "python/Strings#string-methods-replace",
+    "python/Strings#string-methods-expandtabs",
+    "python/Regular_Expression#replacing",
+    "python/Variables_and_Strings#variables",
+    "python/Strings#string-methods-title-upper-lower-swapcase-capitalize"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: replace returns a new copy, original unchanged, must assign result. All claims, including example output, are supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-10",
+   "in_scope": true,
+   "answer": "It uses the faster one automatically in many cases. Section [2] says that cElementTree is \"not needed in Python 3.3+, which automatically uses a fast implementation if possible.\" Section [2] also notes that cStringIO was \"replaced by io.StringIO in Python 3.\"\n\nThe docs do not say whether this automatic selection applies to every module. Section [1] describes the older manual pattern of importing the C version and falling back to the Python version, which is still a way to handle compatibility, but the sections do not state whether it is needed in Python 3.\n\nNot in docs: the sections do not give a general rule covering all modules in Python 3, so I can't confirm the automatic behavior beyond the ElementTree case.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples"
+   ],
+   "sources": [
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/PyPy#introduction",
+    "python/Python_2_vs._Python_3#introduction",
+    "python/Performance#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Chatbot hedges and says docs give no general rule, only the ElementTree case, missing the reference's main point that Python 3 generally auto-uses C versions; claims are supported by sections."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-11",
+   "in_scope": true,
+   "answer": "The type function disregards class inheritance, so type(3) is object yields False, while isinstance(3, object) yields True [1]. In other words, type(x) returns the exact class of the object, and an identity check against object only succeeds when the object's class is object itself. Since 3 is an instance of int, which inherits from object, isinstance (which respects inheritance) returns True [1][3].\n\n```python\ntype(3) is object        # False: exact type is int\nisinstance(3, object)    # True: int is a subclass of object\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance"
+   ],
+   "sources": [
+    "python/Reflection#type",
+    "python/Reflection#issubclass",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction",
+    "python/Data_Types#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference, but claims that 3's exact type is int and that int inherits from object are not stated in retrieved sections; they come from outside knowledge."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-12",
+   "in_scope": true,
+   "answer": "Special (reserved) methods that let a class mimic numerical or container operations have names that both begin and end with two underscores (dunder names). [1]\n\nMethods with a single leading underscore follow a different convention: by convention they are 'private' to the scope they are introduced within. [1]\n\nSo the difference is that the double-underscore-on-both-sides names are reserved for special purposes defined by Python, while a single leading underscore is a convention signaling privacy. [1]\n\nThe docs sections do not provide a code example of mimicking numeric or container operations, so none is shown here.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-special-methods"
+   ],
+   "sources": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: dunder names reserved for special purposes vs single underscore 'private' convention; all claims supported by section [1]. 'Dunder' label is harmless."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-13",
+   "in_scope": true,
+   "answer": "Use `types.MethodType` to bind a function to the existing instance, then assign it as an attribute on that instance [2]:\n\n```python\nimport types\n\nclass Spam:\n  def __init__(self):\n    self.myeggs = 5\n\ndef cook(self):\n  print(\"cooking %s eggs\" % self.myeggs)\n\neggs = Spam()                      # existing instance\nf = types.MethodType(cook, eggs, Spam)\neggs.cook = f                      # attach only to this instance\neggs.cook()                        # outputs: cooking 5 eggs\n```\n\nA helper function can make this easier: `attach_method(cook, eggs, Spam)` [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class"
+   ],
+   "sources": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Functions#function-calls-declaring-arguments-by-value-and-by-reference"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (MethodType binding and assigning to the instance); code and attach_method helper are both supported by sections [2] and [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-14",
+   "in_scope": true,
+   "answer": "The documentation sections answer this directly. Section [2] shows a `while` loop that keeps prompting until the correct password is entered:\n\n```python\npassword = \"foobar\"\n\nwhile password != \"unicorn\":\n    password = input(\"Password: \")\nprint(\"Welcome in\")\n```\n\nThe loop starts with a placeholder value that is not the correct password, so it runs at least once. Each pass asks for input, and the loop stops once the entered value equals the correct password [2].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Loops#while-loops-examples"
+   ],
+   "sources": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Password_checker#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference: placeholder initialization, while password != \"unicorn\" loop with input, and welcome message; all supported by section [2]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-15",
+   "in_scope": true,
+   "answer": "You can install the package directly from its wheel file with:\n\n```\npip install mypackage.whl\n```\n\nThis is useful when installation from PyPI fails and you have downloaded the wheel (.whl) file for the package manually [1].\n\nIf pip itself is missing, install it first by downloading get-pip.py from bootstrap.pypa.io and running `python get-pip.py` [1]. You can also invoke pip through Python with `python -m pip install mypackage.whl` [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Package_management#introduction"
+   ],
+   "sources": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-using-microsoft-visual-c"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference (pip install mypackage.whl for failed PyPI installs); get-pip.py and python -m pip claims are supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-16",
+   "in_scope": true,
+   "answer": "The documentation provides the target output for both versions of the table [1], but it does not include a code example showing how to build it with nested for-loops. The sections describe for-loops and the range function [5] and [4], and show a nested loop in a one-liner that fails when written on one line [2], but they do not give a complete nested-loop solution, nor show how to print the header row or the divider line.\n\nNot in docs: the sections do not contain a nested for-loop code example for printing the multiplication table, nor instructions for printing the header row (` 1 2 3`) or the `------` divider line [1]. The sections only confirm the expected output format [1] and the basics of `range` and `for` loops [5][4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Loops#range-versus-xrange",
+    "python/Loops#for-loops"
+   ],
+   "sources": [
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Operators#augmented-assignment",
+    "python/Loops#range-versus-xrange",
+    "python/Loops#for-loops"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Answer says docs lack a nested-loop solution (a 'Not in docs' reply), whereas the reference expects the exercises with header, divider and '|' labels; all claims match sections."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-17",
+   "in_scope": true,
+   "answer": "The division is evaluated first. Operations in the same table row, such as division and multiplication, are performed from left to right, so a division to the left of a multiplication with no parentheses between them is performed first [3]. So `8 / 2 * 4` is computed as `(8 / 2) * 4` = 16.0 in Python 3 (true division for all types) [5].\n\n```python\n>>> 8 / 2 * 4\n16.0\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Math#order-of-operations",
+    "python/Basic_Math#mathematical-operators"
+   ],
+   "sources": [
+    "python/Operators#powers",
+    "python/Operators#basics",
+    "python/Basic_Math#order-of-operations",
+    "python/Numbers#introduction",
+    "python/Basic_Math#mathematical-operators"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: left-to-right at same precedence, division first. Claims about left-to-right [3] and true division in Python 3 [5] are supported; 16.0 follows from these."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-18",
+   "in_scope": true,
+   "answer": "Use the iterator returned by `cursor.execute` and process each row as it arrives, rather than calling `fetchall()`. In APSW the cursor is itself iterable, so a `for` loop pulls one record at a time [2]. Each record is a tuple, so you can unpack it directly into variables [2]. Remember to call `commit()` if you write data back [3].\n\n```python\nimport apsw\n\ndb = apsw.Connection(\"example.db\")\ncursor = db.cursor()\n\nfor firstname, lastname in cursor.execute(\"SELECT firstname, lastname FROM person\"):\n    print(firstname, lastname)\n\ndb.close()\n```\n\nFor a generator-style helper that wraps the query and maps each tuple, see the `db_iter` pattern in [2]. The MySQL equivalent uses `cursor.fetchone()` in a loop for the same row-by-row effect [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-sqlite"
+   ],
+   "sources": [
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-sqlite",
+    "sql/Example_Database_Data#grow-up",
+    "sql/Example_Database_Data#person"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: use APSW cursor.execute's iterator, loop over tuples, mention db_iter/mapfn pattern. All claims (tuples unpacking, commit, MySQL fetchone) are supported by sections [1]-[3]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-01",
+   "in_scope": true,
+   "answer": "Adding an index speeds up lookups because it replaces a linear scan with a much faster search. Without an index, the DBMS may have to read every row to find matches: on average 500,000 rows for a lookup in a 1-million-row table. With an index, the search can use a binary search over ordered keys (or a balanced tree), reaching the answer after roughly 20 reads, a factor of about 25,000 in this example [3]. The index is built on the column the application filters by, such as lastname, and the DBMS can use it when evaluating the WHERE clause [1].\n\nThe docs do not explicitly say when an index hurts performance. They do indicate the trade-offs, though:\n\n- **Data entry cost:** The binary search assumes ordered data, so each insert requires extra work to sort the new entry into the existing data. This extra work happens on every write, while the savings occur only on reads. Whether this is worthwhile depends on how the data is typically used [3].\n- **Choice of strategy:** The DBMS decides whether to use an index based on its estimates. If it expects a criterion to match a large share of rows (e.g., 30% of rows), it may choose a different strategy than an index read [1]. So an index is not always used.\n- **Limited applicability:** A multi-column index on (lastname, firstname) helps queries on lastname alone or on both columns, but not on firstname alone, so it is wasted on such queries [5].\n\nNot in docs: specific figures for index storage overhead, write slowdown, or guidance on when to drop an index.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Managing_Indexes#basic-index",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#multiple-columns"
+   ],
+   "sources": [
+    "sql/Managing_Indexes#basic-index",
+    "sql/Managing_Indexes#introduction",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Retrieve_Top_N_Rows_per_Group#example-table-and-data",
+    "sql/Managing_Indexes#multiple-columns"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Explains binary search vs linear scan and notes data-entry overhead, trade-offs; claims match sections [1],[3],[5]. Omits storage/CPU costs and small-table point, but conveys core idea."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-02",
+   "in_scope": true,
+   "answer": "Foreign keys and joins differ in two main ways:\n\n- **Direction:** A foreign key has a direction. You must know which table is the child and which is the parent. A join is just a value match between rows and has no direction [1].\n- **Where it's declared:** A join must be written into every DML statement that needs it (except in views). A foreign key is part of the table definition, and all DML commands respect it without you restating it in each statement [1].\n\nSo no, you don't need to specify the relationship each time once a foreign key exists. It is defined once on the child table and enforced automatically [1][4]. A foreign key guarantees that a child row cannot reference a non-existent parent row, and that a parent row cannot be deleted while child rows still reference it, so no orphans arise [2][4].\n\nNote that a foreign key does not make queries read differently. You still write a join to retrieve combined data; the foreign key only enforces integrity [1][2].\n\nExample:\n\n```sql\nCREATE TABLE department (\n    id INT PRIMARY KEY\n);\n\nCREATE TABLE employee (\n    id INT PRIMARY KEY,\n    dept_id INT,\n    FOREIGN KEY (dept_id) REFERENCES department(id)\n);\n```\n\nHere `employee` is the child table and `department` is the parent [3]. Inserting an employee with a `dept_id` that doesn't exist in `department` will fail, and deleting a department that still has employees will also fail [2][4]. Note that `dept_id` can still be NULL unless you add `NOT NULL` [4].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#syntax"
+   ],
+   "sources": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#syntax",
+    "sql/Relational_Databases#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on direction and declaration. But the claim that a foreign key doesn't change queries and you still write a join is unsupported by the sections; the exact CREATE TABLE code also isn't in the retrieved text."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-03",
+   "in_scope": true,
+   "answer": "To get a reliable order, use an explicit ORDER BY. Without it, the DBMS may return rows in any order and may change that order between runs [2].\n\nWhen several rows share a value in the first sort column, add further columns to the ORDER BY; these later columns only break ties among rows that match on all earlier columns [1][2].\n\nYou can also sort by a column that is not in your SELECT list, because ORDER BY may reference any column of the processed table, not just the projected ones [2].\n\nExample:\n\n```sql\nSELECT name, priority\nFROM reunion\nORDER BY priority ASC, date DESC;\n```\n\nHere rows are sorted by priority ascending, and rows with the same priority are sorted by date descending. The `date` column is not returned, yet it is still usable for sorting [1][2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches the reference, but the example SQL and the 'order may change between runs' claim aren't in the docs; the cited [1] never states ordering by non-selected columns."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-04",
+   "in_scope": true,
+   "answer": "Under the ACID paradigm, a DBMS guarantees that changes within a transaction are:\n\n- **Atomic:** all changes take place or none do [1].\n- **Consistent:** changes move the database from one valid state to another [1].\n- **Isolated:** transactions of different users working at the same time do not affect each other [1].\n- **Durable:** committed changes are retained even if the system crashes afterward [1].\n\nTransactions group one or more SQL statements (INSERT, UPDATE, DELETE, and optionally SELECT) and combine intermediate states into one change-event, which holds even in parallel processing, disk crashes, or power failures [2]. Consistency applies to data and derived index entries, which are synchronized at the end of a transaction, and to constraints and foreign keys, which may be temporarily violated during a transaction (using DEFERRABLE) but not after it terminates [5].\n\nThe docs also note that logical integrity is not guaranteed by the database itself. If an application forgets to update a related row, problems can still arise [5].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#consistency"
+   ],
+   "sources": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#consistency"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference's four ACID properties; the extra transaction and consistency details are all supported by sections [1], [2], and [5]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-05",
+   "in_scope": true,
+   "answer": "Selecting a regular column like `lastname` alongside `MAX(weight)` causes an error because aggregate functions return a single value for the whole set of rows, while a normal column returns one value per row. The DBMS sees a contradiction: one value and many values in the same result. Some systems throw an exception at runtime, while others return suspicious results [1][4].\n\nIt is okay to mix them in these cases:\n\n- **Functions that return one value per row**, such as `concat()`, can be combined freely with column names [4].\n- **Aggregate functions with a GROUP BY**: the aggregates are computed once per group, and the GROUP BY column(s) may be displayed because they cannot change within a group [1][2].\n\nExample of a valid grouped query:\n\n```sql\nSELECT lastname, AVG(weight)\nFROM person\nGROUP BY lastname;\n```\n\nHere `lastname` is the grouping column, so it can be shown alongside the per-group average [1][2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions"
+   ],
+   "sources": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Grouping#constitute-groups-grouping-over-multiple-columns",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: aggregates return one value, contradiction with normal columns, GROUP BY allows grouped columns. Claims about concat() and vendor behavior are in [4]; example query is consistent with [2]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-06",
+   "in_scope": true,
+   "answer": "The documentation describes this exact problem in section [1]: rows for one logical booking differ by a `version` column, and you want only the row with the highest version per `booking_number`.\n\n**Option 1: non-correlated subquery (recommended)**\n\nThe subquery builds a list of each `booking_number` with its maximum `version`, and the outer query joins to it [1]:\n\n```sql\nSELECT b.*\nFROM booking AS b\nJOIN (\n    SELECT booking_number, MAX(version) AS max_version\n    FROM booking\n    GROUP BY booking_number\n) AS latest\n  ON  latest.booking_number = b.booking_number\n  AND latest.max_version    = b.version;\n```\n\n**Option 2: correlated scalar subquery**\n\nThe outer query checks each row against the highest version for its own `booking_number` [1]:\n\n```sql\nSELECT b.*\nFROM booking AS b\nWHERE b.version = (\n    SELECT MAX(b2.version)\n    FROM booking AS b2\n    WHERE b2.booking_number = b.booking_number\n);\n```\n\nThe documentation notes a pitfall here: the subquery must be linked to the outer query (via `b2.booking_number = b.booking_number`). Without that link, the query does not return the correct result [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Subquery#another-example"
+   ],
+   "sources": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Data_Query_Language#select-query-where-clause-predicate"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference (both subquery approaches). But SQL code, 'recommended' label, and JOIN form aren't in the retrieved section, which shows no code; pitfall claim is loosely supported."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-07",
+   "in_scope": true,
+   "answer": "Without a frame clause, the frame for each row runs from the first row of the partition up to the current row [3]. The frame therefore grows by one row with each successive row of the partition, and it restarts at one row when the next partition begins [3].\n\nHowever, the documentation does not cover the case where there is no ORDER BY inside the window. It states that the PRECEDING/FOLLOWING terminology only works when a WINDOW ORDER clause creates an unambiguous sequence [1], and that WINDOW ORDER defines the sequence of rows within a partition [5]. It does not say which rows a frame contains when that sequence is missing, so the answer to that part of the question is: Not in docs: the sections do not describe the frame contents when there is no ORDER BY inside the window.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#determine-partition-and-sequence"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#determine-partition-and-sequence"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Chatbot gives the default frame but says the no-ORDER BY case is not in docs, missing the reference's key point that the whole partition is used. Its claims are supported by the sections."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-08",
+   "in_scope": true,
+   "answer": "No, the standard does not define a separate \"auto-increment\" data type for primary keys. Instead, it defines the identity specification within CREATE TABLE: \"GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY\" [1][2].\n\nHowever, most DBMS vendors do not support this standard syntax. They instead use different syntaxes and concepts, such as generators/sequences combined with triggers, special data types, or different keywords [1]. The sections provided do not include vendor-specific syntax, so I can't give you the exact form for your particular database.\n\nStandard form (per the standard, not verified against any specific vendor):\n\n```sql\nCREATE TABLE person (\n    id        INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,\n    firstname VARCHAR(50),\n    lastname  VARCHAR(50)\n);\n```\n\nFor vendor-specific auto-increment syntaxes, the docs point to the wikibook \"SQL Dialects Reference: Auto-increment_column\" [1], which is not included in the provided sections.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview"
+   ],
+   "sources": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Example_Database_Data#grow-up",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Create_Table#column-definition-data-type"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: no separate auto-increment type; use GENERATED ... AS IDENTITY in CREATE TABLE. Claims are supported by [1][2]; the example SQL is hedged as illustrative, not a factual claim."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-09",
+   "in_scope": true,
+   "answer": "The default direction is descending [1]. Ties in the first column are broken by the second column, and so on for any further columns listed [1][3].\n\nNote that [1] states \"Default is a descending sort,\" so the default applies when neither ASC nor DESC is given. Also, [3] says that if the listed columns still tie, the DBMS may return those rows in any order, so an explicit tie-breaker is needed for a deterministic result.\n\nExample:\n\n```sql\nSELECT name, priority, date\nFROM reunion\nORDER BY priority, date DESC;\n```\n\nHere `priority` is sorted with the default direction, and rows with equal priority are ordered by `date` in descending order [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Fundamentals#grouping",
+    "python/Lists#sorting-lists"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on descending default and tie-breaking, but claims in [3] that still-tied rows return in any order is an extrapolation, and the example's output attributions are unsupported."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-10",
+   "in_scope": true,
+   "answer": "The docs say the main drive is accuracy through storage efficiency. Ellis Island records wrote the same country many ways (England, Great Britain, UK, etc.), which makes later counting unreliable. A single reference table gives each country one unique representation that every list can point to, so the same term refers to the same country everywhere [1]. This also creates relationships between otherwise unrelated lists, such as telephone country codes and European castles, which share the Country table [1].\n\nMore generally, avoiding repeated copies of the same data is called database normalization. Keeping static details in separate tables and pointing to them, rather than repeating them in every record, avoids redundancy and makes it easier to assemble data for a given purpose using a JOIN [3].\n\nSources: [1], [3]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/SELECT:_Join_Operation#introduction"
+   ],
+   "sources": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/Create_Table#column-definition-column-constraint"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer covers unique entry per country, avoids inconsistent spellings, and shared relationships; all claims, including normalization and JOIN, are supported by sections [1] and [3]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-11",
+   "in_scope": true,
+   "answer": "The standard defines two kinds of INTERVAL: one with year and month, and one with day, hour, minute, and second [4].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Types#temporal"
+   ],
+   "sources": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#approximate-numeric",
+    "sql/Window_functions#determine-the-frame-range",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#boolean"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: year-month and day-hour-minute-second intervals, directly supported by section [4]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-12",
+   "in_scope": true,
+   "answer": "Yes. The SQL standard defines a MERGE command that performs an INSERT or an UPDATE depending on whether each row already exists in the target table, all in one statement [1]. This removes the two roundtrips between application and DBMS, allows bulk storing, and keeps the syntax in a single statement instead of spread across three [1].\n\nHint from the documentation: be careful and deactivate AUTOCOMMIT [1].\n\nThe provided sections do not include the MERGE syntax or a code example, so I can't show the exact statement form from the docs. Not in docs: the specific MERGE syntax and example.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/MERGE#introduction"
+   ],
+   "sources": [
+    "sql/MERGE#introduction",
+    "sql/INSERT_1#static-insert",
+    "sql/INSERT_1#introduction",
+    "sql/Handle_Data#retrieve-data-with-select-command",
+    "sql/Handle_Data#summary"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer correctly identifies MERGE as single statement replacing SELECT+INSERT/UPDATE, matching reference; all claims (roundtrips, bulk storing, syntax, AUTOCOMMIT hint) are supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-13",
+   "in_scope": true,
+   "answer": "If you use PARTITION BY but omit the frame clause, each row's frame runs from the first row of its partition up to the current row, plus any following rows that tie with the current row on the ORDER BY value. This is because the default frame is 'RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW' [1]. Frames are confined to their own partition, and partitions do not overlap [2]. The query example shows the frame growing one row at a time within each partition and restarting at 1 when the next partition begins [5].\n\nNote that the default frame only behaves as a simple growing window when the ORDER BY sequence is unambiguous. Without a WINDOW ORDER clause, the frame clause is not allowed and all rows of the partition form the frame [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#a-first-query"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference (first partition row to current row, growing, restarting per partition) and adds RANGE tie detail from [1]; all claims are supported by the retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-14",
+   "in_scope": true,
+   "answer": "**Difference between a CTE and a view:** The main difference is scope. A view definition stays alive after it is used, so it can be referenced by any later statement. A CTE's scope is limited to the statement in which it is defined, which is why CTEs are sometimes called inline views [2]. Both look like tables with typed columns, and neither holds data of its own; a view is only a definition over stored data or another view [3]. A CTE is also only a definition, so its data does not have to be materialized [5].\n\n**Referencing a CTE in a subselect:** Yes. The CTE can be used in a subselect of the main SELECT, and the documentation gives an example where the CTE is further modified by a BETWEEN criterion inside a SUBSELECT [2]. The CTE name can also be used at different places within the same statement [2].\n\nExample pattern (illustrative, based on the described structure [2][5]):\n\n```sql\nWITH cte_1 AS (\n    SELECT birthday, COUNT(*) AS cnt\n    FROM person\n    GROUP BY birthday\n)\nSELECT p.*,\n       (SELECT COUNT(*) FROM cte_1 c WHERE c.cnt > 1) AS ambiguous_birthdays\nFROM person p\nWHERE p.birthday IN (SELECT birthday FROM cte_1 WHERE cnt > 1);\n```",
+   "not_in_docs": false,
+   "cited": [
+    "sql/with_clause#examples",
+    "sql/Views#introduction",
+    "sql/with_clause#syntax"
+   ],
+   "sources": [
+    "sql/with_clause#extension",
+    "sql/with_clause#examples",
+    "sql/Views#introduction",
+    "sql/Views#create-a-view",
+    "sql/with_clause#syntax"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference on scope difference and subselect use. But the SQL example is invented, not from docs, and the claim that a view 'can be referenced by any later statement' is only inferred."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-01",
+   "in_scope": true,
+   "answer": "The documentation mentions a Bash customization script that does this. It says the current branch name is shown in red if there are outstanding changes and in green if there are none, followed by the current path, with the hostname shown in a low-lighted colour at the beginning [4].\n\nHowever, the sections do not include the script itself or any code example for configuring the prompt, so I can't show you the exact lines to add. The docs only point to a script based on Mike Stewart's work [4].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Interoperation#customizing-your-command-line-prompt"
+   ],
+   "sources": [
+    "git/Branching_&_merging#branching-view-your-branches",
+    "git/Branching_&_merging#branching-create-new-branches",
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#adding-and-committing-files"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (red/green branch colour, path, low-lighted hostname, Mike Stewart script) and all claims, including the missing script code, are supported by section [4]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-02",
+   "in_scope": true,
+   "answer": "To point an existing tag at the current commit, force-overwrite it [1]:\n\n$ git tag -f mytag HEAD\n\nThe tag is then moved to HEAD. Since tags are meant to stay fixed, if the tag was already pushed you will also need to update the remote, for example with `git push --tags` [1], which pushes tags to the remote.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Advanced#checking-out-remote-repositories-tags"
+   ],
+   "sources": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Advanced#create-and-apply-a-patch",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Introduction#removing-files-get-a-specific-version-of-a-file"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Command matches reference, but the claim that an already-pushed tag needs a remote update via `git push --tags` isn't supported; docs only say tags can be pushed, not forced-overwritten remotely."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-03",
+   "in_scope": true,
+   "answer": "Not in docs: The provided sections cover initializing Gitosis, copying your public key, editing gitosis.conf, and cloning the gitosis-admin repository [1][2][3][4], but they do not describe how to create a new repository locally or push it to the server for the first time. The only related step is that a repository is defined by editing gitosis.conf in the cloned gitosis-admin repository [3], and the sections do not say how to add the new repository's contents or perform the initial push.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Answer says not in docs, so it lacks the reference's git init/remote add/push steps. Its claims about what the sections cover are accurate."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-04",
+   "in_scope": true,
+   "answer": "When you run `git merge <branch>`, Git merges the given branch into the current branch. Two cases apply:\n\n- **Fast-forward merge:** If the current branch is a direct ancestor of the given branch, Git does not create a new commit. It simply redirects the current branch head to point at the new branch's tip [1].\n- **Merge commit:** In all other cases, Git records a merge commit that has both the previous commit on the current branch and the given branch's tip as parents [1].\n\nIf the merge produces conflicts, you must resolve them by hand before the merge commit is recorded [1]. Conflicting regions are marked with `<<<<<<<`, `=======`, and `>>>>>>>` markers, where the part between the first two markers comes from the current (HEAD) branch and the part between the last two comes from the branch being merged [2].\n\n```\ngit switch master\ngit merge side-branch\n```\n\nIf conflicts occur, `git log --merge` lists the commits involved, which helps you understand the conflict before resolving it [2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9"
+   ],
+   "sources": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9",
+    "git/Branching_&_merging#introduction",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference on fast-forward vs merge commit and conflict resolution; extra details on markers and git log --merge are supported by section [2]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-05",
+   "in_scope": true,
+   "answer": "Follow this order [1]:\n\n1. Make the change inside the submodule.\n2. Commit the change in the submodule.\n3. Commit the change in the superproject.\n4. Run `git submodule update` to push the change to the individual repositories that predate the superproject [1].\n\nThe docs do not show the exact commands for steps 2-4 beyond these descriptions, so the example below is a general illustration rather than something stated in the sections:\n\n```sh\ncd path/to/submodule\n# edit files\ngit add . && git commit -m \"Change in submodule\"\n\ncd ..\ngit add path/to/submodule\ngit commit -m \"Update submodule pointer\"\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Submodules_and_Superprojects#work-flow"
+   ],
+   "sources": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#footnotes"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Steps match the reference and section [1]. The extra example is explicitly flagged as general illustration not from the docs, so no unsupported claims are presented as documented fact."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-06",
+   "in_scope": true,
+   "answer": "GitHub, GitLab, and Bitbucket host projects for free regardless of license [2]. Bitbucket's free accounts allow up to five users and an unlimited number of private repositories [5]. GitHub also offers free repository management, though its free tier details are not specified in the sections [3].\n\nNot in docs: the sections do not list any other free hosts that accept projects regardless of license. Codeberg, NotABug, repo.or.cz, Savannah, and disroot are listed only for free and open-source projects [2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Core answer matches, but the claim that no other free hosts accept any license ignores Assembla's free repositories listed in section [3]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-07",
+   "in_scope": true,
+   "answer": "To bootstrap Gitosis with your public key, initialize it by piping your key into `gitosis-init` as the `git` user [1]:\n\n```\nsudo -H -u git gitosis-init < /tmp/id_rsa.pub\n```\n\nThe key file must first be copied to the server, for example with `scp .ssh/id_rsa.pub user@example.com:/tmp` [2].\n\nOn success you will see \"Initialized empty Git repository\" output [1].\n\nThe permission fix is to make the `post-update` hook of the admin repository executable with mode 755 [1]:\n\n```\nsudo chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference commands exactly; extra scp detail and success output are supported by sections [2] and [1]; chmod 755 explanation is consistent with section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-08",
+   "in_scope": true,
+   "answer": "Define a group in `gitosis.conf` listing the members and the repositories they may write to [1]:\n\n```\n[group blue_team]\nmembers = john martin stephen\nwritable = tea_timer coffee_maker\n```\n\nAnyone in `blue_team` (john, martin, stephen) can then write to the `tea_timer` and `coffee_maker` repositories [1]. Save, commit, and push the change so Gitosis applies it [1]:\n\n```\ngit commit -am \"Give john, martin, and stephen access to the repositories tea_timer and coffee_maker.\"\ngit push\n```",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: group section with members and writable lists, then commit and push; all details come directly from retrieved section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-09",
+   "in_scope": true,
+   "answer": "The sections cover copying a public key to the server, cloning the gitosis-admin repository, and editing gitosis.conf, but they do not describe adding a new developer's key or adding a member to a group. The only related detail is the example config, which lists members by username [3]. Not in docs: the sections do not explain how to register a new developer's public key (for example, where key files are placed in the gitosis-admin repo) or how to commit and push the change.\n\nWhat the docs do show: the key is copied to the server with `scp` [2], the admin repo is cloned with `git clone git@example.com:gitosis-admin.git` and entered with `cd gitosis-admin` [4], and configuration is edited in `gitosis.conf` [3]. Pushing the updated configuration back to the server is mentioned [4], but the exact commands are not included.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository"
+   ],
+   "sources": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "Answer says docs don't cover adding a key to keydir/ and pushing; it never gives the reference's key information. Its claims match the retrieved sections."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-10",
+   "in_scope": true,
+   "answer": "Yes. Free Bitbucket accounts support an unlimited number of private repositories and up to five users [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference (unlimited private repositories, up to five users) and both claims are directly supported by section [1]."
+   }
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-01",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover SQL table creation and alteration, Python switch-style dispatch, and using SWIG to wrap C modules. None of them describe configuring a VLAN on a Cisco switch, so I cannot answer this from the documentation.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Create_Table#introduction",
+    "python/Conditional_Statements#switch",
+    "python/Extending_with_C#using-swig",
+    "sql/Alter_Table#introduction",
+    "sql/Alter_Table#columns-add-a-column"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-02",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover SQL functions, the FETCH FIRST and WHERE clauses, and relational database concepts. They contain no information about sourdough bread or baking recipes.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Data_Query_Language#sql-functions",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-where-clause",
+    "sql/Relational_Databases#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-03",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Git, git-svn, git-format-patch, git-send-email, GitHub repositories, webhooks, reviews, wikis, and issue tracking. None of them describe Kubernetes, deployments, or autoscaling, so I can't answer how to configure that from these documents.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/git-svn#sending-changes-upstream",
+    "git/GitHub#introduction",
+    "git/GitHub#functionalities-webhooks",
+    "git/GitHub#functionalities-review",
+    "git/GitHub#functionalities"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-04",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python naming conventions, SQL global temporary tables, Git/diff/patch utilities, Python game libraries (Pygame, PGU, Pyglet, Kivy), and the SQL WITH clause. None of them discuss React, useEffect, or useLayoutEffect, so the difference between them cannot be answered from these sections.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Naming_conventions#introduction",
+    "sql/Temporary_Table#global-temporary-tables-gtt",
+    "git/Introduction#diff-and-patch-the-currency-of-open-source-collaboration",
+    "python/Game_Programming_in_Python#3d-game-programming-2d-game-programming",
+    "sql/with_clause#extension"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-05",
+   "in_scope": false,
+   "answer": "Not in docs: The provided documentation sections cover Python libraries for working with Excel files (xlwt, xlutils, XlsxWriter, openpyxl) and a git-svn example. They contain no information about filing a personal tax return in Canada.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Excel#xlwt",
+    "python/Excel#xlutils",
+    "python/Excel#xlsxwriter",
+    "python/Excel#openpyxl",
+    "git/git-svn#examples"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "out-06",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover running Python scripts on Linux [1], SQL GROUP BY/ROLLUP concepts [2][3], the SQL WHERE clause [4], and a forum post about reading CSV files with pandas [5]. None of them address changing oil in a 2015 Toyota Corolla.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Creating_Python_Programs#hello-world-linux",
+    "sql/Rollup_Cube#introduction",
+    "sql/Rollup_Cube#example-table",
+    "sql/Data_Query_Language#select-query-where-clause",
+    "python/Q&A#using-pandas-for-opening-csv-file"
+   ],
+   "sources": [
+    "python/Creating_Python_Programs#hello-world-linux",
+    "sql/Rollup_Cube#introduction",
+    "sql/Rollup_Cube#example-table",
+    "sql/Data_Query_Language#select-query-where-clause",
+    "python/Q&A#using-pandas-for-opening-csv-file"
    ]
   }
  ]

@@ -7,6 +7,9 @@
   hybrid_rerank   hybrid candidates re-scored by a local cross-encoder (reads query + text together)
   multi_query     Claude writes 3 rephrasings; hybrid for each; fused with RRF (book ch09)
   hyde            Claude writes a hypothetical answer; search with it + the question (book ch09)
+  llamaindex      LlamaIndex's default pipeline (see docsrag/frameworks.py)
+  llamaindex_256  LlamaIndex with chunks sized for the embedding model
+  langchain       LangChain's standard splitter + in-memory vector store (see docsrag/frameworks.py)
 """
 
 import re
@@ -17,7 +20,7 @@ import numpy as np
 from .config import RERANK_MODEL, llm
 from .index import Index, embed, tokenize
 
-METHODS = ["vector", "bm25", "hybrid", "hybrid_rerank", "multi_query", "hyde"]
+METHODS = ["vector", "bm25", "hybrid", "hybrid_rerank", "multi_query", "hyde", "llamaindex", "llamaindex_256", "langchain"]
 POOL = 60      # chunks taken from each list before fusing
 
 
@@ -110,6 +113,15 @@ def search(query: str, method: str = "vector", k: int = 5) -> list[str]:
         passage = _hypothetical_answer(query)
         ranked = rrf(to_sections(vector_chunks(passage)), to_sections(bm25_chunks(query)),
                      to_sections(vector_chunks(query)))
+    elif method == "llamaindex":
+        from .frameworks import llamaindex_search
+        ranked = llamaindex_search(query)
+    elif method == "llamaindex_256":
+        from .frameworks import llamaindex_search
+        ranked = llamaindex_search(query, chunk_size=256)
+    elif method == "langchain":
+        from .frameworks import langchain_search
+        ranked = langchain_search(query)
     else:
         raise ValueError(f"Unknown method '{method}'. Choose from: {', '.join(METHODS)}")
     return ranked[:k]

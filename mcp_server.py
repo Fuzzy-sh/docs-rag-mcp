@@ -28,7 +28,7 @@ from docsrag.ingest import fetch_book  # noqa: E402
 from docsrag.retrieve import METHODS, search  # noqa: E402
 
 mcp = MCPServer("docs-rag")
-Method = Literal["vector", "bm25", "hybrid", "hybrid_rerank", "multi_query", "hyde"]
+Method = Literal["vector", "bm25", "hybrid", "hybrid_rerank", "multi_query", "hyde", "llamaindex", "llamaindex_256", "langchain"]
 
 
 def _section_line(sid: str) -> str:

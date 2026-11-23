@@ -237,3 +237,33 @@ a shortlist. Retrieve wide, then re-rank narrow.
 2. Give them to Claude numbered `[1]`–`[5]`, with rules: use only these sections, cite every fact
    like `[2]`, and if the answer isn't there, start with **"Not in docs:"**.
 3. Record which sections were cited (for the citation-accuracy score).
+
+---
+
+## 4. The same job with frameworks
+
+`docsrag/frameworks.py` builds the same retrieval with each framework's standard pipeline, using the
+**same embedding model**:
+
+| | LlamaIndex | LangChain |
+|---|---|---|
+| Unit of text | `Document` (a page) → `Node` (a chunk) | `Document` → split `Document`s |
+| Splitter | `SentenceSplitter` (default 1,024 tokens, 200 overlap) | `RecursiveCharacterTextSplitter(1000, 200)` |
+| Embeddings | `Settings.embed_model = HuggingFaceEmbedding(...)` | `HuggingFaceEmbeddings(...)` |
+| Store | `VectorStoreIndex` (persisted with `storage_context.persist`) | `InMemoryVectorStore` (`dump` / `load`) |
+| Search | `index.as_retriever(similarity_top_k=n).retrieve(q)` | `store.as_retriever(search_kwargs={"k": n}).invoke(q)` |
+
+Their chunks ignore headings, so each retrieved chunk is mapped back to the section(s) it covers
+(`chunk_to_sections`, by word 5-gram overlap) and scored exactly like the hand-built methods.
+
+**Chunk size must match the embedding model.** `all-MiniLM-L6-v2` reads only the first 256 tokens of a
+text. LlamaIndex's default 1,024-token chunks (sized for OpenAI embeddings) left 84% of chunks mostly
+invisible; `SentenceSplitter(chunk_size=256)` fixes it.
+
+## 5. Tracking experiments (MLflow)
+
+`eval/run_eval.py` logs each evaluation to MLflow (`sqlite:///mlflow.db`, experiment `docs-rag-eval`):
+params (models, number of questions), one nested run per method with its metrics, and the result files
+as artifacts. Runs that evaluate only some methods are **merged** into the saved results, so the latest
+MLflow run always holds every method. `--trace` turns on `mlflow.anthropic.autolog()`, recording each
+Claude call as a trace span.

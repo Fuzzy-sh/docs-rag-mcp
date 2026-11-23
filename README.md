@@ -1,15 +1,17 @@
-# Docs RAG + MCP: documentation Q&A, six retrieval methods, measured
+# Docs RAG + MCP: documentation Q&A, nine retrieval setups, measured
 
 A documentation chatbot built the way a company-docs assistant is built: **ingest** manuals,
-**index** them two ways, **retrieve** with six methods, **answer with citations** (or say
-*"Not in docs"*), expose it all as an **MCP server**, and **measure** every step.
+**index** them two ways, **retrieve** with six hand-built methods (plus LangChain's and LlamaIndex's
+standard pipelines for comparison), **answer with citations** (or say *"Not in docs"*), expose it all as
+an **MCP server**, and **measure** every step, with every run tracked in **MLflow**.
 
 The "documentation" is three Wikibooks manuals: *Python Programming*, *Structured Query Language*
 and *Git* (171 pages → 926 sections → 1,261 chunks).
 
 **📓 Start here:** [`notebooks/01_docs_rag_walkthrough.ipynb`](notebooks/01_docs_rag_walkthrough.ipynb)
 walks through the whole pipeline with real outputs: chunking a page, embeddings vs keywords, the six
-methods on one question, a cited answer, a raw MCP session, and the evaluation.
+methods on one question, **how to do the same with LlamaIndex and LangChain**, a cited answer, a raw MCP
+session, the evaluation, and **MLflow** run tracking and tracing.
 **How it works, in depth:** [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md).
 
 ## Pipeline
@@ -39,6 +41,9 @@ Wikibooks API ──▶ sections (by heading) ──▶ chunks (~900 chars, over
 | hybrid + cross-encoder re-rank | **0.71** | 0.93 | **0.82** | 475 ms | 0 |
 | multi-query | 0.67 | **1.00** | 0.81 | 1.7 s | 1 |
 | HyDE | 0.67 | **1.00** | 0.81 | 2.0 s | 1 |
+| *LangChain standard (1,000-char splitter)* | 0.50 | 0.91 | 0.67 | 43 ms | 0 |
+| *LlamaIndex default (1,024-token chunks)* | 0.24 | 0.50 | 0.38 | 218 ms | 0 |
+| *LlamaIndex, `chunk_size=256`* | 0.55 | 0.91 | 0.70 | 414 ms | 0 |
 
 **Answers** (Claude Haiku 5.5 answers; Claude Sonnet 5.5 grades):
 
@@ -46,10 +51,21 @@ Wikibooks API ──▶ sections (by heading) ──▶ chunks (~900 chars, over
 |---|---|---|---|---|---|
 | **vector** (default) | **0.95** | **0.81** | **1.00** | 6/6 | **0/42** |
 | hybrid + re-rank | 0.95 | 0.57 | 0.91 | 6/6 | 1/42 |
+| *LangChain standard* | 0.91 | 0.76 | 0.88 | 6/6 | 4/42 |
+| *LlamaIndex default* | 0.52 | 0.81 | 0.50 | 6/6 | **16/42** |
+| *LlamaIndex, `chunk_size=256`* | 0.88 | 0.76 | 0.88 | 6/6 | 1/42 |
+
+All setups use the **same local embedding model**, so the framework rows measure each framework's
+default chunking and retrieval, not the embeddings.
 
 **What it shows**
 
-1. **On these questions the methods are close.** Re-ranking gives the best top result; the methods
+0. **The hand-built pipeline beats both frameworks' standard setups, mainly through chunking**
+   (split by headings into small chunks). And **a framework default can silently break retrieval:**
+   LlamaIndex's 1,024-token chunks are 4× longer than the 256 tokens the embedding model reads, so 84% of
+   chunks were searched by their first third only, and 16 of 42 real questions got "Not in docs". One
+   setting (`chunk_size=256`) took correct answers from 0.52 to 0.88. **Match chunk size to the embedding model.**
+1. **Among the hand-built methods, the differences are small.** Re-ranking gives the best top result; the methods
    that call Claude (multi-query, HyDE) add time and cost without beating plain vector search.
 2. **Re-ranking hurt the answers:** equally correct, but much less grounded. The cross-encoder is
    trained on web search (MS MARCO), not manuals. **So `vector` is the default.**
@@ -82,7 +98,22 @@ help. A hand-written question set is the next step.
 
 All search **chunks** but return their parent **sections** (ch08: small chunks to match, whole sections to answer).
 
+**Framework comparisons** (`docsrag/frameworks.py`): `langchain` (`RecursiveCharacterTextSplitter` →
+`InMemoryVectorStore` → retriever), `llamaindex` (`SentenceSplitter` defaults → `VectorStoreIndex` →
+retriever) and `llamaindex_256`. Their chunks don't follow headings, so each retrieved chunk is mapped
+back to the section(s) it covers, keeping the scoring identical.
+
 \* *AI Agents and Applications: With LangChain, LangGraph, and MCP* (Roberto Infante, Manning).
+
+## Experiment tracking with MLflow
+
+Every `eval/run_eval.py` run is logged to MLflow: settings as **params**, one **nested run per method**
+with its metrics, and the result files as **artifacts**. `--trace` also records every Claude call as an
+MLflow **trace** (inputs, outputs, tokens, latency).
+
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db     # http://127.0.0.1:5000
+```
 
 ## MCP server
 
@@ -115,6 +146,8 @@ python ask.py --method bm25 --search-only "git stash pop"
 python tests/test_offline.py       # offline: splitting, chunking, BM25, RRF
 python eval/make_questions.py      # regenerate the test set (optional)
 python eval/run_eval.py            # retrieval + answers (~20 min, ~200 Claude calls)
+python eval/run_eval.py --methods llamaindex_256 --answer-methods llamaindex_256   # add one method (merged)
+python eval/run_eval.py --trace    # also trace every Claude call in MLflow
 python eval/run_eval.py --rejudge  # re-grade saved answers only
 ```
 
@@ -125,11 +158,12 @@ docsrag/config.py      paths, models, Claude helper (thinking off, usage + trunc
 docsrag/ingest.py      Wikibooks API → sections → chunks (polite, resumable, progress callback)
 docsrag/index.py       embeddings + BM25 (plain numpy)
 docsrag/retrieve.py    the six methods, RRF, re-ranking
+docsrag/frameworks.py  the same job with LlamaIndex and LangChain
 docsrag/answer.py      cited answers or "Not in docs"
 mcp_server.py          MCP server
 ask.py                 command line
 build_index.py         download + index
-eval/                  question generation, evaluation, results
+eval/                  question generation, evaluation (+ MLflow logging), results
 notebooks/             walkthrough notebook
 docs/HOW_IT_WORKS.md   ingestion, indexing and retrieval explained
 tests/                 offline tests

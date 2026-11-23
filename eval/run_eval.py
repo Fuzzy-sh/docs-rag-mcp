@@ -162,14 +162,70 @@ def rejudge(questions: list[dict]) -> dict:
     return saved
 
 
+def merge(path: Path, new: dict) -> dict:
+    """Merge results for the methods just run into the saved file (other methods are kept)."""
+    if not path.exists():
+        return new
+    old = json.loads(path.read_text())
+    ran = set(new["summary"])
+    old["summary"] = {**{m: v for m, v in old["summary"].items() if m not in ran}, **new["summary"]}
+    old["rows"] = [r for r in old["rows"] if r["method"] not in ran] + new["rows"]
+    return old
+
+
+def _frac(v) -> float:
+    """'6/6' -> 1.0; numbers pass through."""
+    if isinstance(v, str) and "/" in v:
+        a, b = v.split("/")
+        return int(a) / int(b)
+    return float(v)
+
+
+def log_to_mlflow(out_dir: Path, questions: list[dict], ran: list[str]) -> None:
+    """One MLflow run per evaluation: settings as params, one nested run per method with its
+    metrics, and the result files as artifacts. View with:  mlflow ui --backend-store-uri sqlite:///mlflow.db"""
+    import mlflow
+    from docsrag.config import EMBED_MODEL, RERANK_MODEL
+
+    mlflow.set_tracking_uri(f"sqlite:///{ROOT / 'mlflow.db'}")
+    mlflow.set_experiment("docs-rag-eval")
+    ret = json.loads((out_dir / "retrieval.json").read_text()) if (out_dir / "retrieval.json").exists() else {"summary": {}}
+    ans = json.loads((out_dir / "answers.json").read_text()) if (out_dir / "answers.json").exists() else {"summary": {}}
+    with mlflow.start_run(run_name=f"eval ({', '.join(ran)})"):
+        mlflow.log_params({"answer_model": LLM_MODEL, "judge_model": JUDGE_MODEL, "embed_model": EMBED_MODEL,
+                           "rerank_model": RERANK_MODEL, "questions": len(questions),
+                           "in_scope": sum(q["in_scope"] for q in questions), "methods_run_now": ",".join(ran)})
+        mlflow.log_metrics({"claude_calls": USAGE["calls"], "claude_truncated": USAGE["truncated"]})
+        for m in sorted(set(ret["summary"]) | set(ans["summary"])):
+            with mlflow.start_run(run_name=m, nested=True):
+                mlflow.log_param("method", m)
+                for k, v in ret["summary"].get(m, {}).items():
+                    mlflow.log_metric(f"retrieval_{k.replace('@', '_at_')}", _frac(v))
+                for k, v in ans["summary"].get(m, {}).items():
+                    mlflow.log_metric(f"answer_{k}", _frac(v))
+        for f in ("retrieval.json", "answers.json"):
+            if (out_dir / f).exists():
+                mlflow.log_artifact(str(out_dir / f))
+        mlflow.log_artifact(str(ROOT / "eval" / "questions.jsonl"))
+    print("Logged to MLflow (experiment 'docs-rag-eval'). View: mlflow ui --backend-store-uri sqlite:///mlflow.db")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--methods", default=",".join(METHODS))
     ap.add_argument("--skip-answers", action="store_true")
     ap.add_argument("--skip-retrieval", action="store_true")
     ap.add_argument("--rejudge", action="store_true", help="re-grade saved answers only")
-    ap.add_argument("--answer-methods", default="vector,hybrid_rerank")
+    ap.add_argument("--answer-methods", default="vector,hybrid_rerank,llamaindex,langchain")
+    ap.add_argument("--no-mlflow", action="store_true", help="don't log this run to MLflow")
+    ap.add_argument("--trace", action="store_true", help="also record every Claude call as an MLflow trace")
     a = ap.parse_args()
+
+    if a.trace:
+        import mlflow
+        mlflow.set_tracking_uri(f"sqlite:///{ROOT / 'mlflow.db'}")
+        mlflow.set_experiment("docs-rag-traces")
+        mlflow.anthropic.autolog()          # every Anthropic SDK call becomes a trace span
 
     questions = [json.loads(l) for l in open(ROOT / "eval" / "questions.jsonl")]
     if a.rejudge:
@@ -181,15 +237,20 @@ def main() -> None:
     out_dir.mkdir(exist_ok=True)
     print(f"{len(questions)} questions ({sum(q['in_scope'] for q in questions)} in scope). "
           f"Answer model: {LLM_MODEL}, judge: {JUDGE_MODEL}\n\nRETRIEVAL")
+    ran = []
     if not a.skip_retrieval:
         ret = retrieval_eval(questions, a.methods.split(","))
-        (out_dir / "retrieval.json").write_text(json.dumps(ret, indent=1))
+        (out_dir / "retrieval.json").write_text(json.dumps(merge(out_dir / "retrieval.json", ret), indent=1))
+        ran += a.methods.split(",")
     if not a.skip_answers:
         print("\nANSWERS")
         ans = answer_eval(questions, a.answer_methods.split(","))
-        (out_dir / "answers.json").write_text(json.dumps(ans, indent=1))
+        (out_dir / "answers.json").write_text(json.dumps(merge(out_dir / "answers.json", ans), indent=1))
+        ran += [m for m in a.answer_methods.split(",") if m not in ran]
     print(f"\nClaude usage: {USAGE['calls']} calls, {USAGE['input_tokens']:,} in / {USAGE['output_tokens']:,} out tokens, "
           f"{USAGE['truncated']} replies hit max_tokens")
+    if not a.no_mlflow:
+        log_to_mlflow(out_dir, questions, ran)
 
 
 if __name__ == "__main__":

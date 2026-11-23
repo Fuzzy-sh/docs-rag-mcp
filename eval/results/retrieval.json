@@ -47,6 +47,30 @@
    "MRR@10": 0.81,
    "avg_ms": 2024,
    "llm_calls_per_q": 1.0
+  },
+  "llamaindex": {
+   "hit@1": 0.238,
+   "hit@5": 0.5,
+   "page@5": 0.738,
+   "MRR@10": 0.379,
+   "avg_ms": 218,
+   "llm_calls_per_q": 0.0
+  },
+  "langchain": {
+   "hit@1": 0.5,
+   "hit@5": 0.905,
+   "page@5": 1.0,
+   "MRR@10": 0.672,
+   "avg_ms": 43,
+   "llm_calls_per_q": 0.0
+  },
+  "llamaindex_256": {
+   "hit@1": 0.548,
+   "hit@5": 0.905,
+   "page@5": 1.0,
+   "MRR@10": 0.701,
+   "avg_ms": 414,
+   "llm_calls_per_q": 0.0
   }
  },
  "rows": [
@@ -3324,6 +3348,1644 @@
     "git/Hosting#free-public-and-open-source",
     "git/Hosting#introduction",
     "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-01",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction",
+    "python/Functions#nested-functions",
+    "python/Functions#lambda-expressions",
+    "python/Functions#function-calls-calling-functions"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-02",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "python/Password_checker#introduction",
+    "python/Idioms#modules-re",
+    "python/Idioms#data-types-tuples",
+    "python/Idioms#data-types-strings",
+    "python/Idioms#data-types-dictionaries"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-03",
+   "rank": 8,
+   "page@5": false,
+   "top5": [
+    "python/Idioms#operations",
+    "python/Idioms#data-types-tuples",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-while-loops",
+    "python/Control_Flow#overview-loops-for-loops"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-04",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "python/Strings#unicode",
+    "python/Files#testing-files",
+    "python/Files#finding-files",
+    "python/Files#file-i-o",
+    "python/Files#common-file-operations"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Basic_Syntax#semicolons-namespaces",
+    "python/Scoping#variables-keyword-global",
+    "python/Scoping#variables",
+    "python/Classes#overview-special-methods-operator-overloading"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-06",
+   "rank": 8,
+   "page@5": true,
+   "top5": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices",
+    "python/Lists#comparing-lists",
+    "python/Sequences#tuples"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-07",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-set-operations-intersection",
+    "python/Sets#overview-set-operations",
+    "python/Sets#overview-removing-items",
+    "python/Sets#overview-membership-testing"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#table-of-contents",
+    "git/Home#introduction",
+    "git/Branching_&_merging#why-branch"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-09",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-split-splitlines",
+    "python/Strings#string-methods-replace",
+    "python/Strings#string-methods-expandtabs",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-10",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#strings",
+    "python/Tips_and_Tricks#other",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#type",
+    "python/Reflection#keywords",
+    "python/Reflection#issubclass",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-12",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods-operator-overloading",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Classes#overview-special-methods-initialization-and-deletion-enter-and-exit",
+    "python/Classes#overview-special-methods-initialization-and-deletion-del",
+    "python/Classes#overview-special-methods"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-13",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3-more-resources",
+    "python/Metaclasses#python3-metaclasses",
+    "python/Metaclasses#python3",
+    "python/Metaclasses#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-14",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "python/Password_checker#introduction",
+    "python/Variables_and_Strings~Solutions#introduction",
+    "python/Variables_and_Strings#list-of-learned-functions",
+    "python/Variables_and_Strings#exercises",
+    "python/Conditional_Statements#if-statements-if-example"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-15",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#requirements-txt",
+    "python/Package_management#introduction",
+    "python/numpy#introduction",
+    "python/numpy#installation",
+    "python/numpy#arrays"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-16",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#overview-conclusion",
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Control_Flow#overview-loops-while-loops",
+    "python/Control_Flow#overview-loops-for-loops"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-17",
+   "rank": 7,
+   "page@5": false,
+   "top5": [
+    "python/Operators#powers",
+    "python/Operators#negation",
+    "python/Operators#modulus",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#comparison"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "python-18",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Databases#introduction",
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting",
+    "python/Databases#general-principles-never-use-select-in-a-script",
+    "python/Databases#dbms-specifics-sqlite"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#introduction",
+    "sql/Managing_Indexes#unique-index",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/Managing_Indexes#functional-index"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-02",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#syntax",
+    "sql/Foreign_Key#n-m-relationship",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#example"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-03",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#transaction-boundaries-savepoints",
+    "sql/Transactions#transaction-boundaries",
+    "sql/Transactions#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-05",
+   "rank": 6,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#scalar-functions",
+    "sql/SELECT:_Predefined_Functions#introduction",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-the-null-special-marker",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-hint",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-all-vs-distinct"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-06",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "sql/Data_Query_Language#select-query-where-clause-exists",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "sql/Data_Query_Language#select-query-from-clause-full-outer-join",
+    "sql/Data_Query_Language#select-query-from-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-07",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-rows",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-08",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "sql/Create_Table#table-constraint-primary-key-unique-and-foreign-key",
+    "sql/Create_Table#table-constraint-not-null-and-simple-column-checks",
+    "sql/Create_Table#table-constraint-general-column-checks",
+    "sql/Create_Table#table-constraint",
+    "sql/Create_Table#column-definition-identity-specification"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-where-clause-predicate",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-10",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#structured-query-language-sql",
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#relationships",
+    "sql/Relational_Databases#introduction",
+    "sql/Temporary_Table#local-temporary-tables-ltt"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-11",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#introduction",
+    "sql/Data_Types#character",
+    "sql/Data_Types#binary",
+    "sql/Language_Elements#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-12",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#use-case",
+    "sql/MERGE#introduction",
+    "sql/MERGE#extentions",
+    "sql/MERGE#example",
+    "sql/MERGE#description"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-13",
+   "rank": 6,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-rows",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "sql-14",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "sql/Views#some-more-hints",
+    "sql/Views#introduction",
+    "sql/Views#examples-and-explanations-example-5-join",
+    "sql/Views#examples-and-explanations-example-4-use-functions",
+    "sql/Views#examples-and-explanations-example-3-apply-where-condition"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-01",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files-throwing-away-local-uncommitted-changes",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Introduction#removing-files-resetting-a-commit"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-02",
+   "rank": null,
+   "page@5": false,
+   "top5": [
+    "git/Rebasing#principle",
+    "git/Introduction#removing-files-throwing-away-local-uncommitted-changes",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Introduction#removing-files-resetting-a-commit",
+    "git/Introduction#removing-files"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-03",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository",
+    "git/Branching_&_merging#branching-deleting-a-branch-from-the-remote-repository",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#merging-9"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#footnotes"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-06",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-08",
+   "rank": 6,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-09",
+   "rank": 10,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ]
+  },
+  {
+   "method": "llamaindex",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#birds-of-a-feather-bof"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#using-list-comprehension-to-process-tuple-elements",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Variables_and_Strings#introduction",
+    "python/Conditional_Statements#another-way-using-function-through-user-input-another-way-8"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-conditional-statements",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#comparing-lists",
+    "python/Control_Flow#overview",
+    "python/Lists#iteration"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Scoping#variables",
+    "python/Scoping#variables-keyword-global",
+    "python/Classes#overview-special-methods"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-06",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Lists#introduction",
+    "python/Data_Types#built-in-data-types",
+    "python/Variables_and_Strings#introduction",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Lists#list-creation-plain-creation"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-07",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview",
+    "python/Sets#overview-membership-testing",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview-frozenset",
+    "python/Sets#overview-set-operations-set-difference"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#introduction",
+    "git/Branching_&_merging#introduction",
+    "git/Interoperation#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#introduction",
+    "sql/SQL:_A_Language_for_Working_with_rDBMS#characteristics",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-10",
+   "rank": 9,
+   "page@5": true,
+   "top5": [
+    "python/Performance#introduction",
+    "python/PyPy#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Python_2_vs._Python_3#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction",
+    "python/Data_Types#introduction",
+    "python/Metaclasses#python3-the-type-metaclass"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Naming_conventions#introduction",
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-class-members"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-14",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Conditional_Statements#if-statements-conditional-statements"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-source-code-installations",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-16",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#overview-conclusion",
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Operators#logical-operators-or"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#powers",
+    "python/Operators#basics",
+    "python/Numbers#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#introduction",
+    "sql/Example_Database_Data#grow-up",
+    "python/Databases#general-principles-looping-on-field-breaks"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index",
+    "sql/INSERT_2#evaluate-values-at-runtime",
+    "sql/Managing_Indexes#introduction",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#n-m-relationship"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Retrieve_Top_N_Rows_per_Group#complex-solutions-example-5",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#isolation",
+    "sql/Data_Definition_Language#introduction",
+    "sql/Data_Control_Language#introduction",
+    "sql/Transactions#consistency"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-05",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Subquery#row-subquery",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions-the-null-special-marker",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-where-clause-like",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-where-clause"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-07",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#introduction",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-partition-and-sequence"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Data_Types#introduction",
+    "sql/Example_Database_Data#grow-up"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-fetch-first-clause"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#approximate-numeric",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#xml",
+    "sql/Data_Types#boolean",
+    "sql/Data_Types#exact-numeric"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/INSERT_2#evaluate-values-at-runtime",
+    "sql/INSERT_1#static-insert",
+    "sql/INSERT_1#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-13",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "sql-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#extension",
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction",
+    "sql/SELECT:_Set_Operations#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-01",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#branching-view-your-branches",
+    "git/Branching_&_merging#branching-create-new-branches",
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-03",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-the-stupid-content-tracker",
+    "git/Branching_&_merging#merging-9",
+    "git/Internal_structure#naked-git-structure-specific-files-head"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-05",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#footnotes",
+    "git/Submodules_and_Superprojects#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-06",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Home#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-09",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "langchain",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Tuples#uses-of-tuples",
+    "python/Tuples#operations-on-tuples-conversions",
+    "python/Loops#the-break-statement"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Password_checker#introduction",
+    "python/Loops#while-loops-examples"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-03",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#iteration",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Idioms#operations"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Strings#unicode"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-05",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Scoping#variables",
+    "python/Scoping#variables-keyword-nonlocal",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Scoping#variables-keyword-global",
+    "python/Basic_Syntax#semicolons-scope"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-06",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Data_Types#built-in-data-types",
+    "python/Sequences#sets-frozenset",
+    "python/Lists#getting-pieces-of-lists-slices-continuous-slices"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview",
+    "python/Sets#overview-membership-testing"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "python/Editing_and_Running_Python_Code#managing-code-installing-new-modules",
+    "git/Home#introduction",
+    "git/git-svn#overview",
+    "git/Branching_&_merging#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Strings#string-methods-expandtabs",
+    "python/Regular_Expression#replacing",
+    "python/Variables_and_Strings#variables",
+    "python/Strings#string-methods-title-upper-lower-swapcase-capitalize"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-10",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/PyPy#introduction",
+    "python/Python_2_vs._Python_3#introduction",
+    "python/Performance#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#type",
+    "python/Reflection#issubclass",
+    "python/Reflection#isinstance",
+    "python/Reflection#introduction",
+    "python/Data_Types#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Metaclasses#python3"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Functions#function-calls-declaring-arguments-by-value-and-by-reference"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Password_checker#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-using-microsoft-visual-c"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Operators#augmented-assignment",
+    "python/Loops#range-versus-xrange",
+    "python/Loops#for-loops"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-17",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "python/Operators#powers",
+    "python/Operators#basics",
+    "python/Basic_Math#order-of-operations",
+    "python/Numbers#introduction",
+    "python/Basic_Math#mathematical-operators"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "python-18",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-sqlite",
+    "sql/Example_Database_Data#grow-up",
+    "sql/Example_Database_Data#person"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-01",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#basic-index",
+    "sql/Managing_Indexes#introduction",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Retrieve_Top_N_Rows_per_Group#example-table-and-data",
+    "sql/Managing_Indexes#multiple-columns"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#syntax",
+    "sql/Relational_Databases#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Fundamentals#grouping",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Retrieve_Top_N_Rows_per_Group#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#consistency"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Grouping#constitute-groups-grouping-over-multiple-columns",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Data_Query_Language#select-query-where-clause-predicate"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#determine-partition-and-sequence"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Example_Database_Data#grow-up",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Create_Table#column-definition-data-type"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Fundamentals#grouping",
+    "python/Lists#sorting-lists"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/Create_Table#column-definition-column-constraint"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-11",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#approximate-numeric",
+    "sql/Window_functions#determine-the-frame-range",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#boolean"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/INSERT_1#static-insert",
+    "sql/INSERT_1#introduction",
+    "sql/Handle_Data#retrieve-data-with-select-command",
+    "sql/Handle_Data#summary"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-13",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-partition-and-sequence",
+    "sql/Window_functions#a-first-query"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "sql-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#extension",
+    "sql/with_clause#examples",
+    "sql/Views#introduction",
+    "sql/Views#create-a-view",
+    "sql/with_clause#syntax"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-01",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#branching-view-your-branches",
+    "git/Branching_&_merging#branching-create-new-branches",
+    "git/Interoperation#introduction",
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#adding-and-committing-files"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Advanced#create-and-apply-a-patch",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Introduction#removing-files-get-a-specific-version-of-a-file"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-03",
+   "rank": 8,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9",
+    "git/Branching_&_merging#introduction",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#footnotes"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-06",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-09",
+   "rank": 8,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "llamaindex_256",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof"
    ]
   }
  ]

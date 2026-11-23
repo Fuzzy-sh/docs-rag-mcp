@@ -1,0 +1,10 @@
+48 questions (42 in scope). Answer model: claude-haiku-5-5, judge: claude-sonnet-5-5
+
+RETRIEVAL
+  llamaindex_256 hit@1 0.55  hit@5 0.91  page@5 1.00  MRR 0.70    414 ms  0.0 LLM calls
+
+ANSWERS
+  llamaindex_256 correct 0.88  grounded 0.76  cites gold 0.88  refused out-of-scope 6/6  false refusals 1/42
+
+Claude usage: 90 calls, 162,741 in / 13,916 out tokens, 0 replies hit max_tokens
+Logged to MLflow (experiment 'docs-rag-eval'). View: mlflow ui --backend-store-uri sqlite:///mlflow.db
