@@ -1,0 +1,12 @@
+48 questions (42 in scope). Answer model: claude-haiku-5-5, judge: claude-sonnet-5-5
+
+RETRIEVAL
+  vector         hit@1 0.67  hit@5 1.00  page@5 1.00  MRR 0.80    161 ms  0.0 LLM calls
+  bm25           hit@1 0.69  hit@5 0.88  page@5 1.00  MRR 0.77      2 ms  0.0 LLM calls
+  hybrid         hit@1 0.64  hit@5 0.98  page@5 1.00  MRR 0.78     11 ms  0.0 LLM calls
+  hybrid_rerank  hit@1 0.71  hit@5 0.93  page@5 1.00  MRR 0.82    475 ms  0.0 LLM calls
+  multi_query    hit@1 0.67  hit@5 1.00  page@5 1.00  MRR 0.81   1663 ms  1.0 LLM calls
+  hyde           hit@1 0.67  hit@5 1.00  page@5 1.00  MRR 0.81   2024 ms  1.0 LLM calls
+
+
+(Answer results: see eval_log_answers.txt.)

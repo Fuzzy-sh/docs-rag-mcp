@@ -1,0 +1,2248 @@
+{
+ "summary": {
+  "vector": {
+   "correct": 0.952,
+   "grounded": 1.0,
+   "cites_gold": 1.0,
+   "cites_gold_page": 1.0,
+   "refusals_out_of_scope": "6/6",
+   "false_refusals": "3/42"
+  },
+  "hybrid_rerank": {
+   "correct": 0.881,
+   "grounded": 0.857,
+   "cites_gold": 0.905,
+   "cites_gold_page": 1.0,
+   "refusals_out_of_scope": "6/6",
+   "false_refusals": "5/42"
+  }
+ },
+ "rows": [
+  {
+   "method": "vector",
+   "id": "python-01",
+   "in_scope": true,
+   "answer": "A function can return several values by separating them with commas, and the caller unpacks them with tuple assignment. The values are returned as a tuple [1][2].\n\n```python\ndef first2items(list1):\n    return list1[0], list1[1]\n\na, b = first2items([\"Hello\", \"world\", \"hi\", \"universe\"])\nprint(a + \" \" + b)   # Hello world\n```\n\n[1] shows this exact pattern. Section [2] explains that the return statement creates a tuple, which is then unpacked on the left side of the assignment. Tuples suit this when the number of items is known and small [2].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#uses-of-tuples"
+   ],
+   "sources": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#uses-of-tuples",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Conditional_Statements#another-way-using-function-through-user-input-another-way-8"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: comma-separated return, unpacked via tuple assignment. The tuple claims and the example are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-02",
+   "in_scope": true,
+   "answer": "The docs show this pattern in [1], which asks for a name and password and welcomes the user only when both match a known pair. Its code is:\n\n```python\nname = raw_input(\"What is your name? \")\npassword = raw_input(\"What is the password? \")\nif name == \"Josh\" and password == \"Friday\":\n    print (\"Welcome Josh\")\nelif name == \"Fred\" and password == \"Rock\":\n    print (\"Welcome Fred\")\nelse:\n    print (\"I don't know you.\")\n```\n\n[1]\n\nThe docs use `raw_input`, which is Python 2. [2] and [4] use `input()` for the same purpose, so this version uses `input()`:\n\n```python\nname = input(\"What is your name? \")\npassword = input(\"What is the password? \")\nif name == \"Josh\" and password == \"Friday\":\n    print(\"Welcome Josh\")\nelif name == \"Fred\" and password == \"Rock\":\n    print(\"Welcome Fred\")\nelse:\n    print(\"I don't know you.\")\n```\n\n[1][2][4]\n\nThe docs also warn that this is \"a simple and insecure example, real password code should never be implemented this way.\" [1]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples"
+   ],
+   "sources": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Password_checker#introduction",
+    "python/Loops#while-loops-examples",
+    "python/Web#requests-authentication"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference's if/elif/else name-and-password check with the same messages. Claims about raw_input (Python 2), input() in [2] and [4], and the insecurity warning are supported by the sections."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-03",
+   "in_scope": true,
+   "answer": "You can use slicing with a step, written `start:stop:step`. Per [2], `a` and `b` are the start and end of the slice and `n` is the step, so `a:b:n` takes every n-th element between `a` and `b`.\n\n```python\n>>> lst = [i for i in range(10)]\n>>> lst[::2]        # every second element, whole list\n[0, 2, 4, 6, 8]\n>>> lst[1:7:2]      # every second element between indices 1 and 7\n[1, 3, 5]\n```\n\nFor an every-nth element, change the step. For example, `lst[::3]` takes every third element. [2]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices"
+   ],
+   "sources": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#iteration",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Loops#range-versus-xrange"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: a:b:n slice syntax with examples [::2] and [1:7:2]. The [::3] extension follows from the docs' 'every n-th' description."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-04",
+   "in_scope": true,
+   "answer": "The error happens because the generator is lazy, but the file is closed as soon as the `with` block ends. Generators have deferred evaluation, so the lines are not read until you iterate. By then the resource has already been released [1]. The file is closed at the end of the `with` statement, but the lines are not read until the generator is evaluated [1].\n\n**Fixes from the docs:**\n\n1. **Read everything inside the block (simplest).** Use a list instead of a generator, such as a list comprehension. This is generally appropriate for reading a file, since it minimizes system calls [1].\n\n```python\nwith open(filename) as f:\n    lines = [line.rstrip(\"\\n\") for line in f]\n# lines is now safe to use after the block\n```\n\n2. **Keep the resource open inside the generator.** If you need a generator, hold the file within a generator function, so the file stays open while you iterate [1]. To release it, call `generator.close()`, or wrap the generator with `@contextlib.closing` so it works as a context manager [1].\n\n```python\nfrom contextlib import closing\n\n@closing\ndef read_lines(filename):\n    with open(filename) as f:\n        for line in f:\n            yield line.rstrip(\"\\n\")\n\nwith read_lines(\"data.txt\") as lines:\n    for line in lines:\n        print(line)\n```\n\nNote that the code examples above are illustrative. The provided sections describe these patterns but do not include the original code listings.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Context_Managers#caveats-generators"
+   ],
+   "sources": [
+    "python/Context_Managers#caveats-generators",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference (lazy evaluation, list fix, generator function with closing). All claims come from [1], and the code is flagged as illustrative. The @closing decorator usage is dubious but mirrors the doc."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-05",
+   "in_scope": true,
+   "answer": "**Why scopes exist:** In a large system, one piece of code should not affect another in hard-to-predict ways. Scope helps by preventing one programmer's choice of a name from blocking another's use of that name [1].\n\n**Ways to create a region where a name is usable:**\n\n- **Functions:** Scope is delineated by function blocks [2]. Names assigned inside a function are local to it. Functions can also be nested, and an inner function can see names from its enclosing scope [2]. Functions return data as the result of execution [1].\n- **Classes:** Class blocks also delineate scope [2].\n- **Modules:** A module is the other region type named in [1], which says modules have a different way of providing their content outside their scope, and leads to the concept of a namespace [1]. The docs do not give further detail on module scope in these sections.\n\n**Things that do not create a new scope:**\n\n- Loops do not create their own scope. A variable assigned in a `for` loop remains visible after the loop [2].\n- A `with` statement does not create a new scope. Its target stays visible after the block exits, because local variables have function scope [4].\n\n**Example of nested function scope** [2]:\n\n```python\ndef foo():\n    def bar():\n        x = 5            # x is local to bar\n        return x + y     # y comes from the enclosing scope\n    y = 10\n    return bar()\n\nprint(foo())  # 15\n# bar() at module level raises NameError: bar is not in an accessible scope\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Context_Managers#caveats-context-not-scope"
+   ],
+   "sources": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Context_Managers#caveats-context-not-scope",
+    "python/Scoping#variables-keyword-global"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Covers the purpose of scope, functions and modules as delimiters, returns from functions, and modules leading to namespaces. Extra claims (classes, loops, with) are all supported by sections [2] and [4]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-06",
+   "in_scope": true,
+   "answer": "Yes. A Python list can hold mixed types, including numbers, strings, nested lists, and class instances [2][4].\n\nTo write one out directly, put the items between square brackets, separated by commas [4]:\n\n```python\nmy_list = [1, 2, 3, \"This is a list\", 'c', Donkey(\"kong\")]\n```\n\n[4] gives this as an example, where `Donkey` is a class. Objects can be created inline and added to the list, as the `Donkey(\"kong\")` item shows [4]. You can also build items from expressions rather than literals, for example `[a+b, b+a, len([\"a\",\"b\"])]` [4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Lists#introduction",
+    "python/Lists#list-creation-plain-creation"
+   ],
+   "sources": [
+    "python/Data_Types#creating-objects-of-defined-types",
+    "python/Lists#introduction",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#list-creation-plain-creation",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (mixed types, comma-separated items in square brackets, inline objects, expressions). Claims are supported by sections [2] and [4]; the Donkey class is in [4]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-07",
+   "in_scope": true,
+   "answer": "Use the symmetric difference. It returns the elements that are in one of the two sets but not in both [5].\n\nMethod form or the `^` operator:\n\n```python\n>>> s1 = set([4, 6, 9])\n>>> s2 = set([1, 6, 8])\n>>> s1.symmetric_difference(s2)\nset([8, 1, 4, 9])\n>>> s1 ^ s2\nset([8, 1, 4, 9])\n```\n\n[5]\n\nTo update `s1` in place instead of returning a new set, use `s1.symmetric_difference_update(s2)` [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sets#overview-set-operations-symmetric-difference"
+   ],
+   "sources": [
+    "python/Sets#overview-set-operations-intersection",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Lists#difference",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview-set-operations-symmetric-difference"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches reference: symmetric_difference, ^ operator, and symmetric_difference_update for in-place; all supported by section [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-08",
+   "in_scope": true,
+   "answer": "Most open source projects use **Git, Mercurial (hg), or Bazaar (bzr)** [1].\n\nYou would branch your code so you can **start from a \"known working state\" and, if you go down the wrong path, \"revert\" back to where you started** [1]. Branching is also fast: Git's branching is as fast as Subversion's \"cheap copying,\" and Git is especially strong at merging between branches, which reduces the pain of merge conflicts [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Branching_&_merging#introduction"
+   ],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Introduction#introduction",
+    "git/git-svn#overview",
+    "git/Interoperation#introduction",
+    "git/Branching_&_merging#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference on Git/Mercurial/Bazaar and the known-working-state revert rationale. Extra branching-speed and merging claims are supported by section [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-09",
+   "in_scope": true,
+   "answer": "`replace` does not change the original variable. It returns a copy of the string with the replacements made, and the original stays the same [1]. To keep the result, save it to a new variable (or reassign the same name).\n\n```python\nstring = 'Hello, world'\nnewString = string.replace('o', 'X')\nprint(string)     # Hello, world\nprint(newString)  # HellX, wXrld\n```\n\n[1]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Strings#string-methods-replace"
+   ],
+   "sources": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings#variables",
+    "python/Regular_Expression#replacing",
+    "python/Strings#string-methods-title-upper-lower-swapcase-capitalize",
+    "python/Strings#string-operations-equality"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: replace returns a copy, the original is unchanged, so save the result. The reassign-same-name remark is supported by the variables section. The example comes from [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-10",
+   "in_scope": true,
+   "answer": "In Python 3 you generally don't have to choose. Modules automatically use their optimized implementations when they are available [1]. For example, cElementTree is not needed in Python 3.3+, which automatically uses a fast implementation if possible [5].\n\nSome exceptions remain:\n\n- The cProfile/profile pair still exists as of Python 3.4, so you can still choose between them [1]. cProfile is recommended for most use because the pure Python profile adds significant overhead [5].\n- Some C modules were replaced rather than kept. For example, cStringIO was replaced by io.StringIO in Python 3 [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples"
+   ],
+   "sources": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/PyPy#introduction",
+    "python/Python_2_vs._Python_3#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-examples"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: Python 3 automatically uses optimized implementations, with cProfile/profile as the exception. All claims, including the cStringIO and cElementTree details, are supported by sections [1] and [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-11",
+   "in_scope": true,
+   "answer": "`type(3) is object` returns `False` because `type()` ignores class inheritance, while `isinstance()` takes inheritance into account [2]. `type()` gives the exact type of an object, and the identity check compares that exact type to `object`. `isinstance()` also accepts subclasses, so it returns `True` [1][2].\n\n```python\nprint(type(3) is object)      # False: type() disregards inheritance [2]\nprint(isinstance(3, object))  # True: isinstance() is a weaker condition [1][2]\n```\n\nThe docs say `isinstance` \"provides a weaker condition than a comparison using type\" [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type"
+   ],
+   "sources": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type",
+    "python/Data_Types#introduction",
+    "python/Operators#identity",
+    "python/Data_Types#null-object"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: type() ignores inheritance while isinstance() accounts for it. Claims and the quote are supported by sections [1] and [2]; it omits that type(3) is int."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-12",
+   "in_scope": true,
+   "answer": "Special methods use names that **begin and end with two underscores** (dunder names), such as `__init__`. Python reserves these names for special purposes, including mimicking numerical or container operations [1].\n\nSingle-underscore names are a different convention. By convention, a method whose name begins with a single underscore is \"private\" to the scope it is introduced in [1]. The difference is that double-underscore-on-both-sides names are reserved for the language's special behavior, while a single leading underscore is only a convention signaling privacy.\n\nThe sections don't list the specific methods for numeric or container emulation. They only show `__init__`, which is called before an instance is returned [4]:\n\n```python\nclass A:\n    def __init__(self):\n        print('A.__init__()')\na = A()   # outputs: A.__init__()\n```",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-special-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init"
+   ],
+   "sources": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Classes#overview-class-members-methods-why-a-mandatory-argument"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: dunder names are reserved for special purposes, while a single underscore is a 'private' convention. All claims trace to [1] and [4]; 'dunder' is only a label."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-13",
+   "in_scope": true,
+   "answer": "You can bind a function to the existing instance with `types.MethodType` and assign the result as an attribute on that instance. The class itself is not changed [2].\n\n```python\nimport types\n\nclass Spam:\n  def __init__(self):\n    self.myeggs = 5\n\neggs = Spam()\n\ndef cook(self):\n  print(\"cooking %s eggs\" % self.myeggs)\n\nf = types.MethodType(cook, eggs, Spam)\neggs.cook = f\n\neggs.cook()   # prints: cooking 5 eggs\n```\n\n[2]\n\nTo avoid repeating this, you can wrap it in a helper:\n\n```python\ndef attach_method(fxn, instance, myclass):\n  f = types.MethodType(fxn, instance, myclass)\n  setattr(instance, fxn.__name__, f)\n\nattach_method(cook, eggs, Spam)\n```\n\n[1]\n\nThe helper uses `setattr` rather than `instance.fxn = f`, because the latter would add an attribute named `fxn` instead of the function's name [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class"
+   ],
+   "sources": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-instance-construction",
+    "python/Metaclasses#python3"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference (MethodType plus assignment to eggs.cook). Helper and setattr explanation are supported by sections [1] and [2]; the unchanged-class claim follows from [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-14",
+   "in_scope": true,
+   "answer": "Use a `while` loop whose condition checks the password, and start the password variable with a value that is not the correct one so the loop runs at least once [2]:\n\n```python\npassword = \"foobar\"  # must not be the real password, so the loop runs at least once\n\nwhile password != \"unicorn\":\n    password = input(\"Password: \")\n\nprint(\"Welcome in\")\n```\n\nThe loop keeps prompting until the user enters the correct password, then prints the welcome message [2].\n\nTo also limit the number of attempts, add a counter and break out of a `while True` loop [1]:\n\n```python\nguess_count = 0\ncorrect_pass = 'dee234'\n\nwhile True:\n    pass_guess = input(\"Please enter your password: \")\n    guess_count += 1\n\n    if pass_guess == correct_pass:\n        print('You have successfully logged in.')\n        break\n    elif guess_count >= 3:\n        print(\"You have been denied access.\")\n        break\n```\n\nThis version stops after three wrong guesses, as described in [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples"
+   ],
+   "sources": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#examples",
+    "python/Password_checker#introduction",
+    "python/Variables_and_Strings#exercises"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference (while password != \"unicorn\", wrong initial value, input loop, Welcome in). The attempt-limit example is adapted from section [1] and supported by it."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-15",
+   "in_scope": true,
+   "answer": "If PyPI installation fails, you can install the package from its downloaded wheel file. Pass the `.whl` file path to pip:\n\n```\npip install mypackage.whl\n```\n\nThis \"installs the package from wheel file mypackage.whl. This is useful when for whatever reason installation from PyPI fails and you need to download the wheel file (.whl) of the package manually\" [1].\n\nIf pip is not available, the docs say you can install it by downloading get-pip.py from bootstrap.pypa.io and running `python get-pip.py` [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Package_management#introduction"
+   ],
+   "sources": [
+    "python/Package_management#introduction",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#trying-python-online",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer gives `pip install mypackage.whl` for PyPI failures, matching the reference. The quote and the get-pip.py detail are both supported by section [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-16",
+   "in_scope": true,
+   "answer": "Not in docs: The sections give the target output for the 3x3 table [1] but no code that produces it, and nothing on printing a header row or divider line.\n\nWhat the sections do cover:\n\n- **Target output:** A 3x3 table with a header row `  1 2 3`, a divider `------`, and row labels `1|`, `2|`, `3|` [1].\n- **Range and loops:** `range(start, finish)` excludes the finish value, and `for variable in list:` iterates over an iterable [3].\n- **Nested loops in one line:** `python -c \"for i in range(1,11):for j in range(1,11): print(i,j)\"` does not work because two loops on one line are invalid syntax [4].\n- **Nested loops as a comprehension:** `for i, j in ((i,j) for i in range(1,11) for j in range(1,11))` produces pairs using two loops inside a comprehension [4].",
+   "not_in_docs": true,
+   "cited": [
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction"
+   ],
+   "sources": [
+    "python/Control_Flow#exercises",
+    "python/Operators#augmented-assignment",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Tips_and_Tricks#list-comprehension-and-generators"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer opens with 'Not in docs' and gives no nested-loop code, though it does describe the target output. Its claims all match the retrieved sections."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-17",
+   "in_scope": true,
+   "answer": "The division is evaluated first. Operations that share a row in the order-of-operations table are performed left to right, so the division to the left of the multiplication runs first [1].\n\n```python\n>>> 8 / 2 * 4\n16.0\n```\n\nThe expression evaluates as `(8 / 2) * 4`. In Python 3, `/` always uses true division and returns a float, so `8 / 2` gives `4.0` and the result is `16.0` [4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division"
+   ],
+   "sources": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#basics",
+    "python/Basic_Math#mathematical-operators",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#powers"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: left-to-right at same precedence, supported by [1]. True division returning float is supported by [4]; 8/2*4=16.0 follows from these claims."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "python-18",
+   "in_scope": true,
+   "answer": "The sections explain the approach but don't include the actual APSW code, so the snippet below is my illustration, not something from the docs.\n\nAccording to [1], in APSW \"the cursor.execute method itself returns an iterator for the result records.\" You can therefore loop over the cursor directly, and each row is fetched as you go rather than loading the whole result set. Rows come back as tuples, so you can unpack them into variables [1].\n\n```python\nimport apsw\n\ndb = apsw.Connection(\"sales.db\")\ncursor = db.cursor()\n\nfor name, company in cursor.execute(\n        \"SELECT name, company FROM employees WHERE company = ?\",\n        (\"Acme\",)):\n    print(name, company)\n```\n\nNotes:\n- For a single-column query, [1] suggests wrapping the iteration in a generator with a custom `mapfn` that returns the element instead of the tuple.\n- Use `?` placeholders and pass values as the second argument to `execute`, rather than building the string yourself. This avoids quoting errors and SQL injection [5]. For query structures that must change at runtime, [5] says APSW provides `format_sql_value` for",
+   "not_in_docs": false,
+   "cited": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting"
+   ],
+   "sources": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "python/Databases#dbms-specifics-sqlite",
+    "python/Databases#general-principles-parameter-quoting"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Both say APSW's cursor.execute returns an iterator, so you loop over tuples row by row, and both mention mapfn. The code is flagged as illustration; claims otherwise follow [1] and [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-01",
+   "in_scope": true,
+   "answer": "**Why indexes speed up lookups:** A linear scan of a 1-million-row table reads about 500,000 rows on average, while binary search on ordered data needs 20 or fewer reads, a factor of about 25,000 [1]. An index gives the DBMS that kind of ordered access path. When a query filters on an indexed column, the DBMS can read the index instead of every row and count the matches [3].\n\n**When it can hurt:**\n\n- **Insertions get slower.** Adding a useless index makes insertion a little slower [2]. Ordered data also needs an extra sorting step on entry, which is paid on every insert, so the trade-off depends on how the data is typically used [1].\n- **Unused indexes add cost without benefit.** Indexes are meant for columns you often filter or sort by [2].\n- **It is not always used or faster.** The DBMS chooses its str",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index"
+   ],
+   "sources": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet",
+    "sql/Example_Database_Data#grow-up"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Covers binary search vs linear scan and extra insertion/maintenance cost, matching the reference's core points. Claims trace to [1]-[3]; it omits space and small-table detail."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-02",
+   "in_scope": true,
+   "answer": "**Short answer:** No. A foreign key is defined once, in the table definition, and then applies to all DML. A join is written in each query that needs it.\n\n**Joins** link rows by matching identical values. The link has no direction, and it must be expressed in every DML statement that uses it (except views) [1].\n\n**Foreign keys** also link rows by identical values, but they differ in two ways:\n- **Direction:** One table is the child and the other is the parent [1][3].\n- **Placement:** They are part of the table definition. All DML commands respect them without the statement having to express them [1][5].\n\n**What a foreign key adds:** It guarantees that the child's values must exist in the parent, so employees can only be assigned to real departments, and a department with assigned employees cannot be deleted. In other words, it prevents orphans [3][5].\n\n**Caveats from the docs:**\n- The FK constraint belongs to the child table, but it also restricts the parent. Parent rows that have child rows cannot be deleted [5].\n- A NULL in the child's FK column is allow",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#syntax"
+   ],
+   "sources": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#introduction",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#syntax"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: FKs are directional and part of the table definition, applied to all DML, while joins are undirected and written per statement (except views). The extra detail is supported by [3] and [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-03",
+   "in_scope": true,
+   "answer": "**Short answer:** Add an explicit ORDER BY, include enough columns to break every tie, and you can sort by columns you don't select.\n\n**Why the order changes:** The DBMS may return rows in any order. \"Rows may be returned in the order of the Primary Key, in the chronological order they are stored..., or even in random order. ... Don't expect anything.\" [1] So without ORDER BY, the order is not guaranteed.\n\n**Ties:** If you need a particular order, state it in ORDER BY [1]. Rows with equal values in the first column are sorted by the next column, and so on [2]. The docs say that when rows tie on the sort columns, the result is random [1]. The docs don't say a tie-free sort is guaranteed, so add a unique column (such as the ID) as the last sort key. The docs use a unique ID column as the link in their top-N examples [5], which is why I suggest it here.\n\n**Sorting by a column you don't select:** Yes. ORDER BY can use any column of the table being processed, not only the columns in the projection [",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#complex-solutions"
+   ],
+   "sources": [
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#complex-solutions"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: explicit ORDER BY, extra columns break ties, any table column can be sorted. Claims are backed by [1], [2], [5]; the unique-ID tip is flagged as the bot's own suggestion."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-04",
+   "in_scope": true,
+   "answer": "When several users change data at the same time, the DBMS guarantees the ACID properties. In a multi-user environment, all changes within one transaction are:\n\n- **Atomic:** all changes take place or none do [1]. A transaction's writes reach the database only if it COMMITs successfully. A failure or ROLLBACK means none of them do [5].\n- **Consistent:** changes move the database from one valid state to another [1]. The database is consistent after a transaction ends [4].\n- **Isolated:** transactions of different users working at the same time do not affect each other [1].\n- **Durable:** committed changes are retained even if the system crashes afterward [1].\n\nThe docs describe ACID as the four basic properties that transactions support [2].\n\nThe docs also note a limit: the DBMS keeps the database consistent at the level of data and indexes and constraints, but it does not guarantee logical integrity. If the application forgets to update a related row, problems will still arise [4].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity"
+   ],
+   "sources": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "All four ACID properties match the reference, and every claim is supported by sections [1], [2], [4], and [5]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-05",
+   "in_scope": true,
+   "answer": "**Why the error occurs:** Aggregate functions such as `MAX()` work on a set of rows and return one single value [1]. A normal column like `lastname` produces one value per row. Putting both in the same projection asks the DBMS to show many rows with one aggregated value, which is a contradiction, so the system throws an exception [1].\n\n```sql\n-- Error: lastname has one value per row, MAX(weight) has one value for all rows\nSELECT lastname, MAX(weight) FROM person;\n\n-- Aggregate alone: fine\nSELECT MAX(weight) FROM person;\n```\n\n**When mixing is okay:** Use a `GROUP BY`. With grouping, the aggregate functions are called once per group [1]. The GROUP BY column(s) may be displayed because they cannot change within a group [1].\n\n```sql\n-- OK: one row per lastname, with the maximum weight in that group\nSELECT lastname, MAX(weight)\nFROM person\nGROU",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions"
+   ],
+   "sources": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Subquery#row-subquery",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: aggregates return one value per set of rows, so mixing with normal columns throws an error; GROUP BY allows grouped columns. All claims are supported by section [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-06",
+   "in_scope": true,
+   "answer": "The sections describe two approaches, but they don't include the SQL text, so I can't give you a verified query.\n\n**Approach 1: non-correlated table subquery** [1]\nThe subquery produces a list of `booking_number` values together with each booking's highest `version`. The outer query joins to that list to retrieve the full rows with all their columns.\n\n**Approach 2: correlated scalar value subquery** [1]\nThe outer query reads every row and, for each one, calls a subquery that returns the highest `version` for that row's `booking_number`. A row is kept only when its `version` equals that value. The `=` comparison is what filters out the older rows. The subquery must be linked to the outer query by `booking_number`. Without that link, the query returns every version, including the actual one [1].\n\nTo retrieve only the historical rows for one booking, restrict the outer query to that booking. The subquery is then evaluated only for those rows [",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Subquery#another-example"
+   ],
+   "sources": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-select-clause",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Data_Query_Language#select-query-where-clause-exists"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Both the non-correlated and correlated max-version subquery approaches match the reference and the '=' comparison. Claims follow section 1; 'joins' is a minor paraphrase."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-07",
+   "in_scope": true,
+   "answer": "Not in docs: the sections don't say which rows form the frame when a window function has no frame clause and no ORDER BY inside the window.\n\nWhat the sections do say:\n\n- The frame is defined by the WINDOW FRAME clause, which optionally follows the WINDOW PARTITION and WINDOW ORDER clauses [2]. They don't say what the frame is when that clause is omitted.\n- The PRECEDING/FOLLOWING terminology \"works only, if there is a WINDOW ORDER clause, which creates an unambiguous sequence\" [1].\n- With no WINDOW PARTITION clause, all rows of the result set form one partition [5].\n- Implementations don't always follow the standard, so the behavior should be tested on your system [3].",
+   "not_in_docs": true,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-a-word-of-caution",
+    "sql/Window_functions#overall-description"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-a-word-of-caution",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#overall-description"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The chatbot says 'Not in docs' and never gives the default frame (first row to current row, or whole partition without ORDER). Its claims about the sections are accurate."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-08",
+   "in_scope": true,
+   "answer": "Standard SQL has no separate auto-increment data type. The standard instead defines an identity specification in CREATE TABLE: \"GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY\" [1][2].\n\nMost DBMS vendors don't support this standard form. They use different syntaxes and concepts, such as sequences combined with triggers, a special data type, or different keywords [1]. The docs point to the SQL Dialects Reference wikibook (Auto-increment_column) for an overview of vendor implementations [1]. The docs don't show vendor-specific syntax, so check your DBMS's documentation for that.\n\nStandard form, as quoted in the docs (the table and column names are illustrative):\n\n```sql\nCREATE TABLE person (\n  id        INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,\n  firstname VARCHAR(50),\n  lastname  VARCHAR(50)\n);\n```\n\nIf your DBMS doesn't accept this, the docs don't give a portable alternative for generating key values. Note that a column can have a default value [3], but the docs",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-default-value"
+   ],
+   "sources": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Example_Database_Data#grow-up",
+    "sql/INSERT_1#dynamic-insert"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: no auto-increment type, use GENERATED ... AS IDENTITY. The vendor claims are in [1]. The sample code is labelled illustrative, though 'as quoted in the docs' slightly overstates."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-09",
+   "in_scope": true,
+   "answer": "Without ASC or DESC, the sort is **descending**. The docs state: \"The keywords ASC or DESC can be added after each column... Default is a descending sort.\" [1]\n\nFor ties, the first column is sorted first. The second column is used to sort rows that have the same value in the first column, and so on. [1] Later columns are processed only for rows whose values are identical in all previous columns. [2]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Set_Operations#group-by",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (default descending per docs, ties go to the next column) and every claim is supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-10",
+   "in_scope": true,
+   "answer": "Relational databases store shared values like country names in one reference table so that each value has a single, unambiguous representation.\n\n- **Accuracy:** Typing names freely leads to inconsistent variants. Immigration records show London arrivals entered as \"England,\" \"Great Britain,\" \"United Kingdom,\" \"U.K.,\" \"UK,\" or \"Engl.\" Counting people from the United Kingdom then becomes unreliable. [1]\n- **One representation:** A single Country table gives one entry for each country, such as \"United Kingdom,\" so users can only choose that one value. Other records refer to it by the same term. [1]\n- **Relationships between lists:** Because lists such as telephone country codes and European castles both point to the same Country table, they are linked through their one shared item, country. A relational database is \"simply a collection of lists that share some common pieces of information.\" [1]\n- **Less redundancy:** More generally, storing static details once in their own table avoids repeating them in every record. This technique is called normalization, and the tables are connected by joins. [3]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/SELECT:_Join_Operation#introduction"
+   ],
+   "sources": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Relational_DBMS_(rDBMS)#the-data-model",
+    "sql/Relational_Databases#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Covers single unique entry, avoiding inconsistent spellings, and linking lists via shared Country table; all claims are supported by sections [1] and [3]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-11",
+   "in_scope": true,
+   "answer": "The standard defines two kinds of INTERVAL [2]:\n\n1. **Year-month interval:** holds **year** and **month**.\n2. **Day-time interval:** holds **day, hour, minute, and second**.\n\nThe docs describe these as \"an interval with year and month\" and \"an interval with day, hour, minute, and second\" [2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Types#temporal"
+   ],
+   "sources": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#exact-numeric",
+    "sql/Data_Types#approximate-numeric",
+    "sql/Create_Table#column-definition-data-type"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: year-month (year, month) and day-time (day, hour, minute, second). The names 'year-month' and 'day-time' are only labels, and the fields are directly supported by section [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-12",
+   "in_scope": true,
+   "answer": "Yes. The SQL standard defines a MERGE command, which contains the complete check-then-INSERT-or-UPDATE logic in one single statement. It performs an INSERT or an UPDATE depending on whether individual rows exist in the target table [2].\n\nUsing MERGE avoids the two round-trips between application and DBMS (SELECT plus INSERT or UPDATE). It also allows bulk storing, since the application no longer has to transfer one row at a time, and the syntax is no longer spread across three statements [2].\n\nThe provided sections do not include MERGE's exact syntax, so I can't show a code example. The docs also advise deactivating AUTOCOMMIT when working with these statements [2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/MERGE#introduction"
+   ],
+   "sources": [
+    "sql/INSERT_2#evaluate-rows-at-runtime",
+    "sql/MERGE#introduction",
+    "sql/INSERT_1#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/INSERT_2#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Identifies MERGE as the single-statement solution and its benefits (fewer round-trips, bulk storing, one statement). Section [2] supports all claims, including the AUTOCOMMIT hint."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-13",
+   "in_scope": true,
+   "answer": "Without a frame clause, each row's frame runs from the first row of its partition up to the current row. Specifically, the default is `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` [1]. Because of the RANGE syntax, the frame also includes all rows that have the same ORDER BY value as the current row (its peers) [1].\n\nSome related points from the sections:\n\n- **Partition boundaries:** Frames stay within their partition. The frame starts at the partition's first row and grows row by row, and the count restarts at 1 when the next partition begins [4].\n- **Without PARTITION BY:** All rows of the result set form one partition [1].\n- **Without ORDER BY:** A frame clause is not allowed, and the frame is all rows of the partition [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#a-first-query"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: the frame runs from the partition's first row to the current row and restarts per partition. Every added detail (RANGE default, peers, no ORDER BY) is supported by [1] and [4]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "sql-14",
+   "in_scope": true,
+   "answer": "**Difference between a CTE and a view**\n\n- **Lifetime:** A view's definition persists after it is created and can be used in later statements. A CTE's scope is limited to the statement where it is defined [1].\n- **Data:** Views are only definitions and have no data of their own. Their data always comes from a table or another view [3]. A CTE is likewise only a definition, and the data does not have to be materialized [2].\n- **Creation:** A view is created by specifying a name, optional column names, and a SELECT on which it is based [4]. A CTE is introduced with WITH, followed by a name and a SELECT that defines it [2].\n\n**Can you reference a CTE in a subselect of the main SELECT?**\n\nYes. The documentation gives an example where the CTE is used within a SUBSELECT of the main SELECT, and the CTE is further modified by a BETWEEN criterion [1]. The CTE can also be used at several places within one statement [1].\n\nThe docs do not include SQL code for these examples, so I can't show a verified snippet.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction",
+    "sql/Views#create-a-view"
+   ],
+   "sources": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction",
+    "sql/Views#create-a-view",
+    "sql/Views#examples-and-explanations-example-5-join"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: a CTE is scoped to its statement while a view persists, and a CTE can be used in a subselect with BETWEEN. All claims are supported by sections [1]-[4]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-01",
+   "in_scope": true,
+   "answer": "Not in docs: The sections say a Bash customization script does this, but they don't include the script or explain how to install or write it. Section [1] describes the behavior: the current branch name is shown in red if there are outstanding changes, or green if there are none, followed by the current path, with the hostname in a low-lighted colour at the beginning. It says the script is based on Mike Stewart's work, but it doesn't say where to get it.\n\nThe sections also don't say how to set up your prompt, so I can't give you a code example from them.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Interoperation#customizing-your-command-line-prompt"
+   ],
+   "sources": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files",
+    "git/Internal_structure#naked-git-structure-specific-files-orig-head",
+    "git/Advanced#checking-out-remote-repositories-checking-out-remote-branches",
+    "git/Introduction#adding-and-committing-files"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Despite the 'Not in docs' framing, it states the same key facts as the reference (red/green branch, path, hostname, Mike Stewart), all supported by section [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-02",
+   "in_scope": true,
+   "answer": "Use the force flag with `git tag`, pointing it at `HEAD`:\n\n```\n$ git tag -f mytag HEAD\n```\n\nThis overwrites the existing tag so it points at the current commit [1].\n\nThe docs don't say how to update a tag that has already been pushed to a remote. They only show `git push --tags` for pushing tags [1], so check the remote's behavior before relying on it.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Advanced#checking-out-remote-repositories-tags"
+   ],
+   "sources": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Introduction#removing-files-get-a-specific-version-of-a-file"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference command `git tag -f mytag HEAD`; the extra note that the docs only show `git push --tags` is accurate to section [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-03",
+   "in_scope": true,
+   "answer": "Create the repository locally, add the Gitosis server as the remote, and push your first commit [3]:\n\n```bash\nmkdir tea_timer\ncd tea_timer\ngit init\ngit remote add origin git@example.com:tea_timer.git\n# Add some files and commit.\ngit push origin master:refs/heads/master\n```\n\nThe push sets your local `master` branch to track the remote `master`, so you can later use `git pull` to fetch and merge automatically [3].\n\nThe provided sections don't say how to add a `tea_timer` entry to `gitosis.conf` or how to push that configuration change. Section 1 covers cloning the `gitosis-admin` repository to edit that configuration [1][2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Commands and explanation match the reference and section [3]. The closing notes about gitosis.conf and cloning gitosis-admin are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-04",
+   "in_scope": true,
+   "answer": "Running `git merge myBranch` merges the given branch into the current branch [1]. The result depends on how the two histories relate:\n\n- **Fast-forward:** If the current branch is a direct ancestor of the given branch, Git performs a fast-forward merge and redirects the current branch head to point at the new branch tip [1]. No merge commit is created.\n- **Merge commit:** In all other cases, Git records a merge commit with both the previous commit and the given branch tip as parents [1].\n- **Conflicts:** If the merge produces conflicts, you must resolve them by hand before the merge commit is recorded [1]. Conflicting regions are marked with `<<<<<<<`, `=======`, and `>>>>>>>` markers, where the part between the first two markers comes from the current (HEAD) branch and the part between the last two comes from the branch being merged [2].\n\n```\ngit switch master\ngit merge side-branch\n```\n\nIf the merge conflicts, run `git log --merge` to list the commits that lead to the conflict [2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9"
+   ],
+   "sources": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9",
+    "git/Branching_&_merging#introduction",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference on fast-forward vs merge commit and manual conflict resolution; the marker explanation and git log --merge are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-05",
+   "in_scope": true,
+   "answer": "Commit inside the submodule first, then record the change in the superproject. The docs list this order:\n\n1. Make the change in the submodule. [1]\n2. Commit the change in the submodule. [1]\n3. Commit the change in the superproject. [1]\n4. Run `git submodule update` to push the change to the individual repositories that predate the superproject. [1]\n\nThe docs don't give command examples for this workflow, and step 4 doesn't say how the push happens, so check the full Git documentation for the exact commands.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Submodules_and_Superprojects#work-flow"
+   ],
+   "sources": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "python/Idioms#imports"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The four steps match the reference and section [1]. The caveats about missing command examples and an unexplained step 4 are accurate to the retrieved text."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-06",
+   "in_scope": true,
+   "answer": "Based on the documentation, **GitHub, GitLab, and Bitbucket** offer free hosting regardless of a project's license [1]. The docs say these sites \"offer free hosting and other services regardless of a project's license\" [1].\n\nThe other listed services, such as NotABug, GNU Savannah, repo.or.cz, Codeberg, and disroot, require projects to be appropriately licensed and open source [1].\n\nThe docs don't say whether Assembla's free tier, which offers a 500 MB public or private repository [2], has any license requirement.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other"
+   ],
+   "sources": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/GitHub#introduction",
+    "git/Introduction#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Names GitHub, GitLab and Bitbucket as license-agnostic, matching the reference. The claims about the open-source-only sites and Assembla's 500 MB tier are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-07",
+   "in_scope": true,
+   "answer": "**Bootstrap:** Copy your public key to the Gitosis server, then initialize Gitosis with it.\n\n1. Copy the key to the server [1]:\n```\nscp .ssh/id_rsa.pub user@example.com:/tmp\n```\n(If you don't have a key yet, generate one with `ssh-keygen -t rsa` [2].)\n\n2. Initialize Gitosis, feeding the key in on stdin [3]:\n```\nsudo -H -u git gitosis-init < /tmp/id_rsa.pub\n```\nOn success, you'll see \"Initialized empty Git repository\" messages [3].\n\n**Permission fix:** Make the post-update hook of the gitosis-admin repository executable [3]:\n```\nsudo chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update\n```\n\nThe docs don't cover any other permission changes for this step.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ],
+   "sources": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives the same gitosis-init command and chmod 755 on post-update as the reference. Every step traces to sections [1]-[3]; 'executable' is a reasonable reading of chmod 755."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-08",
+   "in_scope": true,
+   "answer": "Define a group in `gitosis.conf` that lists the users as members and the repositories as `writable`. Each user needs a public key in `keydir`.\n\n**1. Add each user's public key** [2]\n\nUsers are identified by their public RSA keys, and the key filename sets the Git username. Keys must end in `.pub`.\n\n```\ncd gitosis-admin\ncp /path/to/rsa/key/john.pub keydir/\ncp /path/to/rsa/key/martin.pub keydir/\ncp /path/to/rsa/key/stephen.pub keydir/\ngit add keydir/*\ngit commit -am \"Adding john, martin, and stephen accounts.\"\ngit push\n```\n\n**2. Define the group in `gitosis.conf`** [1]\n\n```\n[group blue_team]\nmembers = john martin stephen\nwritable = tea_timer coffee_maker\n```\n\n**3. Save, commit, and push**\n\n```\ngit commit -am \"Give john, martin, and stephen access to the repositories tea_timer and coffee_maker.\"\ngit push\n```\n\nAnyone in `blue_team` (john, martin, and stephen) can then write to `tea_timer` and `coffee_maker` [1][2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: a [group] section with members and writable lists, then commit and push. The key-file details are supported by [2], and the group example by [1]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-09",
+   "in_scope": true,
+   "answer": "Add the developer's public key to the `gitosis-admin` repository and push. Gitosis links the key to a username by its filename [2].\n\n```bash\ncd gitosis-admin\ncp /path/to/rsa/key/john.pub keydir/     # developer's public key\ngit add keydir/*\ngit commit -am \"Adding the john account.\"\ngit push\n```\n\nSteps:\n\n1. **Get the developer's public key.** Their key must end in `.pub` [2]. If they don't have one, they can create it with `ssh-keygen -t rsa` [3].\n2. **Add the key to `keydir/`.** The filename sets the Git username. For example, `keydir/john.pub` links the user `john` to that key [2].\n3. **Commit and push.** Once pushed, the developer can clone the repositories they have access to [2].\n4. **Grant repository access in `gitosis.conf`.** The developer can read and write only if `gitosis.conf` grants it [2]. The group syntax is shown in the docs as `writable = <repo>` and `members = <user>` [4]. The sections do not show the full syntax for adding a member to an existing repository group, so check the Configuring Gitosis section for that.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ],
+   "sources": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: put the key at keydir/<name>.pub in gitosis-admin, then add, commit and push. Every claim traces to sections [2], [3] or [4]."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "git-10",
+   "in_scope": true,
+   "answer": "Yes. Bitbucket's free accounts support an unlimited number of private repositories, and they allow up to five users [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference (unlimited private repos, up to five users), and section [1] directly supports both claims."
+   }
+  },
+  {
+   "method": "vector",
+   "id": "out-01",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python's dictionary/array-based switch emulation and `match` statements, Emacs Python mode, SQL CREATE TABLE, and using SWIG to wrap C code. None of them describe Cisco switches, VLAN configuration, or networking commands, so the question cannot be answered from these sections.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Conditional_Statements#switch",
+    "python/Development_Environments#emacs",
+    "sql/Create_Table#introduction",
+    "python/Editing_and_Running_Python_Code#ide-s-python-mode-for-emacs",
+    "python/Extending_with_C#using-swig"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "out-02",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover SQL (SELECT, ORDER BY, relational database concepts, NULL handling) and Git-based systems. None of them contain a sourdough bread recipe or any baking information.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-first-query",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_IS_NULL_Predicate#some-examples",
+    "git/Systems#git-based-systems-case-studies"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "out-03",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Git, git-svn, GitHub webhooks, and a Git documentation table of contents. None of them mention Kubernetes, deployments, or autoscaling, so I can't answer this from the documentation.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/git-svn#dealing-with-local-changes",
+    "git/GitHub#functionalities-webhooks",
+    "git/git-svn#sending-changes-upstream",
+    "git/Getting_help#web-pages",
+    "git/Introduction#table-of-contents"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "out-04",
+   "in_scope": false,
+   "answer": "Not in docs: None of the provided sections cover React, useEffect, or useLayoutEffect. The sections address Python context managers, Python naming conventions, diff/patch in Git, global temporary tables in SQL, and Python variables, so the question cannot be answered from them.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Context_Managers#technical-details",
+    "python/Naming_conventions#introduction",
+    "git/Introduction#diff-and-patch-the-currency-of-open-source-collaboration",
+    "sql/Temporary_Table#global-temporary-tables-gtt",
+    "python/Variables_and_Strings#variables"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "out-05",
+   "in_scope": false,
+   "answer": "Not in docs: The sections cover Python libraries for Excel files (xlwt, xlutils, XlsxWriter), a pandas CSV question, and downloading files in Python. None of them discuss Canadian personal tax returns or tax filing procedures.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Excel#xlwt",
+    "python/Excel#xlutils",
+    "python/Excel#xlsxwriter",
+    "python/Q&A#using-pandas-for-opening-csv-file",
+    "python/Internet#downloading-files"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "out-06",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python editors and running programs (Emacs python-mode, IDLE, Linux terminal steps), SQL table constraints, and the SQL ALTER statement. None of them mention cars, oil changes, or the 2015 Toyota Corolla, so I can't answer this from the documentation.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#ide-s-python-mode-for-emacs",
+    "python/Creating_Python_Programs#hello-world-linux",
+    "python/Editing_and_Running_Python_Code#ide-s-idle",
+    "sql/Alter_Table#table-constraints-alter-a-table-constraint",
+    "sql/Data_Definition_Language#alter-statement"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-01",
+   "in_scope": true,
+   "answer": "A function can return multiple values, and the caller captures them by unpacking into multiple names. [2]\n\n```python\ndef first2items(list1):\n    return list1[0], list1[1]\n\na, b = first2items([\"Hello\", \"world\", \"hi\", \"universe\"])\nprint(a + \" \" + b)  # Hello world\n```\n\nThe `return` statement lists the values separated by commas, and the call site assigns them to matching variables (`a, b`). [2]",
+   "not_in_docs": false,
+   "cited": [
+    "python/Loops#range-versus-xrange",
+    "python/Functions#function-calls-defining-functions"
+   ],
+   "sources": [
+    "python/Loops#range-versus-xrange",
+    "python/Functions#function-calls-defining-functions",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Loops#the-break-statement"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (comma-separated return, unpack with a, b) and the code example comes directly from section [2]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-02",
+   "in_scope": true,
+   "answer": "The documentation shows this pattern in [1]. The script asks for a name and a password, then checks that both match a known pair with `and`:\n\n```python\nname = input(\"What is your name? \")\npassword = input(\"What is the password? \")\nif name == \"Josh\" and password == \"Friday\":\n    print(\"Welcome Josh\")\nelif name == \"Fred\" and password == \"Rock\":\n    print(\"Welcome Fred\")\nelse:\n    print(\"I don't know you.\")\n```\n\n[1] uses `raw_input`, but the other sections use `input()` [2][5], so I've used `input()` here. The example in [1] is only a simple illustration. It also says that real password code should never be implemented this way [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Variables_and_Strings#strings-and-variables"
+   ],
+   "sources": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Variables_and_Strings#exercises",
+    "python/Decision_Control#exercises",
+    "python/Variables_and_Strings#strings-and-variables"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives the same if/elif/else with `and` structure and messages. It swaps raw_input for input(), which is valid and explained. All claims match [1], [2] and [5]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-03",
+   "in_scope": true,
+   "answer": "Not in docs: the sections don't show extended slice syntax with a step (`list[start:stop:step]`). They do cover indexing, slicing, and `range()` with a step, so you can combine those.\n\nUse `range()` with a step to pick the indexes, then read each item by index. `range(start, stop, step)` is documented in [2], and indexing a list by position is shown in [1]. The list comprehension is shown in [5]:\n\n```python\nspam = [10, 20, 30, 40, 50, 60]\n\n# Every second element (indexes 0, 2",
+   "not_in_docs": true,
+   "cited": [
+    "python/Sequences#lists",
+    "python/Lists#iteration",
+    "python/Lists#overview"
+   ],
+   "sources": [
+    "python/Sequences#lists",
+    "python/Lists#iteration",
+    "python/Strings#string-operations-indexing-and-slicing",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#overview"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says extended slice syntax is not in the docs and offers a range() workaround instead of list[a:b:n]. Its claims about range, indexing and comprehensions are supported by the sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-04",
+   "in_scope": true,
+   "answer": "The error happens because generators evaluate lazily. The generator is created inside the `with` block, but its body doesn't run until you iterate over it. By then the file has already been closed. [1]\n\nThe `with` statement closes the file at the end of the block, but the lines aren't read until the generator is evaluated, so reading from the closed file raises `ValueError: I/O operation on closed file`. [1]\n\nPossible fixes from the docs:\n\n1. **Avoid the generator and use a list.** This is generally appropriate for reading a file, since it minimizes system calls and reads the file all at once (unless the file is very large). [1]\n\n   ```python\n   with open(filename) as f:\n       lines = [line.rstrip('\\n') for line in f]\n   # lines is usable here\n   ```\n\n2. **Keep the resource open inside the generator.** Hold the file within a generator function so it stays open while you iterate. Then call `generator.close()` to release it, or wrap the generator with `@contextlib.closing` to automate that. [1]\n\n   Note: the docs describe this pattern but the code examples are not included in the provided sections, so I can't show the exact code from them.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Context_Managers#caveats-generators"
+   ],
+   "sources": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Errors#exceptions-dealing-with-exceptions"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: lazy evaluation, file closed, list fix, generator function with close()/contextlib.closing. The code snippet is illustrative, and the answer notes the docs' examples are absent."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-05",
+   "in_scope": true,
+   "answer": "**Why scopes exist:** In a large system, one piece of code should not affect another in hard-to-predict ways. A simple way to support this is to keep one programmer's choice of a name from blocking another's use of it. Scope was introduced for this purpose [1].\n\n**Ways to create a separate region for names:**\n\n- **Functions:** Scope is delineated by function and class blocks [2]. Functions can also be nested, and an inner function can see names in an enclosing scope [2]. Functions return data as the result of execution [1].\n- **Classes:** Class blocks also delineate scope [2].\n- **Modules:** A module is usually stored in a separate `.py` file [4]. The docs say modules are one of the two ways of delimiting regions [1], but they don't explain module scope or namespaces in detail.\n\n**Things that do not create a scope:** A loop does not create its own scope, so a variable assigned in a `for` loop remains visible afterward [2]. A `with` block also does not create a new scope: the target of a `with` statement stays visible after the block exits, because local variables have function scope [3].\n\n**Example of a nested scope** (Python 3, from [5]):\n\n```python\ndef outer():\n  outerint = 0\n  outerint2 = 10\n  def inner():\n    nonlocal outerint\n    outerint = 1   # changes outer's outerint\n    outerint2 = 1  # creates",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Context_Managers#caveats-context-not-scope",
+    "python/Modules#introduction",
+    "python/Scoping#variables-keyword-nonlocal"
+   ],
+   "sources": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Context_Managers#caveats-context-not-scope",
+    "python/Modules#introduction",
+    "python/Scoping#variables-keyword-nonlocal"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives the purpose, functions and modules as the two delimiters, and functions returning data. It only vaguely nods to namespaces. Extra claims about classes, loops and with are supported by the sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-06",
+   "in_scope": true,
+   "answer": "Yes. Lists can hold values of different types. [1] says that \"Lists may contain objects of varying types,\" and gives an example holding both strings and a number. [2] adds that list elements \"don't have to be of the same type\": you can put numbers, letters, strings and nested lists all in one list.\n\nTo write a list out directly, use square brackets and separate the values with commas [1]:\n\n```python\nspam = [\"bacon\", \"eggs\", 42]\nprint(spam)   # ['bacon', 'eggs', 42]\n```\n\nThe sections do not say anything specific about putting custom objects into a list, beyond the general statement that lists may hold objects of varying types [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sequences#lists",
+    "python/Lists#introduction"
+   ],
+   "sources": [
+    "python/Sequences#lists",
+    "python/Lists#introduction",
+    "python/Sequences#introduction",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Data_Types#creating-objects-of-defined-types"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer confirms mixed types are allowed and shows comma-separated values in square brackets; all claims match sections [1] and [2], and it honestly notes custom objects aren't specifically covered."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-07",
+   "in_scope": true,
+   "answer": "Use the **symmetric difference**: the elements that are in one set or the other, but not in both [1].\n\n```python\ns1 = set([4, 6, 9])\ns2 = set([1, 6, 8])\n\ns1.symmetric_difference(s2)   # set([8, 1, 4, 9])\ns1 ^ s2                       # set([8, 1, 4, 9])\n\n# In-place update of s1\ns1.symmetric_difference_update(s2)\ns1                            # set([8, 1, 4, 9])\n```\n\nThe method form is `symmetric_difference()`, the operator form is `^`, and `symmetric_difference_update()` modifies the set in place [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Sets#overview-set-operations-symmetric-difference"
+   ],
+   "sources": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Lists#intersection",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-set-operations-intersection"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (symmetric_difference, ^, symmetric_difference_update) and all claims and code come directly from section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-08",
+   "in_scope": true,
+   "answer": "Most open source projects use **Git, Mercurial (hg), or Bazaar (bzr)** [1].\n\nBranching lets you start from a \"known working state,\" and if you go down the wrong path, you can revert to where you started [1]. Version control also becomes vital as programs grow larger and more complex, and when multiple developers work together [1].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control"
+   ],
+   "sources": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Interoperation#introduction",
+    "git/Introduction#introduction",
+    "git/git-svn#overview",
+    "git/Introduction#git-checkout-is-not-subversion-checkout"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (Git, Mercurial, Bazaar; branch from known working state and revert). All claims are supported by section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-09",
+   "in_scope": true,
+   "answer": "Replace does not change the original variable. It returns a new string, so you need to save the result to a new variable (or reassign the same name) to keep the change [1].\n\n```python\nstring = 'Hello, world'\nnewString = string.replace('o', 'X')\nprint(string)     # Hello, world\nprint(newString)  # HellX, wXrld\n```\n\nThe docs note that \"the original variable (string) remains unchanged after the call to replace\" [1]. If you want to keep the change under the same name, assign the result back: `string = string.replace('o', 'X')` [1][4].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings#variables"
+   ],
+   "sources": [
+    "python/Strings#string-methods-replace",
+    "python/Regular_Expression#replacing",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: replace returns a new string and leaves the original unchanged. The code example and quote come from [1]. Reassigning to the same name is supported by [4]'s variable reassignment."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-10",
+   "in_scope": true,
+   "answer": "In Python 3, modules automatically use the optimized implementation when one is available. The docs say that with the Python 3 change, \"modules automatically using optimized implementations if available\" [1]. For example, cElementTree is \"not needed in Python 3.3+, which automatically uses a fast implementation if possible\" [2].\n\nYou don't have to choose manually for most modules. Two exceptions are noted:\n- **cStringIO** was replaced by io.StringIO in Python 3 [2].\n- **cProfile/profile** still exists as a pair as of Python 3.4, and cProfile is recommended for most use [1][2].\n\nFor code that must run on both Python 2 and 3, the docs suggest trying to import the C version and falling back to the Python version [3]. The sections don't include the code for this pattern.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules-importing"
+   ],
+   "sources": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/PyPy#introduction",
+    "python/Extending_with_C#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": false,
+    "why": "",
+    "parsed": "fallback"
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-11",
+   "in_scope": true,
+   "answer": "`type(3) is object` returns False because `type()` ignores inheritance. `isinstance()` checks the whole inheritance chain.\n\n- `type()` disregards class inheritance, so `type(3) is object` yields False while `isinstance(3, object)` yields True [1].\n- `isinstance()` provides a weaker condition than a comparison using `type` [2].\n\nSo `isinstance(3, object)` is True because `int` inherits from `object`, but `type(3)` returns the exact class of `3` rather than any ancestor, so it is not `object` itself [1][2].\n\n```python\ntype(3) is object        # False: exact type comparison\nisinstance(3, object)    # True: 3 is an instance of a subclass of object\n```\n\nThe sections don't state the exact result of `type(3)`, so they don't name the class explicitly.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance"
+   ],
+   "sources": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance",
+    "python/Operators#logical-operators-not",
+    "python/Strings#string-methods-is",
+    "python/Operators#identity"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Matches reference, but 'int inherits from object' and 'checks whole inheritance chain' are not stated in the retrieved sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-12",
+   "in_scope": true,
+   "answer": "Python's reserved special methods begin and end with two underscores (double-underscore on both sides). They are used for special purposes such as mimicking numerical or container operations [1].\n\nSingle-underscore names are a different convention. Methods beginning with a single underscore are conventionally 'private' to the scope they are introduced within [1]. The difference is that dunder names are reserved for Python's special-method protocol, while single-underscore names signal private use by convention only [1].\n\nThe sections don't include an example of a special method or show how Python invokes one, so I can't give a code example from them.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-special-methods"
+   ],
+   "sources": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-multiple-inheritance",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-class-members-methods"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: double underscores on both sides for special methods, single leading underscore as 'private' by convention. Every claim is supported by section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-13",
+   "in_scope": true,
+   "answer": "You can bind a function to the existing instance with `types.MethodType` and assign it as an attribute on that instance. This adds the method to that one object and leaves the class unchanged [2].\n\n```python\nimport types\n\nclass Spam:\n  def __init__(self):\n    self.myeggs = 5\n\neggs = Spam()\n\ndef cook(self):\n  print(\"cooking %s eggs\" % self.myeggs)\n\nf = types.MethodType(cook, eggs, Spam)\neggs.cook = f\n\neggs.cook()   # outputs: cooking 5 eggs\n```\n\n[2]\n\nTo make this reusable, you can wrap the two steps in a helper function [1]:\n\n```python\ndef attach_method(fxn, instance, myclass):\n  f = types.MethodType(fxn, instance, myclass)\n  setattr(instance, fxn.__name__, f)\n\nattach_method(cook, eggs, Spam)\n```\n\n[1]\n\nNote that inside the helper you must use `setattr` rather than `instance.fxn = f`, because the latter would create an attribute named `fxn` instead of using the function's name [1].\n\nAdding the method to the class instead (`Spam.cook = cook`) would make it available to all instances, including ones created later [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class"
+   ],
+   "sources": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-class-members-dynamic-class-structure",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches reference: MethodType binding and assignment to eggs.cook. Helper, setattr note, and class alternative are all supported by sections [1], [2], and [5]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-14",
+   "in_scope": true,
+   "answer": "You can use a `while` loop that keeps running until the password matches. The documentation's example [3] does this:\n\n```python\n# Note that this must not be the password so that the\n# while loop runs at least once.\npassword = \"foobar\"\n\n# note that != means not equal\nwhile password != \"unicorn\":\n    password = input(\"Password: \")\nprint(\"Welcome in\")\n```\n\nThe variable is initialized to a value that isn't the password, so the loop runs at least once. Each pass asks for input, and the loop ends when the correct password (\"unicorn\" in this example) is entered [3].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Loops#while-loops-examples"
+   ],
+   "sources": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "python/Loops#while-loops-examples",
+    "python/Variables_and_Strings~Solutions#introduction",
+    "python/Variables_and_Strings#strings-and-variables"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference (initialize to wrong value, while password != \"unicorn\", input(\"Password: \"), print \"Welcome in\") and the code and explanation come from section [3]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-15",
+   "in_scope": true,
+   "answer": "You can install a downloaded wheel file directly with pip. [1] gives this example, noting it is useful when installation from PyPI fails and you need to download the `.whl` manually:\n\n```\npip install mypackage.whl\n```\n\n[1] also notes that `python -m pip` works as an alternative way to call pip:\n\n```\npython -m pip install mypackage.whl\n```\n\nReplace `mypackage.whl` with the name of your downloaded file. [1] does not cover file paths or other installation options.",
+   "not_in_docs": false,
+   "cited": [
+    "python/Package_management#introduction"
+   ],
+   "sources": [
+    "python/Package_management#introduction",
+    "python/numpy#installation",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Package_management#requirements-txt",
+    "python/Editing_and_Running_Python_Code#managing-code-libraries-and-modules"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives `pip install mypackage.whl` for when PyPI install fails. The `python -m pip` variant is a reasonable extension of the documented `-m` usage."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-16",
+   "in_scope": true,
+   "answer": "Not in docs: the sections give the target output but no solution code for the nested loop, the header row, or the divider line.\n\nWhat the docs do provide:\n\n- The exercise asks for a 3x3 table with a header row and a divider line, shown as ` 1 2 3 / ------ / 1|1 2 3 ...` [1].\n- A `for` loop iterates over a sequence, and `range(1,4)` produces 1, 2, 3, where the second argument is excluded [2][3].\n- `print` puts a space between comma-separated items on one line, and a bare `print` ends the line [5].\n- In Python 3, `print(i, end=\" \")` keeps output on the same line [5].\n\nUsing only those pieces, a possible approach is:\n\n```python\n# Header row: leading spaces, then column numbers\nprint(\"  \", end=\"\")\nfor j in range(1, 4):\n    print(j, end=\" \")\nprint()\n\n# Divider line\nprint(\" ------\")\n\n# Rows: row label, \"|\", then the products\nfor i in range(1, 4):\n    print(f\"{i}|\",",
+   "not_in_docs": true,
+   "cited": [
+    "python/Control_Flow#exercises",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Loops#for-loops",
+    "python/Input_and_Output#output"
+   ],
+   "sources": [
+    "python/Control_Flow#exercises",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Loops#for-loops",
+    "python/Loops#while-loops",
+    "python/Input_and_Output#output"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": false,
+    "why": "Opens with 'Not in docs', which counts as incorrect. It also adds ungrounded claims, such as the f-string and the `print(\"  \", end=\"\")` code, and the answer is cut off."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-17",
+   "in_scope": true,
+   "answer": "The division is evaluated first. Operations in the same precedence row are performed left to right, so the division to the left of the multiplication runs before it [1]. The expression `8 / 2 * 4` is therefore `(8 / 2) * 4`.\n\n```python\n>>> 8 / 2 * 4\n16.0\n```\n\nIn Python 3, `/` always does true division and returns a float, so `8 / 2` is `4.0` and the result is `16.0` [3]. In Python 2.x, `/` on two integers uses floor division and returns an integer, so the result there is `16` [5].",
+   "not_in_docs": false,
+   "cited": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division",
+    "python/Numbers#introduction"
+   ],
+   "sources": [
+    "python/Basic_Math#order-of-operations",
+    "python/Decision_Control#boolean-expressions",
+    "python/Operators#floor-division-and-true-division",
+    "python/Math#introduction",
+    "python/Numbers#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: left-to-right at the same precedence, so division goes first. The Python 3 and 2 behavior is supported by [3] and [5]; the 16.0 and 16 results follow from it."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-18",
+   "in_scope": true,
+   "answer": "APSW's `cursor.execute` returns an iterator over the result records, so you can loop over the rows directly without building a list [1]. The docs describe this as the basis for a function that returns an iterator instead of all results at once [1].\n\nSketch (the docs' own example code isn't included in these sections, and the connection setup isn't shown, so the connection lines are an assumption):\n\n```python\nimport apsw\n\nconn = apsw.Connection(\"sales.db\")   # setup not shown in the docs\ncursor = conn.cursor()\n\n# Pass values as parameters, not via string formatting [2]\nquery = \"SELECT name FROM employees WHERE company = ?\"\nfor (name,) in cursor.execute(query, (\"Acme\",)):\n    print(name)   # one row at a time; each row is a tuple [1]\n```\n\nWrapping this in a generator",
+   "not_in_docs": false,
+   "cited": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting"
+   ],
+   "sources": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Loops#range-versus-xrange"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: cursor.execute returns an iterator, so rows can be looped one tuple at a time. Unsupported parts (connection setup) are flagged as assumptions."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-01",
+   "in_scope": true,
+   "answer": "**Why an index speeds up lookups:** Without an index, a lookup may have to read every row. With a binary search over ordered data, the DBMS needs far fewer reads. In the docs' example, finding a name among 1 million entries takes up to 500,000 row reads with a linear scan, but 20 or fewer with binary search, a factor of 25,000 [2]. The index keeps the data ordered so that binary search can be used [2]. Because the DBMS can then read only the rows that match the criteria, rather than all rows, queries on a filtered or sorted column get faster [1][3][4].\n\n**When an index can hurt:**\n\n- **Insertion cost:** Sorting new data into the existing order is extra work during data entry. The docs say this cost applies once per insert",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Performance#index",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics"
+   ],
+   "sources": [
+    "sql/Performance#index",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "python/Tips_and_Tricks#data-type-choice"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Explains binary search vs linear scan and insertion overhead, matching the reference's core. It omits small tables, many indexes and storage costs, and is truncated. Claims are supported by the sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-02",
+   "in_scope": true,
+   "answer": "**Short answer:** No, you don't specify a foreign key in each query. A foreign key is part of the table definition, but a join is written in each query that needs it.\n\n**Join**\n- A join links rows through identical values. It has no direction. [1]\n- It must be expressed within every DML statement that uses it (except views). [1]\n- In a SELECT, joins are specified in the FROM clause. [4]\n\n**Foreign key**\n- It is a directed reference from a child table to a parent table. [2]\n- It is part of the table definition, and all DML commands respect it without the statement having to express it. [1]\n- It enforces that the referenced column",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Data_Query_Language#select-query-from-clause"
+   ],
+   "sources": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Data_Query_Language#select-query-from-clause",
+    "sql/Foreign_Key#n-m-relationship"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Covers direction, table-definition vs per-statement, and views exception; all claims supported by sections [1], [2], [4]. The truncated final bullet doesn't undermine this."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-03",
+   "in_scope": true,
+   "answer": "**Short answer:** Without an ORDER BY clause, the DBMS may return rows in any order and changes between runs are allowed [2]. Add an ORDER BY clause, and add a second column as a tie-breaker so rows with equal sort values are ordered consistently [1][2]. You can sort by a column you don't select [2].\n\n**Why it happens:** The DBMS may return rows by primary key, insertion order, an internal index order, or randomly. \"Don't expect anything\" [2]. Rows with identical values in the sort column are ordered arbitrarily unless more columns are specified [1][2].\n\n**Fix:** Sort by the primary key, or another unique column, as the last sort key. Use `ASC` or `DESC` explicitly, because the default is descending [1].\n\n```sql\nSELECT name, priority\nFROM <your_table>\nORDER BY priority ASC, id_reunion ASC;\n```\n\nHere `priority` sorts the rows, and `id_reunion` breaks ties among rows with the same priority [1][2].\n\n**Sorting by an unselected column:** This works. In the ORDER BY clause you can use any column of the processed table, not only the ones in the projection [2]. The example above sorts by `id_reunion` without returning it.\n\nNote: the documentation does not give the name of your table, so `<your_table>` is a placeholder.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-group-by-clause",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/Managing_Indexes#unique-index"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: ORDER BY, extra columns break ties, any table column can be used. Claims are supported by [1], [2]; the primary-key tie-breaker advice is a reasonable inference."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-04",
+   "in_scope": true,
+   "answer": "When several users change data at the same time, a DBMS guarantees compliance with the ACID paradigm. In a multi-user environment, all changes within a transaction are [1]:\n\n- **Atomic:** all changes take place or none do [1][4].\n- **Consistent:** changes transform the database from one valid state to another valid state [1][3].\n- **Isolated:** transactions of different users working at the same time do not affect each other [1].\n- **Durable:** committed changes are retained even if the system crashes afterward [1].\n\nTransactions are meant to keep the database in one consistent state after another, even during parallel processing, disk crashes, or power failures [2].\n\nThe docs also note a limit: the database does not guarantee logical integrity. If an application forgets to update a related row, problems can still arise [3].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity"
+   ],
+   "sources": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity",
+    "sql/Data_Control_Language#grant-statement"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference on ACID and all four letters; extra claims about consistency, parallel processing and logical integrity are supported by sections [2], [3] and [4]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-05",
+   "in_scope": true,
+   "answer": "**Why the error happens**\n\nAn aggregate function such as `MAX(weight)` returns one value for the whole result set. A normal column like `lastname` returns one value per row. Putting them together asks the DBMS for one value and many values at once, which is a contradiction [1][3]. The SQL standard says this should raise an error at runtime, but some DBMSs instead return suspicious results [3].\n\n**When mixing is allowed**\n\n- **Aggregates only:** You can use several aggregate functions in one projection, as long as you don't mix them with normal columns [1].\n- **Per-row functions:** Functions that return one value per row, such as `concat()`, can be mixed freely with column names [3].\n- **With GROUP BY:** Aggregates are computed once per group, and the GROUP BY column(s) may be displayed because they can't change within a group [1].\n\n**Examples**\n\n```sql\n-- Not allowed: a normal column with an aggregate\nSELECT lastname, MAX(weight) FROM person;\n\n-- Allowed: aggregates only\nSELECT MAX(weight), MIN(weight) FROM person;\n\n-- Allowed: per-row function mixed with a column\nSELECT concat(firstname, lastname), weight FROM person;\n\n-- Allowed: GROUP BY column shown with an aggregate\nSELECT lastname, MAX(weight) FROM person GROUP BY lastname;\n```",
+   "not_in_docs": false,
+   "cited": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions"
+   ],
+   "sources": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Subquery#row-subquery"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: aggregates return one value per set, so mixing with normal columns is a contradiction, except with GROUP BY. Extra claims are supported by [1] and [3]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-06",
+   "in_scope": true,
+   "answer": "Not in docs: the sections describe the approaches but do not include the actual SQL statements, so I can't give you a verified query.\n\nThe documentation describes two ways to solve this [1]:\n\n1. **Non-correlated table subquery:** A subquery builds a list of each `booking_number` with its highest `version`. The outer query joins to that list to retrieve the full rows for those pairs [1].\n\n2. **Correlated scalar value subquery:** The outer query reads all rows",
+   "not_in_docs": true,
+   "cited": [
+    "sql/SELECT:_Subquery#another-example"
+   ],
+   "sources": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Quantified_Comparison#introduction",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "It opens with a 'Not in docs' hedge and is cut off mid-description of the correlated approach, never mentioning the '=' comparison. Its claims match the retrieved text."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-07",
+   "in_scope": true,
+   "answer": "Without an ORDER BY inside the window, the frame is the whole partition. The docs say: \"If the WINDOW ORDER clause is omitted, the WINDOW FRAME clause is not allowed and all rows of the partition constitute the frame.\" [1]\n\n- **With PARTITION BY:** the frame is every row in the current row's partition [1].\n- **Without PARTITION BY:** all rows of the result set form one partition, so the frame is every row in the result set [1].\n\nThe frame is therefore the same for every row in a partition. The default `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` applies only when a frame is omitted from a window that has an ORDER clause [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-defaults"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Retrieve_Top_N_Rows_per_Group#window-functions-example-8"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer says the whole partition is the frame when ORDER BY is omitted, matching the reference. The claims about PARTITION BY and the RANGE default are supported by section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-08",
+   "in_scope": true,
+   "answer": "Standard SQL does not have a separate auto-increment data type. [1]\n\nInstead, the standard defines an identity specification in CREATE TABLE: \"GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY\". It generates a series of unique values that serve as the primary key. [1][2]\n\nMost DBMS vendors do not support this exact syntax. They use different syntaxes and concepts, such as generators or sequences combined with triggers, a special data type, or other keywords. [2] The wikibook's SQL Dialects Reference has an overview of these implementations. [2]\n\nStandard form, based on the syntax quoted in [2]:\n\n```sql\nCREATE TABLE person (\n  id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,\n  first_name VARCHAR(50)\n);\n```\n\nThe docs don't say which DBMS accepts this form, so check your vendor's documentation or the SQL Dialects Reference before relying on it. [2]",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-identity-specification"
+   ],
+   "sources": [
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/Create_a_simple_Table#conceive-the-structure",
+    "sql/Create_Table#general-description"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: no separate auto-increment type, use GENERATED ... AS IDENTITY in CREATE TABLE. The claims are supported by [1] and [2]; the SQL example only illustrates the quoted syntax."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-09",
+   "in_scope": true,
+   "answer": "**Default direction:** Descending. The docs state, \"The keywords ASC or DESC can be added after each column... Default is a descending sort\" [1]. Each column can have its own keyword, and any column without one is sorted descending.\n\n**Ties in the first column:** The first column sorts the rows. The second column is used only to order rows that share the same value in the first column, and so on [1]. Following columns are processed only for rows with identical values in all previous columns [3].\n\n**Example (illustrative, not from the docs):**\n\n```sql\nSELECT id_reunion, priority, date\nFROM reunion\nORDER BY priority, date ASC;\n```\n\nHere `priority` is sorted descending (default), and rows with the same `priority` are sorted by `date` ascending.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting"
+   ],
+   "sources": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Handle_Data#modify-data-with-update-command",
+    "sql/Performance#index"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: default descending per the docs, and later columns break ties in earlier ones. Claims are supported by [1] and [3]; the example is labeled illustrative."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-10",
+   "in_scope": true,
+   "answer": "Relational databases keep a single shared reference table, such as a Country table, to **increase accuracy** by storing each piece of information only once [1]. Without it, the same fact gets recorded in many forms. Immigration records, for example, listed London-born people's origin as \"England,\" \"Great Britain,\" \"United Kingdom,\" \"U.K.,\" \"UK,\" or \"Engl.,\" which makes questions like \"how many came from the United Kingdom?\" hard to answer [1].\n\nWith one entry per country, anyone recording a country must pick from that list, so \"United Kingdom\" has one unique representation. Other data can then refer to that same entry [1]. This also lets different lists share a common item. A telephone country code list and a list of European castles can both point to the same Country table [1].\n\nMore generally, storing data without redundancy is a core goal. Repeating static details in every record causes duplication, and separating them into their own tables is called normalization [3]. Related values that can occur more than once are stored in a separate table linked by an ID [4].\n\nNot in docs: The sections don't give a specific example of update anomalies or storage-size savings beyond the points above.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Example_Database_Structure#contact"
+   ],
+   "sources": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Example_Database_Structure#contact",
+    "sql/Temporary_Table#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer covers the unique entry per country, avoiding inconsistent spellings, and shared references across lists. Every claim traces to sections 1, 3, and 4."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-11",
+   "in_scope": true,
+   "answer": "The SQL standard defines two kinds of INTERVAL [1]:\n\n1. **Year-month interval:** holds **year and month**.\n2. **Day-time interval:** holds **day, hour, minute, and second**.\n\n[2] describes INTERVAL more generally as a certain range on the time bar, but it does not list the fields separately.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#overview"
+   ],
+   "sources": [
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-data-type",
+    "sql/Data_Types#exact-numeric",
+    "sql/Data_Types#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: year-month (year, month) and day-time (day, hour, minute, second). Section [1] supports both, and the note about [2] is accurate."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-12",
+   "in_scope": true,
+   "answer": "Yes. The SQL standard defines a **MERGE** command that contains the SELECT-then-INSERT-or-UPDATE logic in one statement. It performs an INSERT or an UPDATE depending on whether each row already exists in the target table [1].\n\nUsing the separate pattern has drawbacks: two roundtrips to the DBMS, row-by-row processing with no bulk storing, and syntax spread across three statements, which is error-prone [1]. MERGE avoids these problems [1].\n\nThe sections do not show MERGE's syntax, so I can't give a code example from them. Also, the documentation advises being careful and deactivating AUTOCOMMIT when working with this topic [1].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/MERGE#introduction"
+   ],
+   "sources": [
+    "sql/MERGE#introduction",
+    "sql/Handle_Data#modify-data-with-update-command",
+    "sql/Handle_Data#summary",
+    "sql/UPDATE_2#subqueries-in-where-clause",
+    "sql/INSERT_1#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (MERGE combines the check, INSERT and UPDATE in one statement, avoiding roundtrips and row-by-row work). All claims are supported by section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-13",
+   "in_scope": true,
+   "answer": "Within each partition, the default frame runs from the partition's first row up to the current row, plus any rows tied with the current row. Specifically:\n\n- **Default frame:** If the WINDOW FRAME clause is omitted, it defaults to 'RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW'. This covers the very first row of the partition up to the current row plus all rows with the same value as the current row, because the RANGE syntax applies [1].\n- **Partition boundary:** Each frame stays within its partition. Partitions are distinct and do not overlap [2][3].\n- **No ORDER BY in the window:** If the WINDOW ORDER clause is omitted, the WINDOW FRAME clause is not allowed and all rows of the partition constitute the frame [1].\n\nNote that the docs do not include a code example for this case.",
+   "not_in_docs": false,
+   "cited": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#overall-description"
+   ],
+   "sources": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (frame from partition's first row to current row) and adds the supported RANGE tie detail; all claims trace to sections [1]-[3]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-14",
+   "in_scope": true,
+   "answer": "**Difference between a CTE and a view:** A CTE's scope is limited to the statement where it is defined, whereas a view's definition stays in effect after the view name is used in a statement [1]. For this reason, some people call CTEs \"Inline Views\" [1][3]. The WITH clause is the SQL-standard term for this construct, and Oracle calls it a Subquery Factoring Clause [3].\n\n**Can you reference a CTE in a subselect of the main SELECT?** Yes. The docs give an example where the CTE is used within a SUBSELECT of the main SELECT, and the CTE is further narrowed by a BETWEEN criterion [1]. More generally, after the CTE is defined, its name can be used in the FROM clause or anywhere else a view or table name is allowed [2].\n\nThe sections do not include a code example, so I haven't written one. The CTE definition is only a description of how to retrieve the data, and the data is not necessarily materialized [2].",
+   "not_in_docs": false,
+   "cited": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/with_clause#introduction"
+   ],
+   "sources": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/with_clause#introduction",
+    "sql/Recursions#syntax",
+    "sql/SELECT:_Join_Operation#the-basic-syntax"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: CTE scope is limited to its statement while a view persists, and a CTE can be used in a subselect with BETWEEN. All claims are supported by sections [1]-[3]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-01",
+   "in_scope": true,
+   "answer": "Not in docs: the sections describe the behaviour but don't include the script or the commands needed to build it.\n\nWhat the docs do say: the Bash customization script in [1] shows the current branch name in red when there are outstanding changes and in green when there are none, followed by the current path. The hostname appears at the beginning in a low-lighted colour. The script is based on Mike Stewart's work [1].\n\nThe sections don't include the script's code, so I can't give you a working example from them. The Git documentation page that contains this section should link to the full script.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Interoperation#customizing-your-command-line-prompt"
+   ],
+   "sources": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#branching-delete-a-branch",
+    "git/Rebasing#principle",
+    "git/Branching_&_merging#branching-create-new-branches"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "It gives the red/green branch, path, hostname and Mike Stewart details, but claims the docs page 'should link to the full script', which the sections don't support."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-02",
+   "in_scope": true,
+   "answer": "Not in docs: the sections don't explain how to move or replace an existing tag.\n\nWhat they do say is that a tag is a name pointing to a commit and is meant to stay put. A tag \"will not change,\" so it is used to mark a specific version and \"usually not be changed\" [2][1]. The docs don't say whether Git allows a tag to be re-pointed, or what command would do it.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches"
+   ],
+   "sources": [
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Internal_structure#basic-concepts-reachability-and-garbage-collection",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Branching_&_merging#merging"
+   ],
+   "cites_gold": false,
+   "judge": {
+    "correct": false,
+    "grounded": true,
+    "why": "The answer says 'Not in docs' and omits the `git tag -f mytag HEAD` command. Its claims about tags staying put are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-03",
+   "in_scope": true,
+   "answer": "Use the steps in [1]. Run them in the directory where you want your local copy:\n\n```\nmkdir tea_timer\ncd tea_timer\ngit init\ngit remote add origin git@example.com:tea_timer.git\n# Add some files and commit.\ngit push origin master:refs/heads/master\n```\n\nThe last command links your local `master` branch to the remote `master` branch, so later `git pull` calls work [1]. `example.com` and `tea_timer` are the example server and repository names from the docs, so replace them with your own.\n\nFor other local branches, [3] says a plain `git push` won't send them to the server. Push each one explicitly:\n\n```\ngit push origin <branch_name>\n```\n\nThe sections don't show how to register the new repository in the Gitosis configuration. [2] only says to clone `gitosis-admin`, set your configuration options, and push the configuration back to the server. Check the Gitosis configuration section for the exact steps before running the push above.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository",
+    "git/Introduction#creating-a-git-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Gives the same steps and commands as the reference (mkdir, git init, remote add origin, commit, push master:refs/heads/master). Every claim traces to [1], [2] or [3]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-04",
+   "in_scope": true,
+   "answer": "If the current branch is a direct ancestor of the branch you're merging, Git performs a fast-forward merge: the current branch head is simply moved to point at the new branch's tip. In all other cases, Git records a merge commit that has both the previous commit and the given branch tip as parents [1].\n\n```\ngit merge myBranch   # merges myBranch into the current branch [1]\n```\n\nIf the merge produces conflicts, you must resolve them by hand before the merge commit is recorded [1]. The docs don't go into further detail on the conflict-resolution steps beyond the general description in [3].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict"
+   ],
+   "sources": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#branching-delete-a-branch",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Fast-forward vs merge commit with two parents and manual conflict resolution all match [1]. The closing remark about [3] is a fair description of the retrieved text."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-05",
+   "in_scope": true,
+   "answer": "According to the documentation, the order is:\n\n1. Make the change inside the submodule.\n2. Commit the change in the submodule.\n3. Commit the change in the superproject.\n4. Run `git submodule update` to push the change to the individual repositories that predate the superproject [1].\n\n```sh\n# 1. Edit files inside the submodule\ncd path_to_submodule\n# ... make changes ...\n\n# 2. Commit in the submodule\ngit commit -am \"Change in submodule\"\n\n# 3. Commit in the superproject (records the submodule's new commit)\ncd ..\ngit commit -am \"Update submodule reference\"\n\n# 4. Push the change to the individual repositories\ngit submodule update\n```\n\nThe documentation describes these steps as a general workflow but does not give more detail on step 4. It says only that `git submodule update` pushes the change, and it does not show the exact commands for that.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Submodules_and_Superprojects#work-flow"
+   ],
+   "sources": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#footnotes"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "The four steps match the reference. The code snippet adds unsupported specifics, such as `git commit -am` and the claim that the superproject commit records the submodule's new commit."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-06",
+   "in_scope": true,
+   "answer": "According to [1], three services offer free hosting \"regardless of a project's license\":\n\n- GitHub\n- GitLab\n- Bitbucket\n\nBitbucket's free accounts support up to five users and an unlimited number of private repositories [2].\n\nThe other services in the docs need the project to be open source or appropriately licensed. Codeberg hosts \"for FOSS projects only\" [1], and the NotABug, GNU Savannah, and repo.or.cz entries are listed under the open-source and appropriate-licensing condition [1]. Assembla offers a free public or private repository of 500 MB [3], but the docs do not say whether that free tier is independent of license.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Bitbucket#introduction",
+    "git/Hosting#other"
+   ],
+   "sources": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Hosting#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Names GitHub, GitLab, Bitbucket as license-independent, matching the reference; all added details (Bitbucket limits, Codeberg FOSS-only, Assembla 500MB) are supported by the sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-07",
+   "in_scope": true,
+   "answer": "To bootstrap Gitosis, first copy your public key to the server, then pipe it into `gitosis-init` as the `git` user. Finally, fix the permissions on the admin repo's `post-update` hook.\n\n1. **Copy your public key to the server** [1]:\n   ```\n   scp .ssh/id_rsa.pub user@example.com:/tmp\n   ```\n   If you don't have a key yet, create one with `ssh-keygen -t rsa` [2].\n\n2. **Initialize Gitosis with the key** [4]:\n   ```\n   sudo -H -u git gitosis-init < /tmp/id_rsa.pub\n   ```\n   On success, you'll see \"Initialized empty Git repository\" messages [4].\n\n3. **Fix the post-update hook permissions** [4]:\n   ```\n   sudo chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update\n   ```\n\nThe hook needs mode `755` so it is executable.\n\nNot in docs: the sections don't say how to verify the bootstrap beyond the success messages.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ],
+   "sources": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": false,
+    "why": "Commands match the reference, but the claim that 755 is needed 'so it is executable' is not stated in the retrieved sections."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-08",
+   "in_scope": true,
+   "answer": "Define a group in `gitosis.conf` that lists the users as `members` and the repositories as `writable`. Then add each user's public key to `keydir`.\n\n1. **Add each user's public key.** Users are identified by their public RSA keys, which Gitosis keeps in `keydir` within the gitosis-admin repository. A user is linked to their Git username by the key file's name, and keys must end in `.pub` [2].\n\n   ```\n   cd gitosis-admin\n   cp /path/to/rsa/key/john.pub keydir/\n   cp /path/to/rsa/key/martin.pub keydir/\n   cp /path/to/rsa/key/stephen.pub keydir/\n   git add keydir/*\n   git commit -am \"Adding the john, martin, and stephen accounts.\"\n   git push\n   ```\n   [2]\n\n2. **Define the group in `gitosis.conf`.** Members are listed after `members =`, separated by spaces, and repositories after `writable =`:\n\n   ```\n   [group blue_team]\n   members = john martin stephen\n   writable = tea_timer coffee_maker\n   ```\n   [1]\n\n3. **Save, commit, and push the config file.**\n\n   ```\n   git commit -am \"Give john, martin, and stephen access to the repositories tea_timer and coffee_maker.\"\n   git push\n   ```\n   [1]\n\nAnyone in the group can then write to the listed repositories [1]. Users can clone the repositories they have access to, as defined in `gitosis.conf` [2].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ],
+   "sources": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#introduction",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Answer matches the reference (group section with members and writable, then commit and push). Extra key-adding steps are supported by sections [1] and [2]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-09",
+   "in_scope": true,
+   "answer": "Add the developer's public key to the `gitosis-admin` repository, then push. Gitosis links the user to the key by its filename [2].\n\n1. Get the developer's public key, which must end in `.pub` [2].\n2. In your `gitosis-admin` clone, copy the key into `keydir/`, named after the user [2]:\n\n```\ncd gitosis-admin\ncp /path/to/rsa/key/john.pub keydir/\ngit add keydir/*\ngit commit -am \"Adding the john account.\"\ngit push\n```\n\n3. Once pushed, the developer can clone the repositories they have access to, as defined by `gitosis.conf` [2].\n\nThe sections don't show how to grant a user access to a specific repository. Access is set in `gitosis.conf` [2], but its syntax is not in the provided documentation.",
+   "not_in_docs": false,
+   "cited": [
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ],
+   "sources": [
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Advanced#checking-out-remote-repositories",
+    "git/Gitosis#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "Matches the reference: key into keydir/ named user.pub, then add, commit, push. All claims, including that access is set in gitosis.conf, are supported by section [2]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-10",
+   "in_scope": true,
+   "answer": "Yes. Bitbucket free accounts support up to five users and an unlimited number of private repositories [1].",
+   "not_in_docs": false,
+   "cited": [
+    "git/Bitbucket#introduction"
+   ],
+   "sources": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/GitHub#introduction"
+   ],
+   "cites_gold": true,
+   "judge": {
+    "correct": true,
+    "grounded": true,
+    "why": "The answer matches the reference (yes, free private repos, up to five users) and is directly supported by section [1]."
+   }
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-01",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Gerrit code review, Python switch-style dispatch, Gitosis, git-svn, and Git branching. None of them describe configuring VLANs or any Cisco switch.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review",
+    "python/Conditional_Statements#switch",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/git-svn#getting-started",
+    "git/Branching_&_merging#branching-create-new-branches"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-02",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python division operators [1], Git basics [2], SQL NULL and CASE expressions [3][4], and Python for loops and range() [5]. None of them mention sourdough bread or any recipe, so I can't answer this from the documentation.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Operators#floor-division-and-true-division",
+    "git/Introduction#introduction",
+    "sql/SELECT:_IS_NULL_Predicate#some-examples",
+    "sql/SELECT:_Case_Expression#two-examples",
+    "python/Loops#for-loops"
+   ],
+   "sources": [
+    "python/Operators#floor-division-and-true-division",
+    "git/Introduction#introduction",
+    "sql/SELECT:_IS_NULL_Predicate#some-examples",
+    "sql/SELECT:_Case_Expression#two-examples",
+    "python/Loops#for-loops"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-03",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Git server setup [1], git-svn usage [2][4][5], and Python exception handling [3]. None of them mention Kubernetes, deployments, or autoscaling.",
+   "not_in_docs": true,
+   "cited": [
+    "git/Setting_up_a_Server#introduction",
+    "git/git-svn#getting-started",
+    "python/Exceptions#overview-catching-exceptions",
+    "git/git-svn#dealing-with-local-changes",
+    "git/git-svn#examples"
+   ],
+   "sources": [
+    "git/Setting_up_a_Server#introduction",
+    "git/git-svn#getting-started",
+    "python/Exceptions#overview-catching-exceptions",
+    "git/git-svn#dealing-with-local-changes",
+    "git/git-svn#examples"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-04",
+   "in_scope": false,
+   "answer": "Not in docs: None of the provided sections cover React, useEffect, or useLayoutEffect. The sections address Python context managers [1], Git tags vs. branches [2], SQL global temporary tables [3], SQL set operations [4], and SQL CTEs (the WITH clause) [5], so there is no documented basis for comparing these two React hooks.",
+   "not_in_docs": true,
+   "cited": [
+    "python/Context_Managers#technical-details",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "sql/Temporary_Table#global-temporary-tables-gtt",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/with_clause#examples"
+   ],
+   "sources": [
+    "python/Context_Managers#technical-details",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "sql/Temporary_Table#global-temporary-tables-gtt",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/with_clause#examples"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-05",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Python file I/O, context managers, Unicode strings, print output, and string idioms. They contain nothing about filing Canadian personal tax returns.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "python/Files#file-i-o",
+    "python/Context_Managers#basic-resource-management",
+    "python/Strings#unicode",
+    "python/Input_and_Output#output-file-output",
+    "python/Idioms#data-types-strings"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "out-06",
+   "in_scope": false,
+   "answer": "Not in docs: The provided sections cover Git/Gerrit changeset resubmission, Git rebasing, SQL ORDER BY and SELECT queries, and SQL UPDATE commands. None of them discuss changing oil in a Toyota Corolla or any vehicle maintenance.",
+   "not_in_docs": true,
+   "cited": [],
+   "sources": [
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Data_Query_Language#select-query-first-query",
+    "git/Rebasing#principle",
+    "sql/Handle_Data#modify-data-with-update-command"
+   ]
+  }
+ ]
+}

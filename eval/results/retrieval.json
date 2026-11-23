@@ -1,0 +1,3330 @@
+{
+ "summary": {
+  "vector": {
+   "hit@1": 0.667,
+   "hit@5": 1.0,
+   "page@5": 1.0,
+   "MRR@10": 0.799,
+   "avg_ms": 161,
+   "llm_calls_per_q": 0.0
+  },
+  "bm25": {
+   "hit@1": 0.69,
+   "hit@5": 0.881,
+   "page@5": 1.0,
+   "MRR@10": 0.768,
+   "avg_ms": 2,
+   "llm_calls_per_q": 0.0
+  },
+  "hybrid": {
+   "hit@1": 0.643,
+   "hit@5": 0.976,
+   "page@5": 1.0,
+   "MRR@10": 0.781,
+   "avg_ms": 11,
+   "llm_calls_per_q": 0.0
+  },
+  "hybrid_rerank": {
+   "hit@1": 0.714,
+   "hit@5": 0.929,
+   "page@5": 1.0,
+   "MRR@10": 0.818,
+   "avg_ms": 475,
+   "llm_calls_per_q": 0.0
+  },
+  "multi_query": {
+   "hit@1": 0.667,
+   "hit@5": 1.0,
+   "page@5": 1.0,
+   "MRR@10": 0.812,
+   "avg_ms": 1663,
+   "llm_calls_per_q": 1.0
+  },
+  "hyde": {
+   "hit@1": 0.667,
+   "hit@5": 1.0,
+   "page@5": 1.0,
+   "MRR@10": 0.81,
+   "avg_ms": 2024,
+   "llm_calls_per_q": 1.0
+  }
+ },
+ "rows": [
+  {
+   "method": "vector",
+   "id": "python-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Functions#function-calls-defining-functions",
+    "python/Tuples#uses-of-tuples",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Conditional_Statements#another-way-using-function-through-user-input-another-way-8"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Password_checker#introduction",
+    "python/Loops#while-loops-examples",
+    "python/Web#requests-authentication"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#iteration",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Loops#range-versus-xrange"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Context_Managers#caveats-context-not-scope",
+    "python/Scoping#variables-keyword-global"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-06",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "python/Data_Types#creating-objects-of-defined-types",
+    "python/Lists#introduction",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#list-creation-plain-creation",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-07",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-intersection",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Lists#difference",
+    "python/Sets#overview-multiple-sets",
+    "python/Sets#overview-set-operations-symmetric-difference"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Home#introduction",
+    "git/git-svn#overview",
+    "git/Interoperation#introduction",
+    "git/Branching_&_merging#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings#variables",
+    "python/Regular_Expression#replacing",
+    "python/Strings#string-methods-title-upper-lower-swapcase-capitalize",
+    "python/Strings#string-operations-equality"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/PyPy#introduction",
+    "python/Python_2_vs._Python_3#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-examples"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type",
+    "python/Data_Types#introduction",
+    "python/Operators#identity",
+    "python/Data_Types#null-object"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Classes#overview-class-members-methods-why-a-mandatory-argument"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class",
+    "python/Classes#overview-instance-construction",
+    "python/Metaclasses#python3"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#examples",
+    "python/Password_checker#introduction",
+    "python/Variables_and_Strings#exercises"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#trying-python-online",
+    "python/Extending_with_C#using-the-python-c-api-a-minimal-example-building-with-gcc-for-microsoft-windows"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Operators#augmented-assignment",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Tips_and_Tricks#list-comprehension-and-generators"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#basics",
+    "python/Basic_Math#mathematical-operators",
+    "python/Operators#floor-division-and-true-division",
+    "python/Operators#powers"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "python/Databases#dbms-specifics-sqlite",
+    "python/Databases#general-principles-parameter-quoting"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet",
+    "sql/Example_Database_Data#grow-up"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#introduction",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#syntax"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-03",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#complex-solutions"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Database_Management_Systems_(DBMS)#historical-context",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Subquery#row-subquery",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-select-clause",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Data_Query_Language#select-query-where-clause-exists"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-07",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-a-word-of-caution",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#overall-description"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-default-value",
+    "sql/Example_Database_Data#grow-up",
+    "sql/INSERT_1#dynamic-insert"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Set_Operations#group-by",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Relational_DBMS_(rDBMS)#the-data-model",
+    "sql/Relational_Databases#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#exact-numeric",
+    "sql/Data_Types#approximate-numeric",
+    "sql/Create_Table#column-definition-data-type"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-12",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/INSERT_2#evaluate-rows-at-runtime",
+    "sql/MERGE#introduction",
+    "sql/INSERT_1#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/INSERT_2#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-13",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#introduction",
+    "sql/Views#create-a-view",
+    "sql/Views#examples-and-explanations-example-5-join"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files",
+    "git/Internal_structure#naked-git-structure-specific-files-orig-head",
+    "git/Advanced#checking-out-remote-repositories-checking-out-remote-branches",
+    "git/Introduction#adding-and-committing-files"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Introduction#removing-files-reverting-a-commit",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Introduction#removing-files-get-a-specific-version-of-a-file"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-03",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9",
+    "git/Branching_&_merging#introduction",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "python/Idioms#imports"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/GitHub#introduction",
+    "git/Home#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-07",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-09",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ]
+  },
+  {
+   "method": "vector",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-01",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "python/Loops#range-versus-xrange",
+    "sql/Example_Database_Structure#contact",
+    "python/Functions#function-calls-declaring-arguments-default-argument-values",
+    "python/Loops#the-break-statement",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "git/Obtaining_Git#first-configuration",
+    "python/Variables_and_Strings#exercises",
+    "python/Dictionaries#exercises"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-03",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "python/Sequences#lists",
+    "python/Lists#iteration",
+    "python/Strings#string-operations-indexing-and-slicing",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Idioms#data-types-all-sequence-types"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Idioms#data-types-dictionaries",
+    "python/Strings#unicode"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Modules#introduction",
+    "python/Modules#creating-a-module-from-a-file",
+    "python/Variables_and_Strings#variables",
+    "sql/Create_Table#column-constraints-vs-table-constraints"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-06",
+   "rank": 7,
+   "page@5": true,
+   "top5": [
+    "python/Lists#introduction",
+    "python/Sequences#exercises",
+    "python/Data_Types#creating-objects-of-defined-types",
+    "python/Sequences#lists",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Sets#overview-constructing-sets",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Lists#intersection",
+    "python/Sequences#sets"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Interoperation#introduction",
+    "python/Home#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Home#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Variables_and_Strings~Solutions#introduction",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Variables_and_Strings#string",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Package_management#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Cython#introduction",
+    "python/Extending_with_Perl#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance",
+    "python/Operators#logical-operators-not",
+    "python/Reflection#callable",
+    "python/Strings#string-methods-is"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-programming-practices-doc-strings",
+    "python/Classes#overview-class-members-viewing-class-dictionaries",
+    "python/Classes#overview-class-members-methods"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-13",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-instance-construction",
+    "python/Metaclasses#python3-the-type-metaclass",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-class-members-invoking-methods"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#exercises",
+    "python/Input_and_Output#input-input-in-python-2-x",
+    "python/Variables_and_Strings#strings-and-variables"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/numpy#installation",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Development_Environments#eclipse"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Basic_Math#order-of-operations",
+    "python/Functions#nested-functions",
+    "sql/Data_Definition_Language#alter-statement-add-constraint-clause"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Decision_Control#boolean-expressions",
+    "python/Math#introduction",
+    "python/Tuples#tuple-notation",
+    "sql/SELECT:_Set_Operations#order-by"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Loops#range-versus-xrange",
+    "python/Loops#for-loops",
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-group-by-clause"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "python/PyPy#introduction",
+    "python/Conditional_Statements#switch",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "python/PyQt4#a-button"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-02",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "sql/Relational_Databases#relationships",
+    "sql/Foreign_Key#immediate-deferred",
+    "sql/Foreign_Key#n-m-relationship",
+    "sql/Example_Database_Structure#visualisation-of-the-structure",
+    "sql/Foreign_Key#example"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-03",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "python/Lists#sorting-lists",
+    "sql/SELECT:_Predefined_Functions#scalar-functions",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet",
+    "python/Sequences#tuples",
+    "sql/Data_Types#temporal",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-05",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Subquery#classification"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "git/Introduction#git-checkout-is-not-subversion-checkout",
+    "python/Getting_Python#installing-python-on-macos",
+    "sql/WHERE#overview"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/Data_Query_Language#sql-data-types",
+    "sql/Data_Types#xml"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Handle_Data#modify-data-with-update-command",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-aliases-for-column-names",
+    "sql/Retrieve_Top_N_Rows_per_Group#insufficient-solutions-example-2"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-10",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Relational_Databases#introduction",
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Handle_Data#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/Temporary_Table#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#overview",
+    "sql/SQL:_The_Standard_ISO_IEC_9075_and_various_Implementations#the-standardization-process",
+    "sql/NULLs_and_the_Three_Valued_Logic#step-1-evaluation-of-nulls-comparison-predicates-is-null-predicate",
+    "sql/Data_Types#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/SQL:_A_Language_for_Working_with_rDBMS#characteristics",
+    "sql/WHERE#introduction",
+    "sql/Handle_Data#summary",
+    "sql/Handle_Data#remove-data-with-delete-command"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-13",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#determine-the-frame"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Recursions#syntax",
+    "sql/Eliminate_Duplicates#identify-affected-rows",
+    "sql/Data_Query_Language#select-query-where-clause-exists"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Introduction#removing-files",
+    "git/Introduction#git-checkout-is-not-subversion-checkout",
+    "git/Internal_structure#basic-concepts-object-types"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-02",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Internal_structure#basic-concepts-reachability-and-garbage-collection",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-03",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Home#table-of-contents",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Rebasing#principle"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "python/Modules#importing-a-module",
+    "python/PyQt4#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review",
+    "git/Hosting#introduction",
+    "git/Introduction#diff-and-patch-the-currency-of-open-source-collaboration",
+    "git/Bitbucket#introduction"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-09",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Advanced#checking-out-remote-repositories",
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories"
+   ]
+  },
+  {
+   "method": "bm25",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Setting_up_a_Server#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/GitHub#introduction",
+    "git/Hosting#other"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-01",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "python/Loops#the-break-statement",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Functions#function-calls-defining-functions",
+    "python/Loops#range-versus-xrange",
+    "python/Functions#function-calls-declaring-arguments-default-argument-values"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Idioms#modules-re",
+    "python/Creating_Python_Programs#exercises"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-03",
+   "rank": 6,
+   "page@5": true,
+   "top5": [
+    "python/Lists#iteration",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Strings#string-operations-indexing-and-slicing",
+    "python/Sequences#lists"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Strings#unicode"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Variables_and_Strings#variables",
+    "python/Context_Managers#technical-details",
+    "python/Scoping#variables-keyword-nonlocal"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-06",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Lists#introduction",
+    "python/Data_Types#creating-objects-of-defined-types",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#list-creation-plain-creation"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Lists#intersection",
+    "python/Lists#difference",
+    "python/Sets#overview-set-operations-intersection"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Interoperation#introduction",
+    "git/Home#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Systems#git-based-systems-motivation"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Regular_Expression#replacing",
+    "python/Variables_and_Strings#string",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Variables_and_Strings~Solutions#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Cython#introduction",
+    "python/Package_management#introduction",
+    "python/Extending_with_C#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type",
+    "python/Reflection#callable",
+    "python/Strings#string-methods-is",
+    "python/Operators#logical-operators-not"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-programming-practices-encapsulation",
+    "python/Classes#overview-class-members-invoking-methods"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-13",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-instance-construction",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-new-style-classes"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#exercises",
+    "python/Decision_Control#examples",
+    "python/Variables_and_Strings#strings-and-variables"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/numpy#installation",
+    "python/Getting_Python#trying-python-online"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Basic_Math#order-of-operations"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Decision_Control#boolean-expressions",
+    "python/Math#introduction",
+    "python/Operators#floor-division-and-true-division",
+    "python/Numbers#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "python/Databases#dbms-specifics-sqlite",
+    "sql/Eliminate_Duplicates#the-challenge",
+    "sql/Window_functions#a-first-query"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "sql/Temporary_Table#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-02",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#n-m-relationship",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Data_Query_Language#select-query-from-clause"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-03",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "python/Lists#sorting-lists",
+    "sql/Eliminate_Duplicates#identify-affected-rows",
+    "sql/SELECT:_Fundamentals#sorting"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Create_a_simple_Table#more-than-a-spreadsheet",
+    "sql/Database_Management_Systems_(DBMS)#historical-context-classification-of-dbms-design",
+    "sql/Transactions#atomicity"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Subquery#table-subquery"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Quantified_Comparison#introduction",
+    "sql/Data_Query_Language#select-query-where-clause"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#determine-the-frame-defaults"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Data_Query_Language#sql-data-types",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/Create_a_simple_Table#conceive-the-structure"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns",
+    "sql/Performance#index"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/Temporary_Table#introduction",
+    "sql/SQL:_A_Language_for_Working_with_rDBMS#history",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#introduction",
+    "sql/Data_Types#exact-numeric",
+    "sql/Data_Query_Language#sql-data-types"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/INSERT_2#evaluate-rows-at-runtime",
+    "sql/Handle_Data#summary",
+    "sql/SQL:_A_Language_for_Working_with_rDBMS#characteristics",
+    "sql/Data_Manipulation_Language#insert-statement"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-13",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/Views#create-a-view",
+    "sql/Views#some-more-hints",
+    "sql/with_clause#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files",
+    "git/Introduction#adding-and-committing-files",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Branching_&_merging#branching-delete-a-branch"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-03",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-9",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Rebasing#principle"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#introduction",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-09",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Advanced#checking-out-remote-repositories"
+   ]
+  },
+  {
+   "method": "hybrid",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/GitHub#introduction",
+    "git/Hosting#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-01",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Loops#range-versus-xrange",
+    "python/Functions#function-calls-defining-functions",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Loops#the-break-statement"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Decision_Control#examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Variables_and_Strings#exercises",
+    "python/Decision_Control#exercises",
+    "python/Variables_and_Strings#strings-and-variables"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-03",
+   "rank": 8,
+   "page@5": true,
+   "top5": [
+    "python/Sequences#lists",
+    "python/Lists#iteration",
+    "python/Strings#string-operations-indexing-and-slicing",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Lists#overview"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Errors#exceptions-dealing-with-exceptions"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Context_Managers#caveats-context-not-scope",
+    "python/Modules#introduction",
+    "python/Scoping#variables-keyword-nonlocal"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-06",
+   "rank": 6,
+   "page@5": true,
+   "top5": [
+    "python/Sequences#lists",
+    "python/Lists#introduction",
+    "python/Sequences#introduction",
+    "python/Variables_and_Strings#combining-numbers-and-strings",
+    "python/Data_Types#creating-objects-of-defined-types"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Lists#intersection",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-set-operations-intersection"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Interoperation#introduction",
+    "git/Home#introduction",
+    "git/git-svn#overview",
+    "git/Introduction#git-checkout-is-not-subversion-checkout"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Regular_Expression#replacing",
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/PyPy#introduction",
+    "python/Extending_with_C#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#type",
+    "python/Reflection#isinstance",
+    "python/Operators#logical-operators-not",
+    "python/Strings#string-methods-is",
+    "python/Operators#identity"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-multiple-inheritance",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-class-members-methods"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-class-members-dynamic-class-structure",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-14",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "python/Loops#while-loops-examples",
+    "python/Variables_and_Strings~Solutions#introduction",
+    "python/Variables_and_Strings#strings-and-variables"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/numpy#installation",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Package_management#requirements-txt",
+    "python/Editing_and_Running_Python_Code#managing-code-libraries-and-modules"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Loops#for-loops",
+    "python/Loops#while-loops",
+    "python/Input_and_Output#output"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Decision_Control#boolean-expressions",
+    "python/Operators#floor-division-and-true-division",
+    "python/Math#introduction",
+    "python/Numbers#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#general-principles-parameter-quoting",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Loops#range-versus-xrange"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-01",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Performance#index",
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "python/Tips_and_Tricks#data-type-choice"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Data_Query_Language#select-query-from-clause",
+    "sql/Foreign_Key#n-m-relationship"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Data_Query_Language#select-query-group-by-clause",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/Managing_Indexes#unique-index"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#consistency",
+    "sql/Transactions#atomicity",
+    "sql/Data_Control_Language#grant-statement"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Subquery#row-subquery"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-fetch-first-clause",
+    "sql/Quantified_Comparison#introduction",
+    "sql/Data_Query_Language#select-query-where-clause-between-and-in"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Retrieve_Top_N_Rows_per_Group#window-functions-example-8"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/SELECT:_Set_Operations#introduction",
+    "sql/Create_a_simple_Table#conceive-the-structure",
+    "sql/Create_Table#general-description"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Handle_Data#modify-data-with-update-command",
+    "sql/Performance#index"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/SELECT:_Join_Operation#introduction",
+    "sql/Example_Database_Structure#contact",
+    "sql/Temporary_Table#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-data-type",
+    "sql/Data_Types#exact-numeric",
+    "sql/Data_Types#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/Handle_Data#modify-data-with-update-command",
+    "sql/Handle_Data#summary",
+    "sql/UPDATE_2#subqueries-in-where-clause",
+    "sql/INSERT_1#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/with_clause#introduction",
+    "sql/Recursions#syntax",
+    "sql/SELECT:_Join_Operation#the-basic-syntax"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#branching-delete-a-branch",
+    "git/Rebasing#principle",
+    "git/Branching_&_merging#branching-create-new-branches"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-02",
+   "rank": null,
+   "page@5": true,
+   "top5": [
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Internal_structure#basic-concepts-reachability-and-garbage-collection",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Branching_&_merging#merging"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-03",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository",
+    "git/Introduction#creating-a-git-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#branching-delete-a-branch",
+    "git/Branching_&_merging#branching-pushing-a-branch-to-a-remote-repository"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#footnotes"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Hosting#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-07",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-checkout-the-gitosis-repository"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#introduction",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-09",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Advanced#checking-out-remote-repositories",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "hybrid_rerank",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/GitHub#introduction"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-01",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Tuples#uses-of-tuples",
+    "python/Functions#function-calls-defining-functions",
+    "python/Functions#function-calls-declaring-arguments-variable-length-argument-lists",
+    "python/Tuples#using-list-comprehension-to-process-tuple-elements",
+    "python/Functions#function-calls"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "python/Loops#while-loops-examples",
+    "python/Password_checker#introduction",
+    "python/Web#requests-authentication"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices",
+    "python/Lists#iteration",
+    "python/Loops#for-loops",
+    "python/Idioms#data-types-all-sequence-types"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Files#file-i-o",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Exceptions#overview-catching-exceptions"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Basic_Syntax#semicolons-namespaces",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Scoping#variables-keyword-nonlocal"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-06",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "python/Data_Types#built-in-data-types",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#list-creation-plain-creation",
+    "python/Lists#introduction",
+    "python/Data_Types#creating-objects-of-defined-types"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Sets#overview-set-operations-union",
+    "python/Sets#overview-constructing-sets",
+    "python/Sets#overview-membership-testing"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-08",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "git/Home#introduction",
+    "git/Branching_&_merging#introduction",
+    "git/Systems#git-based-systems-motivation",
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Branching_&_merging#why-branch"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Regular_Expression#replacing",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Variables_and_Strings#variables",
+    "python/Variables_and_Strings#combining-numbers-and-strings"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Cython#introduction",
+    "python/Extending_with_C#introduction",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Package_management#introduction"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type",
+    "python/Operators#identity",
+    "python/Reflection#introduction",
+    "python/Strings#string-methods-is"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-12",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-special-methods",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-special-methods-initialization-and-deletion-init",
+    "python/Classes#overview-inheritance"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-13",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-instance-construction",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-a-class"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Loops#while-loops-examples",
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "python/Password_checker#introduction",
+    "python/Input_and_Output#input-input-in-python-2-x"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Package_management#requirements-txt",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/numpy#installation",
+    "python/Editing_and_Running_Python_Code#managing-code-libraries-and-modules"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Command-line_one-liners#introduction",
+    "python/Loops#for-loops",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Basic_Math#order-of-operations"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Numbers#introduction",
+    "python/Operators#floor-division-and-true-division",
+    "python/Math#introduction",
+    "python/Decision_Control#boolean-expressions"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-sqlite",
+    "python/Databases#dbms-specifics-mysql",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "sql/Window_functions#a-first-query"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Managing_Indexes#functional-index",
+    "sql/Managing_Indexes#multiple-columns"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-from-clause",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#introduction"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Set_Operations#order-by",
+    "python/Lists#sorting-lists",
+    "sql/Eliminate_Duplicates#identify-affected-rows"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#isolation",
+    "sql/Transactions#atomicity",
+    "sql/Database_Management_Systems_(DBMS)#historical-context-classification-of-dbms-design"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Grouping#inspect-groups",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Case_Expression#typical-use-cases"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Eliminate_Duplicates#the-challenge",
+    "sql/Retrieve_Top_N_Rows_per_Group#window-functions-example-8",
+    "sql/Data_Query_Language#select-query-where-clause-operators"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#basic-window-functions"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Create_a_simple_Table#conceive-the-structure",
+    "sql/Example_Database_Data#grow-up"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "python/Lists#sorting-lists",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/SELECT:_Case_Expression#typical-use-cases"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/Create_a_simple_Table#conceive-the-structure",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "sql/Foreign_Key#foreign-key-vs-join"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#overview",
+    "sql/Data_Types#temporal",
+    "sql/Create_Table#column-definition-data-type",
+    "sql/Data_Query_Language#sql-data-types",
+    "sql/SQL:_The_Standard_ISO_IEC_9075_and_various_Implementations#the-standardization-process"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/MERGE#example",
+    "sql/MERGE#description",
+    "sql/INSERT_2#evaluate-rows-at-runtime",
+    "sql/Data_Manipulation_Language#insert-statement"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-13",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#a-first-query"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#introduction",
+    "sql/SELECT:_Subquery#scalar-value-subquery",
+    "sql/Views#write-access-via-views",
+    "sql/with_clause#syntax"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Introduction#adding-and-committing-files",
+    "git/Advanced#checking-out-remote-repositories-checking-out-remote-branches"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Introduction#removing-files"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Advanced#checking-out-remote-repositories"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#introduction",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#merging-9",
+    "git/git-svn#dealing-with-local-changes"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Submodules_and_Superprojects#footnotes",
+    "git/Introduction#adding-and-committing-files"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Hosting#birds-of-a-feather-bof",
+    "git/Bitbucket#introduction"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#introduction",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories"
+   ]
+  },
+  {
+   "method": "multi_query",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#free-public-and-open-source",
+    "git/GitHub#introduction",
+    "git/Hosting#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-01",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Functions#function-calls-declaring-arguments",
+    "python/Functions#function-calls-defining-functions",
+    "python/Loops#range-versus-xrange",
+    "python/Extending_with_ctypes#getting-return-values",
+    "python/Tuples#uses-of-tuples"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Decision_Control#examples",
+    "python/Loops#while-loops-examples",
+    "python/Password_checker#introduction",
+    "python/Decision_Control#exercises"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-03",
+   "rank": 5,
+   "page@5": true,
+   "top5": [
+    "python/Idioms#data-types-all-sequence-types",
+    "python/Strings#string-operations-indexing-and-slicing",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Lists#iteration",
+    "python/Lists#getting-pieces-of-lists-slices-non-continuous-slices"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Context_Managers#caveats-generators",
+    "python/Input_and_Output#input-file-input-file-objects",
+    "python/Context_Managers#basic-resource-management",
+    "python/Files#file-i-o",
+    "python/Context_Managers#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Syntax#semicolons-scope",
+    "python/Scoping#variables",
+    "python/Scoping#variables-keyword-nonlocal",
+    "python/Scoping#variables-globals-and-locals",
+    "python/Basic_Syntax#semicolons-namespaces"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-06",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "python/Lists#introduction",
+    "python/Data_Types#creating-objects-of-defined-types",
+    "python/Data_Types#mutable-vs-immutable-objects",
+    "python/Lists#list-creation-plain-creation",
+    "python/Data_Types#built-in-data-types"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Sets#overview-set-operations-symmetric-difference",
+    "python/Sets#overview-set-operations-set-difference",
+    "python/Lists#difference",
+    "python/Sets#overview-set-operations-intersection",
+    "python/Lists#intersection"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-08",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Editing_and_Running_Python_Code#managing-code-version-control",
+    "git/Home#introduction",
+    "git/Interoperation#introduction",
+    "git/Hosting#free-public-and-open-source",
+    "git/git-svn#overview"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Strings#string-methods-replace",
+    "python/Regular_Expression#replacing",
+    "python/Variables_and_Strings#string",
+    "python/Variables_and_Strings#variables",
+    "python/Strings#string-methods-strip-rstrip-lstrip"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Tips_and_Tricks#optimized-c-modules",
+    "python/Tips_and_Tricks#optimized-c-modules-examples",
+    "python/Tips_and_Tricks#optimized-c-modules-importing",
+    "python/Cython#introduction",
+    "python/Extending_with_C#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-11",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Reflection#isinstance",
+    "python/Reflection#type",
+    "python/Reflection#callable",
+    "python/Operators#identity",
+    "python/Operators#logical-operators-not"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-special-methods",
+    "python/Naming_conventions#introduction",
+    "python/Classes#overview-class-members-methods",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Classes#overview-programming-practices-encapsulation"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-13",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-using-a-function",
+    "python/Classes#overview-programming-practices-adding-methods-at-runtime-to-an-instance-of-a-class",
+    "python/Classes#overview-instance-construction",
+    "python/Classes#overview-class-members-invoking-methods",
+    "python/Metaclasses#python3"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-14",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "python/Conditional_Statements#if-statements-if-exercises",
+    "python/Loops#while-loops-examples",
+    "python/Decision_Control#examples",
+    "python/Decision_Control#exercises",
+    "python/Conditional_Statements#if-statements-if-example"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-15",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Package_management#introduction",
+    "python/Getting_Python#installing-python-on-linux-installing-python-for-ubuntu-debian-based-systems-using-apt",
+    "python/Package_management#requirements-txt",
+    "python/numpy#installation",
+    "python/Getting_Python#trying-python-online"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-16",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Control_Flow#exercises",
+    "python/Loops#for-loops",
+    "python/Control_Flow#overview-loops-for-loops",
+    "python/Command-line_one-liners#introduction",
+    "python/Input_and_Output#output"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-17",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Basic_Math#order-of-operations",
+    "python/Operators#floor-division-and-true-division",
+    "python/Math#introduction",
+    "python/Numbers#introduction",
+    "python/Basic_Math#mathematical-operators"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "python-18",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "python/Databases#general-principles-use-iterators",
+    "python/Databases#dbms-specifics-sqlite",
+    "python/Databases#general-principles-looping-on-field-breaks",
+    "sql/Eliminate_Duplicates#the-challenge",
+    "sql/Window_functions#a-first-query"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Managing_Indexes#the-concept-of-indexes",
+    "sql/Performance#index",
+    "sql/Managing_Indexes#basic-index",
+    "sql/Relational_DBMS_(rDBMS)#some-more-basics",
+    "sql/Temporary_Table#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-02",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Foreign_Key#example",
+    "sql/Foreign_Key#foreign-key-vs-join",
+    "sql/Foreign_Key#introduction",
+    "sql/Foreign_Key#n-m-relationship",
+    "sql/Data_Query_Language#select-query-from-clause"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-03",
+   "rank": 3,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Eliminate_Duplicates#identify-affected-rows"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Database_Management_Systems_(DBMS)#historical-context-what-makes-up-a-database-management-system",
+    "sql/Transactions#introduction",
+    "sql/Transactions#atomicity",
+    "sql/Database_Management_Systems_(DBMS)#historical-context-classification-of-dbms-design",
+    "sql/Temporary_Table#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Predefined_Functions#aggregate-functions",
+    "sql/SELECT:_Grouping#constitute-groups",
+    "sql/SELECT:_Fundamentals#restriction-specify-resulting-rows-comparisons",
+    "sql/SELECT:_Subquery#classification",
+    "sql/SELECT:_Fundamentals#projection-specify-resulting-columns-functions"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/SELECT:_Subquery#another-example",
+    "sql/Data_Query_Language#select-query-where-clause-operators",
+    "sql/Retrieve_Top_N_Rows_per_Group#the-challenge",
+    "sql/Data_Query_Language#select-query-where-clause",
+    "sql/Quantified_Comparison#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-07",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#determine-the-frame",
+    "sql/Window_functions#basic-window-functions",
+    "sql/Window_functions#determine-the-frame-rows"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "sql/Create_Table#column-definition-identity-specification",
+    "sql/Data_Types#overview",
+    "sql/Create_a_simple_Table#conceive-the-structure",
+    "sql/Data_Query_Language#sql-data-types",
+    "sql/Create_Table#general-description"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Query_Language#select-query-order-by-clause",
+    "sql/SELECT:_Fundamentals#sorting",
+    "sql/Managing_Indexes#multiple-columns",
+    "sql/SELECT:_Set_Operations#order-by",
+    "sql/Performance#index"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Introduction_to_SQL#introduction",
+    "sql/Relational_Databases#introduction",
+    "sql/Create_Table#column-definition-column-constraint",
+    "sql/Example_Database_Structure#contact",
+    "sql/Relational_DBMS_(rDBMS)#the-data-model"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-11",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/Data_Types#temporal",
+    "sql/Data_Types#overview",
+    "sql/Data_Types#exact-numeric",
+    "sql/Create_Table#column-definition-data-type",
+    "sql/Data_Query_Language#sql-data-types"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-12",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/MERGE#introduction",
+    "sql/Handle_Data#store-new-data-with-insert-command",
+    "sql/Handle_Data#summary",
+    "sql/Data_Manipulation_Language#insert-statement",
+    "sql/INSERT_1#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-13",
+   "rank": 4,
+   "page@5": true,
+   "top5": [
+    "sql/Window_functions#determine-the-frame-defaults",
+    "sql/Window_functions#determine-the-frame-terminology",
+    "sql/Window_functions#overall-description",
+    "sql/Window_functions#a-first-query",
+    "sql/Window_functions#determine-the-frame"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "sql-14",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "sql/with_clause#examples",
+    "sql/with_clause#syntax",
+    "sql/with_clause#introduction",
+    "sql/Views#some-more-hints",
+    "sql/Views#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-01",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Interoperation#customizing-your-command-line-prompt",
+    "git/Introduction#removing-files",
+    "git/Advanced#checking-out-remote-repositories-checking-out-remote-branches",
+    "git/Introduction#adding-and-committing-files",
+    "git/Branching_&_merging#branching-create-new-branches"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-02",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Advanced#checking-out-remote-repositories-tags",
+    "git/Advanced#checking-out-remote-repositories-tags-vs-branches",
+    "git/Internal_structure#basic-concepts-object-types",
+    "git/Gerrit_Code_Review#use-submitting-changes-for-review-re-submitting-a-changeset",
+    "git/Internal_structure#naked-git-structure-folders-containing-other-files-refs-tags"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-03",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-clone-the-gitosis-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository-8",
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-04",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Branching_&_merging#merging",
+    "git/Branching_&_merging#merging-9",
+    "git/git-svn#dealing-with-local-changes",
+    "git/Branching_&_merging#merging-handling-a-merge-conflict",
+    "git/Branching_&_merging#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-05",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Submodules_and_Superprojects#work-flow",
+    "git/Submodules_and_Superprojects#superprojects",
+    "git/Submodules_and_Superprojects#introduction",
+    "git/Submodules_and_Superprojects#submodules",
+    "git/Rebasing#principle"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-06",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#other",
+    "git/Hosting#introduction",
+    "git/Bitbucket#introduction",
+    "git/Hosting#birds-of-a-feather-bof"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-07",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#setting-up-gitosis-initializing-gitosis",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-creating-a-repository"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-08",
+   "rank": 2,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#introduction"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-09",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository",
+    "git/Gitosis#installing-gitosis-create-a-user-to-manage-the-repositories",
+    "git/Gitosis#installing-gitosis-copying-your-public-key-to-the-gitosis-server",
+    "git/Gitosis#configuring-gitosis-creating-a-repository",
+    "git/Gitosis#configuring-gitosis-defining-groups-members-permissions-and-repositories"
+   ]
+  },
+  {
+   "method": "hyde",
+   "id": "git-10",
+   "rank": 1,
+   "page@5": true,
+   "top5": [
+    "git/Bitbucket#introduction",
+    "git/Hosting#other",
+    "git/Hosting#free-public-and-open-source",
+    "git/Hosting#introduction",
+    "git/Gitosis#configuring-gitosis-adding-users-to-a-repository"
+   ]
+  }
+ ]
+}

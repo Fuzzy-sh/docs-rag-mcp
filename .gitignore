@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+.DS_Store
+# Wikibooks text and the index are rebuilt by build_index.py (not redistributed here)
+data/raw/
+data/index/
+build_log.txt
